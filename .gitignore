@@ -1,0 +1,9 @@
+!**/glob-import/dir/node_modules
+.DS_Store
+*.local
+*.log
+/.vscode/
+node_modules
+.eslintcache
+*.css.map
+*.scss.map
