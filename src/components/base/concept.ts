@@ -11,9 +11,6 @@ import { Root } from "@/components/base/root";
 
 @customElement("graph-widget-concept")
 export class Concept extends Root {
-  @property({ type: String })
-  "locale" = "en";
-
   @property({ type: Object })
   "concept" = {} as TConcept;
 

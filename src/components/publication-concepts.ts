@@ -22,9 +22,6 @@ import { Concept } from "@/types/concept";
 @customElement("graph-widget-publication-concepts")
 export class PublicationConcepts extends Root {
   @property({ type: String })
-  locale = "en";
-
-  @property({ type: String })
   "publication-id" = "";
 
   @property({ type: String })
