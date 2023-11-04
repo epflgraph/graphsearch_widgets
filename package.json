@@ -4,11 +4,19 @@
   "scripts": {
     "start": "vite dev",
     "dev": "vite dev",
+    "build:watch": "vite build --watch",
     "build": "vite build"
   },
   "devDependencies": {
+    "@lit/localize": "^0.12.1",
+    "@lit/localize-tools": "^0.7.1",
+    "@lit/task": "^1.0.0",
+    "@types/lodash": "^4.14.200",
     "autoprefixer": "^10.4.16",
+    "axios": "^1.6.0",
+    "daisyui": "^3.9.4",
     "lit": "^3.0.2",
+    "lodash": "^4.17.21",
     "postcss": "^8.4.31",
     "tailwindcss": "^3.3.5",
     "typescript": "^5.2.2",
