@@ -18,7 +18,7 @@ export class Concept extends Root {
     return html`<div class="flex flex-col gap-1">
       <a
         href=${new URL(`concept/${this.concept._id}`, URL_APP).toString()}
-        class="link font-medium"
+        class="link font-medium self-start"
       >
         ${get(this.concept, ["name", this.locale, "value"])}
       </a>
