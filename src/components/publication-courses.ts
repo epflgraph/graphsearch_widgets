@@ -4,13 +4,13 @@ import { customElement, property } from "lit/decorators.js";
 import { localized, msg } from "@lit/localize";
 import { Task } from "@lit/task";
 
-import { getPerson, getPersonConcepts } from "@/services/persons";
+import { getPublication, getPublicationCourses } from "@/services/publications";
 
-import { concept, person } from "@/fields";
+import { course, publication } from "@/fields";
 
-import { Concept } from "@/types/concept";
+import { Course } from "@/types/course";
 
-import "@/components/base/concept";
+import "@/components/base/course";
 import "@/components/base/error";
 import "@/components/base/loading";
 import "@/components/base/no-results";
@@ -20,10 +20,10 @@ import "@/components/base/sectionLink";
 import "@/components/base/sectionTitle";
 
 @localized()
-@customElement("graph-widget-person-concepts")
-export class PersonConcepts extends Root {
+@customElement("graph-widget-publication-courses")
+export class PublicationCourses extends Root {
   @property({ type: String })
-  "person-id" = "";
+  "publication-id" = "";
 
   @property({ type: String })
   limit = "3";
@@ -31,50 +31,48 @@ export class PersonConcepts extends Root {
   @property({ type: String })
   offset = "0";
 
-  private _getPersonConcepts = new Task(this, {
+  private _getPublicationCourses = new Task(this, {
     task: async ([id, locale, limit, offset], { signal }) =>
       Promise.all([
-        getPerson({ id, fields: person({ locale }) }, { signal }),
-        getPersonConcepts(
+        getPublication({ id, fields: publication({ locale }) }, { signal }),
+        getPublicationCourses(
           {
             id,
-            fields: concept({ locale }),
+            fields: course({ locale }),
             limit: Number(limit),
             offset: Number(offset),
           },
           { signal }
         ),
       ]),
-    args: () => [this["person-id"], this.locale, this.limit, this.offset],
+    args: () => [this["publication-id"], this.locale, this.limit, this.offset],
   });
 
   render() {
-    return this._getPersonConcepts.render({
+    return this._getPublicationCourses.render({
       pending: () => html`<graph-widget-loading></graph-widget-loading>`,
       error: (error) => html`<graph-widget-error>${error}</graph-widget-error>`,
-      complete: ([person, concepts]) =>
+      complete: ([publication, courses]) =>
         html`<graph-widget-section>
-          ${msg(
-            html`<graph-widget-section-title
-              slot="header"
-              description=${msg("Concepts related to this person")}
-            >
-              ${person.name_display}
-            </graph-widget-section-title> `
-          )}
-          ${concepts.items.length
-            ? concepts.items.map(
-                (item: Concept) =>
-                  html`<graph-widget-concept
-                    .concept=${item}
+          ${html`<graph-widget-section-title
+            slot="header"
+            description=${msg("Courses related to this publication")}
+          >
+            ${publication.title}
+          </graph-widget-section-title> `}
+          ${courses.items.length
+            ? courses.items.map(
+                (item: Course) =>
+                  html`<graph-widget-course
+                    .course=${item}
                     locale=${this.locale}
-                  ></graph-widget-concept>`
+                  ></graph-widget-course>`
               )
             : html`<graph-widget-no-results></graph-widget-no-results>`}
 
           <div slot="footer">
             <graph-widget-section-link
-              href=${person._url}
+              href=${publication._url}
             ></graph-widget-section-link>
           </div>
         </graph-widget-section>`,
@@ -84,6 +82,6 @@ export class PersonConcepts extends Root {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "graph-widget-person-concepts": PersonConcepts;
+    "graph-widget-publication-courses": PublicationCourses;
   }
 }

@@ -4,19 +4,23 @@ import { customElement, property } from "lit/decorators.js";
 import { localized, msg } from "@lit/localize";
 import { Task } from "@lit/task";
 
-import { getPublication, getPublicationConcepts } from "@/services/publication";
+import {
+  getPublication,
+  getPublicationConcepts,
+} from "@/services/publications";
 
-import { URL_APP } from "@/shared/constants";
+import { concept, publication } from "@/fields";
 
-import { Root } from "@/components/base/root";
+import { Concept } from "@/types/concept";
+
 import "@/components/base/concept";
 import "@/components/base/error";
 import "@/components/base/loading";
+import "@/components/base/no-results";
+import { Root } from "@/components/base/root";
 import "@/components/base/section";
 import "@/components/base/sectionLink";
 import "@/components/base/sectionTitle";
-
-import { Concept } from "@/types/concept";
 
 @localized()
 @customElement("graph-widget-publication-concepts")
@@ -33,8 +37,16 @@ export class PublicationConcepts extends Root {
   private _getPublicationConcepts = new Task(this, {
     task: async ([id, locale, limit, offset], { signal }) =>
       Promise.all([
-        getPublication({ id, locale, signal }),
-        getPublicationConcepts({ id, locale, limit, offset, signal }),
+        getPublication({ id, fields: publication({ locale }) }, { signal }),
+        getPublicationConcepts(
+          {
+            id,
+            fields: concept({ locale }),
+            limit: Number(limit),
+            offset: Number(offset),
+          },
+          { signal }
+        ),
       ]),
     args: () => [this["publication-id"], this.locale, this.limit, this.offset],
   });
@@ -45,23 +57,25 @@ export class PublicationConcepts extends Root {
       error: (error) => html`<graph-widget-error>${error}</graph-widget-error>`,
       complete: ([publication, concepts]) =>
         html`<graph-widget-section>
-          ${msg(
-            html`<graph-widget-section-title slot="header">
-              Research domains related to ${publication.title}
-            </graph-widget-section-title> `
-          )}
-          ${concepts.items.map(
-            (item: Concept) =>
-              html`<div slot="body">
-                <graph-widget-concept
-                  .concept=${item}
-                  locale=${this.locale}
-                ></graph-widget-concept>
-              </div>`
-          )}
+          ${html`<graph-widget-section-title
+            slot="header"
+            description=${msg("Concepts related to this publication")}
+          >
+            ${publication.title}
+          </graph-widget-section-title> `}
+          ${concepts.items.length
+            ? concepts.items.map(
+                (item: Concept) =>
+                  html`<graph-widget-concept
+                    .concept=${item}
+                    locale=${this.locale}
+                  ></graph-widget-concept>`
+              )
+            : html`<graph-widget-no-results></graph-widget-no-results>`}
+
           <div slot="footer">
             <graph-widget-section-link
-              href="${URL_APP}/publication/${publication._id}/"
+              href=${publication._url}
             ></graph-widget-section-link>
           </div>
         </graph-widget-section>`,

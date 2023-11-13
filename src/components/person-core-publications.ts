@@ -4,14 +4,12 @@ import { customElement, property } from "lit/decorators.js";
 import { localized, msg } from "@lit/localize";
 import { Task } from "@lit/task";
 
-import { getPerson, getPersonConcepts } from "@/services/persons";
+import { getPerson, getPersonCorePublications } from "@/services/persons";
 
-import { concept, person } from "@/fields";
+import { publication, person } from "@/fields";
 
-import { Concept } from "@/types/concept";
-
-import "@/components/base/concept";
 import "@/components/base/error";
+import "@/components/base/publication";
 import "@/components/base/loading";
 import "@/components/base/no-results";
 import { Root } from "@/components/base/root";
@@ -19,9 +17,11 @@ import "@/components/base/section";
 import "@/components/base/sectionLink";
 import "@/components/base/sectionTitle";
 
+import { Publication } from "@/types/publication";
+
 @localized()
-@customElement("graph-widget-person-concepts")
-export class PersonConcepts extends Root {
+@customElement("graph-widget-person-core-publications")
+export class PersonCorePublications extends Root {
   @property({ type: String })
   "person-id" = "";
 
@@ -31,14 +31,14 @@ export class PersonConcepts extends Root {
   @property({ type: String })
   offset = "0";
 
-  private _getPersonConcepts = new Task(this, {
+  private _getPersonPublications = new Task(this, {
     task: async ([id, locale, limit, offset], { signal }) =>
       Promise.all([
         getPerson({ id, fields: person({ locale }) }, { signal }),
-        getPersonConcepts(
+        getPersonCorePublications(
           {
             id,
-            fields: concept({ locale }),
+            fields: publication({ locale }),
             limit: Number(limit),
             offset: Number(offset),
           },
@@ -49,26 +49,26 @@ export class PersonConcepts extends Root {
   });
 
   render() {
-    return this._getPersonConcepts.render({
+    return this._getPersonPublications.render({
       pending: () => html`<graph-widget-loading></graph-widget-loading>`,
       error: (error) => html`<graph-widget-error>${error}</graph-widget-error>`,
-      complete: ([person, concepts]) =>
+      complete: ([person, publications]) =>
         html`<graph-widget-section>
           ${msg(
             html`<graph-widget-section-title
               slot="header"
-              description=${msg("Concepts related to this person")}
+              description=${msg("Publications by this person")}
             >
               ${person.name_display}
             </graph-widget-section-title> `
           )}
-          ${concepts.items.length
-            ? concepts.items.map(
-                (item: Concept) =>
-                  html`<graph-widget-concept
-                    .concept=${item}
+          ${publications.items.length
+            ? publications.items.map(
+                (item: Publication) =>
+                  html`<graph-widget-publication
+                    .publication=${item}
                     locale=${this.locale}
-                  ></graph-widget-concept>`
+                  ></graph-widget-publication>`
               )
             : html`<graph-widget-no-results></graph-widget-no-results>`}
 
@@ -84,6 +84,6 @@ export class PersonConcepts extends Root {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "graph-widget-person-concepts": PersonConcepts;
+    "graph-widget-person-core-publications": PersonCorePublications;
   }
 }

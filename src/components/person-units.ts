@@ -4,13 +4,13 @@ import { customElement, property } from "lit/decorators.js";
 import { localized, msg } from "@lit/localize";
 import { Task } from "@lit/task";
 
-import { getPerson, getPersonConcepts } from "@/services/persons";
+import { getPerson, getPersonUnits } from "@/services/persons";
 
-import { concept, person } from "@/fields";
+import { unit, person } from "@/fields";
 
-import { Concept } from "@/types/concept";
+import { Unit } from "@/types/unit";
 
-import "@/components/base/concept";
+import "@/components/base/unit";
 import "@/components/base/error";
 import "@/components/base/loading";
 import "@/components/base/no-results";
@@ -20,8 +20,8 @@ import "@/components/base/sectionLink";
 import "@/components/base/sectionTitle";
 
 @localized()
-@customElement("graph-widget-person-concepts")
-export class PersonConcepts extends Root {
+@customElement("graph-widget-person-units")
+export class PersonUnits extends Root {
   @property({ type: String })
   "person-id" = "";
 
@@ -31,14 +31,14 @@ export class PersonConcepts extends Root {
   @property({ type: String })
   offset = "0";
 
-  private _getPersonConcepts = new Task(this, {
+  private _getPersonUnits = new Task(this, {
     task: async ([id, locale, limit, offset], { signal }) =>
       Promise.all([
         getPerson({ id, fields: person({ locale }) }, { signal }),
-        getPersonConcepts(
+        getPersonUnits(
           {
             id,
-            fields: concept({ locale }),
+            fields: unit({ locale }),
             limit: Number(limit),
             offset: Number(offset),
           },
@@ -49,26 +49,26 @@ export class PersonConcepts extends Root {
   });
 
   render() {
-    return this._getPersonConcepts.render({
+    return this._getPersonUnits.render({
       pending: () => html`<graph-widget-loading></graph-widget-loading>`,
       error: (error) => html`<graph-widget-error>${error}</graph-widget-error>`,
-      complete: ([person, concepts]) =>
+      complete: ([person, units]) =>
         html`<graph-widget-section>
           ${msg(
             html`<graph-widget-section-title
               slot="header"
-              description=${msg("Concepts related to this person")}
+              description=${msg("Units related to this person")}
             >
               ${person.name_display}
             </graph-widget-section-title> `
           )}
-          ${concepts.items.length
-            ? concepts.items.map(
-                (item: Concept) =>
-                  html`<graph-widget-concept
-                    .concept=${item}
+          ${units.items.length
+            ? units.items.map(
+                (item: Unit) =>
+                  html`<graph-widget-unit
+                    .unit=${item}
                     locale=${this.locale}
-                  ></graph-widget-concept>`
+                  ></graph-widget-unit>`
               )
             : html`<graph-widget-no-results></graph-widget-no-results>`}
 
@@ -84,6 +84,6 @@ export class PersonConcepts extends Root {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "graph-widget-person-concepts": PersonConcepts;
+    "graph-widget-person-units": PersonUnits;
   }
 }

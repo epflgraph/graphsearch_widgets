@@ -4,9 +4,9 @@ import { customElement, property } from "lit/decorators.js";
 import { localized, msg } from "@lit/localize";
 import { Task } from "@lit/task";
 
-import { getPerson, getPersonConcepts } from "@/services/persons";
+import { getLecture, getLectureConcepts } from "@/services/lectures";
 
-import { concept, person } from "@/fields";
+import { concept, lecture } from "@/fields";
 
 import { Concept } from "@/types/concept";
 
@@ -20,10 +20,10 @@ import "@/components/base/sectionLink";
 import "@/components/base/sectionTitle";
 
 @localized()
-@customElement("graph-widget-person-concepts")
-export class PersonConcepts extends Root {
+@customElement("graph-widget-lecture-concepts")
+export class LectureConcepts extends Root {
   @property({ type: String })
-  "person-id" = "";
+  "lecture-id" = "";
 
   @property({ type: String })
   limit = "3";
@@ -31,11 +31,11 @@ export class PersonConcepts extends Root {
   @property({ type: String })
   offset = "0";
 
-  private _getPersonConcepts = new Task(this, {
+  private _getLectureConcepts = new Task(this, {
     task: async ([id, locale, limit, offset], { signal }) =>
       Promise.all([
-        getPerson({ id, fields: person({ locale }) }, { signal }),
-        getPersonConcepts(
+        getLecture({ id, fields: lecture({ locale }) }, { signal }),
+        getLectureConcepts(
           {
             id,
             fields: concept({ locale }),
@@ -45,21 +45,21 @@ export class PersonConcepts extends Root {
           { signal }
         ),
       ]),
-    args: () => [this["person-id"], this.locale, this.limit, this.offset],
+    args: () => [this["lecture-id"], this.locale, this.limit, this.offset],
   });
 
   render() {
-    return this._getPersonConcepts.render({
+    return this._getLectureConcepts.render({
       pending: () => html`<graph-widget-loading></graph-widget-loading>`,
       error: (error) => html`<graph-widget-error>${error}</graph-widget-error>`,
-      complete: ([person, concepts]) =>
+      complete: ([lecture, concepts]) =>
         html`<graph-widget-section>
           ${msg(
             html`<graph-widget-section-title
               slot="header"
-              description=${msg("Concepts related to this person")}
+              description=${msg("Concepts related to this lecture")}
             >
-              ${person.name_display}
+              ${lecture.video.title}
             </graph-widget-section-title> `
           )}
           ${concepts.items.length
@@ -74,7 +74,7 @@ export class PersonConcepts extends Root {
 
           <div slot="footer">
             <graph-widget-section-link
-              href=${person._url}
+              href=${lecture._url}
             ></graph-widget-section-link>
           </div>
         </graph-widget-section>`,
@@ -84,6 +84,6 @@ export class PersonConcepts extends Root {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "graph-widget-person-concepts": PersonConcepts;
+    "graph-widget-lecture-concepts": LectureConcepts;
   }
 }

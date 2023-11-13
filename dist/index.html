@@ -8,17 +8,144 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     <title>EPFL Graph Search Widgets</title>
-  <script type="module" crossorigin src="/assets/index-d4edb603.js"></script>
-  <link rel="stylesheet" href="/assets/index-80157b13.css">
+    <script>
+        function handleLocaleChange(event) {
+            const elements = document.querySelectorAll('[locale]');
+
+            for (let i = 0; i < elements.length; i++) {
+                elements[i].setAttribute('locale', event.target.value);
+            }
+        }
+    </script>
+  <script type="module" crossorigin src="/assets/index-3a2bc738.js"></script>
+  <link rel="stylesheet" href="/assets/index-36b750c3.css">
 </head>
 
 <body>
-    <div class="container mx-auto py-12">
+    <div class="container mx-auto py-12 flex flex-col gap-6">
+        <div class="flex justify-between items-center">
+            <div>
+                <h1 class="font-bold text-xl">Graph Search Widgets</h1>
+            </div>
+            <div>
+                <label>Locale</label>
+                <select onchange="handleLocaleChange(event)">
+                    <option value="en" selected>English</option>
+                    <option value="fr">French</option>
+                </select>
+            </div>
+        </div>
+        <hr>
         <div class="flex flex-col gap-12 max-w-xl">
-            <graph-widget-person-concepts person-id="157873"></graph-widget-person-concepts>
-            <graph-widget-publication-concepts publication-id="292263"></graph-widget-publication-concepts>
+            <graph-widget-concept-concepts concept-id="18973446" locale="en"></graph-widget-concept-concepts>
+            <graph-widget-concept-courses concept-id="18973446" locale="en"></graph-widget-concept-courses>
+            <graph-widget-concept-lectures concept-id="18973446" locale="en"></graph-widget-concept-lectures>
+            <graph-widget-concept-persons concept-id="18973446" locale="en" offset="56"></graph-widget-concept-persons>
+            <graph-widget-concept-publications concept-id="18973446" locale="en"
+                offset="56"></graph-widget-concept-publications>
+            <graph-widget-concept-units concept-id="18973446" locale="en" offset="56"></graph-widget-concept-units>
+
+            <graph-widget-course-concepts course-id="PHYS-420" locale="en"></graph-widget-course-concepts>
+            <graph-widget-course-core-lectures course-id="PHYS-420" locale="en"></graph-widget-course-core-lectures>
+            <graph-widget-course-core-persons course-id="PHYS-420" locale="en"></graph-widget-course-core-persons>
+            <graph-widget-course-courses course-id="PHYS-420" locale="en"></graph-widget-course-courses>
+            <graph-widget-course-lectures course-id="PHYS-420" locale="en"></graph-widget-course-lectures>
+            <graph-widget-course-persons course-id="PHYS-420" locale="en"></graph-widget-course-persons>
+            <graph-widget-course-publications course-id="PHYS-420" locale="en"></graph-widget-course-publications>
+            <graph-widget-course-units course-id="PHYS-420" locale="en"></graph-widget-course-units>
+
+            <graph-widget-lecture-concepts lecture-id="009c32783TFQzZG6Wt" locale="en"></graph-widget-lecture-concepts>
+            <graph-widget-lecture-core-courses lecture-id="009c32783TFQzZG6Wt"
+                locale="en"></graph-widget-lecture-core-courses>
+            <graph-widget-lecture-core-persons lecture-id="009c32783TFQzZG6Wt"
+                locale="en"></graph-widget-lecture-core-persons>
+            <graph-widget-lecture-courses lecture-id="009c32783TFQzZG6Wt" locale="en"></graph-widget-lecture-courses>
+            <graph-widget-lecture-lectures lecture-id="009c32783TFQzZG6Wt" locale="en"></graph-widget-lecture-lectures>
+            <graph-widget-lecture-persons lecture-id="009c32783TFQzZG6Wt" locale="en"></graph-widget-lecture-persons>
+            <graph-widget-lecture-publications lecture-id="009c32783TFQzZG6Wt"
+                locale="en"></graph-widget-lecture-publications>
+            <graph-widget-lecture-units lecture-id="009c32783TFQzZG6Wt" locale="en"></graph-widget-lecture-units>
+
+            <graph-widget-person-concepts person-id="157873" locale="en"></graph-widget-person-concepts>
+            <graph-widget-person-core-courses person-id="157873" locale="en"></graph-widget-person-core-courses>
+            <graph-widget-person-core-lectures person-id="157873" locale="en"></graph-widget-person-core-lectures>
+            <graph-widget-person-core-publications person-id="157873"
+                locale="en"></graph-widget-person-core-publications>
+            <graph-widget-person-core-units person-id="157873" locale="en"></graph-widget-person-core-units>
+            <graph-widget-person-courses person-id="157873" locale="en"></graph-widget-person-courses>
+            <graph-widget-person-lectures person-id="157873" locale="en"></graph-widget-person-lectures>
+            <graph-widget-person-persons person-id="157873" locale="en"></graph-widget-person-persons>
+            <graph-widget-person-publications person-id="157873" locale="en"></graph-widget-person-publications>
+            <graph-widget-person-units person-id="157873" locale="en"></graph-widget-person-units>
+
+            <graph-widget-publication-concepts publication-id="290078" locale="en"></graph-widget-publication-concepts>
+            <graph-widget-publication-core-persons publication-id="290078"
+                locale="en"></graph-widget-publication-core-persons>
+            <graph-widget-publication-courses publication-id="290078" locale="en"></graph-widget-publication-courses>
+            <graph-widget-publication-lectures publication-id="290078" locale="en"></graph-widget-publication-lectures>
+            <graph-widget-publication-persons publication-id="290078" locale="en"></graph-widget-publication-persons>
+            <graph-widget-publication-publications publication-id="290078"
+                locale="en"></graph-widget-publication-publications>
+            <graph-widget-publication-units publication-id="290078" locale="en"></graph-widget-publication-units>
+
+            <graph-widget-unit-concepts unit-id="LCAV" locale="en"></graph-widget-unit-concepts>
+            <graph-widget-unit-core-persons unit-id="LCAV" locale="en"></graph-widget-unit-core-persons>
+            <graph-widget-unit-courses unit-id="LCAV" locale="en"></graph-widget-unit-courses>
+            <graph-widget-unit-lectures unit-id="LCAV" locale="en"></graph-widget-unit-lectures>
+            <graph-widget-unit-persons unit-id="LCAV" locale="en"></graph-widget-unit-persons>
+            <graph-widget-unit-publications unit-id="LCAV" locale="en"></graph-widget-unit-publications>
+            <graph-widget-unit-units unit-id="LCAV" locale="en"></graph-widget-unit-units>
         </div>
     </div>
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
     
     
 </body>

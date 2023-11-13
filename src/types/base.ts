@@ -74,3 +74,7 @@ export type PagablePropsWithId = DocumentProps & {
   limit: string;
   offset: string;
 };
+
+export type QueryConfig = {
+  signal: AbortSignal;
+};
