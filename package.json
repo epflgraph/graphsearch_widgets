@@ -5,7 +5,8 @@
     "start": "vite dev",
     "dev": "vite dev",
     "build:watch": "vite build --watch",
-    "build": "vite build"
+    "build": "vite build",
+    "analyze": "npx vite-bundle-visualizer"
   },
   "devDependencies": {
     "@lit/localize": "^0.12.1",
