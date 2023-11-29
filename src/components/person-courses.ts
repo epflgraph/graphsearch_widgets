@@ -73,12 +73,10 @@ export class PersonCourses extends Root {
                   ></graph-widget-course>`
               )
             : html`<graph-widget-no-results></graph-widget-no-results>`}
-
-          <div slot="footer">
-            <graph-widget-section-link
-              href=${person._url}
-            ></graph-widget-section-link>
-          </div>
+          <graph-widget-section-link
+            slot="footer"
+            href=${person._url}
+          ></graph-widget-section-link>
         </graph-widget-section>`,
     });
   }

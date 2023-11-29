@@ -12,16 +12,25 @@ export class Loading extends Root {
   limit = "1";
 
   render() {
-    return html`<div class="flex flex-col gap-6">
-      ${Array.from({ length: Number(this.limit) }).map(
-        () =>
-          html`<div class="flex flex-col gap-2">
-            <div class="skeleton h-4 w-2/5"></div>
-            <div class="skeleton h-2 w-full"></div>
-            <div class="skeleton h-2 w-full"></div>
-          </div>`
-      )}
-    </div>`;
+    return html` <graph-widget-section>
+      <div slot="header" class="flex flex-col gap-2">
+        <div class="skeleton h-5 w-3/6"></div>
+        <div class="skeleton h-2 w-2/6"></div>
+      </div>
+      <div class="flex flex-col gap-6">
+        ${Array.from({ length: Number(this.limit) }).map(
+          () =>
+            html`
+              <div class="flex flex-col gap-2">
+                <div class="skeleton h-4 w-5/6"></div>
+                <div class="skeleton h-3 w-full"></div>
+                <div class="skeleton h-3 w-full"></div>
+              </div>
+            `
+        )}
+      </div>
+      <graph-widget-section-link slot="footer"></graph-widget-section-link>
+    </graph-widget-section>`;
   }
 }
 

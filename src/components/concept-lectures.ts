@@ -75,12 +75,10 @@ export class ConceptLectures extends Root {
                   ></graph-widget-lecture>`
               )
             : html`<graph-widget-no-results></graph-widget-no-results>`}
-
-          <div slot="footer">
-            <graph-widget-section-link
-              href=${concept._url}
-            ></graph-widget-section-link>
-          </div>
+          <graph-widget-section-link
+            slot="footer"
+            href=${concept._url}
+          ></graph-widget-section-link>
         </graph-widget-section>`,
     });
   }

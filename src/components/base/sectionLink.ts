@@ -1,5 +1,6 @@
 import { html } from "lit";
 import { customElement, property } from "lit/decorators.js";
+import { classMap } from "lit/directives/class-map.js";
 
 import { localized, msg } from "@lit/localize";
 
@@ -12,10 +13,16 @@ export class SectionLink extends Root {
   href = "";
 
   render() {
-    return html`<a
-      href=${this.href}
-      class="btn btn-outline btn-xs btn-primary hover:text-white"
-    >
+    const classes = {
+      btn: true,
+      "btn-xs": true,
+      "hover:text-white": true,
+      "btn-outline": this.href,
+      "btn-primary": this.href,
+      "btn-disabled": !this.href,
+    };
+
+    return html`<a href=${this.href} class=${classMap(classes)}>
       ${msg("View on Graph Search")}
     </a>`;
   }
