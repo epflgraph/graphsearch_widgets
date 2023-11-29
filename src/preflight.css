@@ -33,7 +33,6 @@
 
 :host,
 [data-theme] {
-  background-color: var(--fallback-b1, oklch(var(--b1) / 1));
   color: var(--fallback-bc, oklch(var(--bc) / 1));
 }
 
