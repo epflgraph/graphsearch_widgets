@@ -39,12 +39,17 @@
         <div class="flex flex-col gap-12 max-w-xl">
             <div class="bg-gray-300 p-12 flex flex-col gap-4">
                 <p>Wrap the components inside a <strong>graph-widget-container</strong> element to give it a white
-                    background and some padding when using it on a non-white background.
-                </p>
+                    background and some padding when using it on a non-white background.</p>
                 <graph-widget-container>
-                    <graph-widget-concept-concepts concept-id="18973446" locale="en"></graph-widget-concept-concepts>
+                    <graph-widget-concept-concepts concept-id="18973446" locale="en" limit="4"
+                        offset="2"></graph-widget-concept-concepts>
                 </graph-widget-container>
             </div>
+            <div class=" flex flex-col gap-4">
+                <p>A skeleton will be displayed when the component is loading.</p>
+                <graph-widget-loading limit="3"></graph-widget-loading>
+            </div>
+
             <graph-widget-concept-courses concept-id="18973446" locale="en"></graph-widget-concept-courses>
             <graph-widget-concept-lectures concept-id="18973446" locale="en"></graph-widget-concept-lectures>
             <graph-widget-concept-persons concept-id="18973446" locale="en" offset="56"></graph-widget-concept-persons>

@@ -20,6 +20,7 @@ export const theme = {
 };
 
 export const daisyui = {
+  themeRoot: ":host",
   themes: [
     {
       epfl: {

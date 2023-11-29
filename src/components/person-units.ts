@@ -50,7 +50,8 @@ export class PersonUnits extends Root {
 
   render() {
     return this._getPersonUnits.render({
-      pending: () => html`<graph-widget-loading></graph-widget-loading>`,
+      pending: () =>
+        html`<graph-widget-loading limit=${this.limit}></graph-widget-loading>`,
       error: (error) => html`<graph-widget-error>${error}</graph-widget-error>`,
       complete: ([person, units]) =>
         html`<graph-widget-section>

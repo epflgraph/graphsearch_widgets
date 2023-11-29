@@ -52,7 +52,8 @@ export class ConceptPersons extends Root {
 
   render() {
     return this._getConceptPersons.render({
-      pending: () => html`<graph-widget-loading></graph-widget-loading>`,
+      pending: () =>
+        html`<graph-widget-loading limit=${this.limit}></graph-widget-loading>`,
       error: (error) => html`<graph-widget-error>${error}</graph-widget-error>`,
       complete: ([concept, persons]) =>
         html`<graph-widget-section>

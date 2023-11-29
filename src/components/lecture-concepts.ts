@@ -50,7 +50,8 @@ export class LectureConcepts extends Root {
 
   render() {
     return this._getLectureConcepts.render({
-      pending: () => html`<graph-widget-loading></graph-widget-loading>`,
+      pending: () =>
+        html`<graph-widget-loading limit=${this.limit}></graph-widget-loading>`,
       error: (error) => html`<graph-widget-error>${error}</graph-widget-error>`,
       complete: ([lecture, concepts]) =>
         html`<graph-widget-section>

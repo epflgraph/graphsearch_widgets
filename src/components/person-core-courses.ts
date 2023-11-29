@@ -50,7 +50,8 @@ export class PersonCoreCourses extends Root {
 
   render() {
     return this._getPersonCourses.render({
-      pending: () => html`<graph-widget-loading></graph-widget-loading>`,
+      pending: () =>
+        html`<graph-widget-loading limit=${this.limit}></graph-widget-loading>`,
       error: (error) => html`<graph-widget-error>${error}</graph-widget-error>`,
       complete: ([person, courses]) =>
         html`<graph-widget-section>

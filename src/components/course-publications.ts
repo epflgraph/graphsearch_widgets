@@ -52,7 +52,8 @@ export class CoursePublications extends Root {
 
   render() {
     return this._getCoursePublications.render({
-      pending: () => html`<graph-widget-loading></graph-widget-loading>`,
+      pending: () =>
+        html`<graph-widget-loading limit=${this.limit}></graph-widget-loading>`,
       error: (error) => html`<graph-widget-error>${error}</graph-widget-error>`,
       complete: ([course, publications]) =>
         html`<graph-widget-section>

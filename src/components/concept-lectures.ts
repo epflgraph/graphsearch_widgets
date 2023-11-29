@@ -52,7 +52,8 @@ export class ConceptLectures extends Root {
 
   render() {
     return this._getConceptLectures.render({
-      pending: () => html`<graph-widget-loading></graph-widget-loading>`,
+      pending: () =>
+        html`<graph-widget-loading limit=${this.limit}></graph-widget-loading>`,
       error: (error) => html`<graph-widget-error>${error}</graph-widget-error>`,
       complete: ([concept, lectures]) =>
         html`<graph-widget-section>

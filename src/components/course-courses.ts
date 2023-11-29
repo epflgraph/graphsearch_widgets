@@ -52,7 +52,8 @@ export class CourseCourses extends Root {
 
   render() {
     return this._getCourseCourses.render({
-      pending: () => html`<graph-widget-loading></graph-widget-loading>`,
+      pending: () =>
+        html`<graph-widget-loading limit=${this.limit}></graph-widget-loading>`,
       error: (error) => html`<graph-widget-error>${error}</graph-widget-error>`,
       complete: ([course, courses]) =>
         html`<graph-widget-section>
