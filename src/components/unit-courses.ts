@@ -54,7 +54,8 @@ export class UnitCourses extends Root {
     return this._getUnitCourses.render({
       pending: () =>
         html`<graph-widget-loading limit=${this.limit}></graph-widget-loading>`,
-      error: (error) => html`<graph-widget-error>${error}</graph-widget-error>`,
+      error: (error: Error) =>
+        html`<graph-widget-error>${error.message}</graph-widget-error>`,
       complete: ([unit, courses]) =>
         html`<graph-widget-section>
           ${html`<graph-widget-section-title

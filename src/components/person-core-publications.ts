@@ -52,7 +52,8 @@ export class PersonCorePublications extends Root {
     return this._getPersonPublications.render({
       pending: () =>
         html`<graph-widget-loading limit=${this.limit}></graph-widget-loading>`,
-      error: (error) => html`<graph-widget-error>${error}</graph-widget-error>`,
+      error: (error: Error) =>
+        html`<graph-widget-error>${error.message}</graph-widget-error>`,
       complete: ([person, publications]) =>
         html`<graph-widget-section>
           ${msg(

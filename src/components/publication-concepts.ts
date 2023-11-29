@@ -55,7 +55,8 @@ export class PublicationConcepts extends Root {
     return this._getPublicationConcepts.render({
       pending: () =>
         html`<graph-widget-loading limit=${this.limit}></graph-widget-loading>`,
-      error: (error) => html`<graph-widget-error>${error}</graph-widget-error>`,
+      error: (error: Error) =>
+        html`<graph-widget-error>${error.message}</graph-widget-error>`,
       complete: ([publication, concepts]) =>
         html`<graph-widget-section>
           ${html`<graph-widget-section-title

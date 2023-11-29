@@ -54,7 +54,8 @@ export class ConceptUnits extends Root {
     return this._getConceptUnits.render({
       pending: () =>
         html`<graph-widget-loading limit=${this.limit}></graph-widget-loading>`,
-      error: (error) => html`<graph-widget-error>${error}</graph-widget-error>`,
+      error: (error: Error) =>
+        html`<graph-widget-error>${error.message}</graph-widget-error>`,
       complete: ([concept, units]) =>
         html`<graph-widget-section>
           ${msg(

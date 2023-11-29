@@ -54,7 +54,8 @@ export class ConceptCourses extends Root {
     return this._getConceptCourses.render({
       pending: () =>
         html`<graph-widget-loading limit=${this.limit}></graph-widget-loading>`,
-      error: (error) => html`<graph-widget-error>${error}</graph-widget-error>`,
+      error: (error: Error) =>
+        html`<graph-widget-error>${error.message}</graph-widget-error>`,
       complete: ([concept, courses]) =>
         html`<graph-widget-section>
           ${msg(
