@@ -12,7 +12,10 @@ export class SectionLink extends Root {
   href = "";
 
   render() {
-    return html`<a href=${this.href} class="btn btn-outline btn-xs btn-primary">
+    return html`<a
+      href=${this.href}
+      class="btn btn-outline btn-xs btn-primary hover:text-white"
+    >
       ${msg("View on Graph Search")}
     </a>`;
   }

@@ -11,16 +11,16 @@
     "@lit/localize": "^0.12.1",
     "@lit/localize-tools": "^0.7.1",
     "@lit/task": "^1.0.0",
-    "@types/lodash": "^4.14.201",
+    "@types/lodash": "^4.14.202",
     "autoprefixer": "^10.4.16",
-    "axios": "^1.6.1",
-    "daisyui": "^3.9.4",
-    "lit": "^3.0.2",
+    "axios": "^1.6.2",
+    "daisyui": "^4.4.14",
+    "lit": "^3.1.0",
     "lodash": "^4.17.21",
     "postcss": "^8.4.31",
     "tailwindcss": "^3.3.5",
-    "typescript": "^5.2.2",
-    "vite": "^4.5.0",
+    "typescript": "^5.3.2",
+    "vite": "^5.0.3",
     "vite-tsconfig-paths": "^4.2.1"
   }
 }

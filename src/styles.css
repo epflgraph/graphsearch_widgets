@@ -1,57 +1,6 @@
-:host {
-  --p: 0 100% 50%;
-  --pf: 0 100% 43%;
-  --sf: 177 100% 26%;
-  --af: 0 100% 43%;
-  --nf: 0 0% 6%;
-  --in: 198 93% 60%;
-  --su: 158 64% 52%;
-  --wa: 43 96% 56%;
-  --pc: 17 100% 90%;
-  --sc: 173 38% 89%;
-  --ac: 17 100% 90%;
-  --inc: 198 100% 12%;
-  --suc: 158 100% 10%;
-  --wac: 43 100% 11%;
-  --erc: 17 100% 90%;
-  --rounded-badge: 1.9rem;
-  --animation-btn: 0.25s;
-  --animation-input: 0.2s;
-  --btn-focus-scale: 0.95;
-  --border-btn: 1px;
-  --tab-border: 1px;
-  --tab-radius: 0.5rem;
-  --s: 177 100% 33%;
-  --a: 0 100% 50%;
-  --n: 0 0% 13%;
-  --nc: 0 0% 100%;
-  --er: 0 100% 50%;
-  --b1: 0 0% 100%;
-  --b2: 0 0% 90%;
-  --b3: 0 0% 84%;
-  --bc: 0 0% 13%;
-  --rounded-box: 0.25rem;
-  --rounded-btn: 0.125rem;
-  --btn-text-case: none;
-}
-
-:host,
-[data-theme] {
-  background-color: hsl(var(--b1) / var(--tw-bg-opacity, 1));
-  color: hsl(var(--bc) / var(--tw-text-opacity, 1));
-}
-
-:host {
-  -webkit-tap-highlight-color: transparent;
-}
-
-:host {
-  line-height: 1.5; /* 1 */
-  -webkit-text-size-adjust: 100%; /* 2 */ /* 3 */
-  tab-size: 4; /* 3 */
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; /* 4 */
-  font-feature-settings: normal; /* 5 */
-  font-variation-settings: normal; /* 6 */
+.btn-primary,
+.btn-primary.btn-outline:hover,
+.btn-secondary,
+.btn-secondary.btn-outline:hover {
+  color: var(--fallback-nc, oklch(var(--nc) / 1));
 }
