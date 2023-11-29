@@ -9,13 +9,13 @@
 <graph-widget-concept-concepts
   concept-id="18973446"
 ></graph-widget-concept-concepts>
-<script src="https://cdn.jsdelivr.net/gh/epflgraph/graphsearch_widgets/dist/assets/index.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/epflgraph/graphsearch_widgets/dist/index.js"></script>
 ```
 
 In production, it is recommended to use a specific version of the library instead of the latest version. You can lock onto a specific version of the library by using the following URL and replacing `<version>` with the version you want to use:
 
 ```
-https://cdn.jsdelivr.net/gh/epflgraph/graphsearch_widgets@<version>/dist/assets/index.js
+https://cdn.jsdelivr.net/gh/epflgraph/graphsearch_widgets@<version>/dist/index.js
 ```
 
 For the available versions, please refer to [this overview](https://github.com/epflgraph/graphsearch_widgets/tags).
