@@ -18,7 +18,7 @@ export class Person extends Root {
         ${this.person.name_display}
       </a>
 
-      <p class="line-clamp-2 text-sm text-gray-600">
+      <p class="line-clamp-2 text-sm">
         ${get(this.person, ["biography", this.locale])}
       </p>
     </div>`;

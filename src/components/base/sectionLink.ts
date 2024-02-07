@@ -15,6 +15,7 @@ export class SectionLink extends Root {
   render() {
     const classes = {
       btn: true,
+      "bg-white": true,
       "btn-xs": true,
       "hover:text-white": true,
       "btn-outline": this.href,

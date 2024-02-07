@@ -9,7 +9,7 @@ import { Root } from "@/components/base/root";
 @customElement("graph-widget-no-results")
 export class NoResults extends Root {
   render() {
-    return html`<div class="text-gray-300">${msg`No results`}</div>`;
+    return html`<div class="text-xs font-medium">${msg("No results")}</div>`;
   }
 }
 

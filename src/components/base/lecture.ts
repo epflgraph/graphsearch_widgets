@@ -16,9 +16,7 @@ export class Lecture extends Root {
         ${this.lecture.video.title}
       </a>
 
-      <p class="line-clamp-2 text-sm text-gray-600">
-        ${this.lecture.video.subtitle}
-      </p>
+      <p class="line-clamp-2 text-sm">${this.lecture.video.subtitle}</p>
     </div> `;
   }
 }

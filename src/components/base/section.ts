@@ -9,7 +9,7 @@ export class Section extends Root {
     return html`
       <section class="flex flex-col gap-6">
         <slot name="header"></slot>
-        <slot class="flex flex-col gap-2"></slot>
+        <slot class="flex flex-col gap-3"></slot>
         <slot name="footer"></slot>
       </section>
     `;

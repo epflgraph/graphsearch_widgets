@@ -24,7 +24,7 @@ export class Unit extends Root {
             (unit, i, units) => html`<li key=${unit._id}>
               ${units.length > i + 1
                 ? html`<a href=${unit._url}>${unit.initials}</a>`
-                : html`<span class="text-gray-600">${unit.initials}</span>`}
+                : html`<span>${unit.initials}</span>`}
             </li>`
           )}
         </ul>

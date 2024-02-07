@@ -18,7 +18,7 @@ export class Concept extends Root {
         ${get(this.concept, ["name", this.locale, "value"])}
       </a>
 
-      <p class="line-clamp-2 text-sm text-gray-600">
+      <p class="line-clamp-2 text-sm">
         ${get(this.concept, ["_description_large", this.locale, "value"])}
       </p>
     </div> `;

@@ -15,13 +15,17 @@ export class Publication extends Root {
       <a href=${this.publication._url} class="link font-medium self-start">
         ${this.publication.title}
       </a>
-      ${this.publication.abstract &&
-      html`<p class="line-clamp-2 text-sm text-gray-600">
-        ${this.publication.abstract}
-      </p>`}
-      ${this.publication.publisher &&
-      html` <i class="line-clamp-1">${this.publication.publisher}</i> `}
-      ${this.publication.year}
+      <div>
+        ${this.publication.abstract &&
+        html`<p class="line-clamp-2 text-sm">${this.publication.abstract}</p>`}
+        ${this.publication.publisher &&
+        html`
+          <i class="line-clamp-1 text-sm text-medium"
+            >${this.publication.publisher}</i
+          >
+        `}
+        <span class="text-sm text-medium">${this.publication.year}</span>
+      </div>
     </div> `;
   }
 }

@@ -6,7 +6,7 @@ import { Root } from "@/components/base/root";
 @customElement("graph-widget-error")
 export class Error extends Root {
   render() {
-    return html`<div class="text-error text-sm font-medium">
+    return html`<div class="text-error text-xs font-medium">
       <slot></slot>
     </div>`;
   }

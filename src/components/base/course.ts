@@ -23,7 +23,7 @@ export class Course extends Root {
       <a href=${this.course._url} class="link font-medium self-start"
         >${title}</a
       >
-      <p class="line-clamp-2 text-sm text-gray-600">
+      <p class="line-clamp-2 text-sm">
         ${get(this.course, ["summary", this.locale, "value"])}
       </p>
     </div> `;

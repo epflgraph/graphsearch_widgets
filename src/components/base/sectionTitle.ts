@@ -11,7 +11,9 @@ export class SectionTitle extends Root {
     return html` <h1 class="text-xl font-medium">
         <slot class="line-clamp-2"></slot>
       </h1>
-      <span class="text-xs text-gray-600"> ${this.description} </span>`;
+      <span class="text-xs opacity-50 font-medium">
+        ${this.description}
+      </span>`;
   }
 }
 
