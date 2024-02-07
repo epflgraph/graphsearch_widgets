@@ -1,5 +1,5 @@
 import { html } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { customElement } from "lit/decorators.js";
 
 import { localized, msg } from "@lit/localize";
 import { Task } from "@lit/task";
@@ -8,12 +8,12 @@ import get from "lodash/get";
 
 import { getCourse, getCourseLectures } from "@/services/courses";
 
-import { lecture, course } from "@/fields";
+import { course, lecture } from "@/fields";
 
 import { Lecture } from "@/types/lecture";
 
-import "@/components/base/lecture";
 import "@/components/base/error";
+import "@/components/base/lecture";
 import "@/components/base/loading";
 import "@/components/base/no-results";
 import { Root } from "@/components/base/root";
@@ -49,14 +49,12 @@ export class CourseLectures extends Root {
         html`<graph-widget-error>${error.message}</graph-widget-error>`,
       complete: ([course, lectures]) =>
         html`<graph-widget-section>
-          ${msg(
-            html`<graph-widget-section-title
-              slot="header"
-              description=${msg("Lectures related to this course")}
-            >
-              ${get(course, ["name", this.locale, "value"])}
-            </graph-widget-section-title> `
-          )}
+          <graph-widget-section-title
+            slot="header"
+            description=${msg("Lectures related to this course")}
+          >
+            ${get(course, ["name", this.locale, "value"])}
+          </graph-widget-section-title>
           ${lectures.items.length
             ? lectures.items.map(
                 (item: Lecture) =>

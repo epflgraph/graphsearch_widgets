@@ -1,5 +1,5 @@
 import { html } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { customElement } from "lit/decorators.js";
 
 import { localized, msg } from "@lit/localize";
 import { Task } from "@lit/task";
@@ -47,14 +47,12 @@ export class LecturePersons extends Root {
         html`<graph-widget-error>${error.message}</graph-widget-error>`,
       complete: ([lecture, persons]) =>
         html`<graph-widget-section>
-          ${msg(
-            html`<graph-widget-section-title
-              slot="header"
-              description=${msg("People related to this lecture")}
-            >
-              ${lecture.video.title}
-            </graph-widget-section-title> `
-          )}
+          <graph-widget-section-title
+            slot="header"
+            description=${msg("People related to this lecture")}
+          >
+            ${lecture.video.title}
+          </graph-widget-section-title>
           ${persons.items.length
             ? persons.items.map(
                 (item: Person) =>

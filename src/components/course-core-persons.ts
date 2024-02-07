@@ -1,5 +1,5 @@
 import { html } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { customElement } from "lit/decorators.js";
 
 import { localized, msg } from "@lit/localize";
 import { Task } from "@lit/task";
@@ -11,9 +11,9 @@ import { getCourse, getCourseCorePersons } from "@/services/courses";
 import { course, person } from "@/fields";
 
 import "@/components/base/error";
-import "@/components/base/person";
 import "@/components/base/loading";
 import "@/components/base/no-results";
+import "@/components/base/person";
 import { Root } from "@/components/base/root";
 import "@/components/base/section";
 import "@/components/base/sectionLink";
@@ -49,14 +49,12 @@ export class CourseCorePersons extends Root {
         html`<graph-widget-error>${error.message}</graph-widget-error>`,
       complete: ([course, persons]) =>
         html`<graph-widget-section>
-          ${msg(
-            html`<graph-widget-section-title
-              slot="header"
-              description=${msg("People teaching this course")}
-            >
-              ${get(course, ["name", this.locale, "value"])}
-            </graph-widget-section-title> `
-          )}
+          <graph-widget-section-title
+            slot="header"
+            description=${msg("People teaching this course")}
+          >
+            ${get(course, ["name", this.locale, "value"])}
+          </graph-widget-section-title>
           ${persons.items.length
             ? persons.items.map(
                 (item: Person) =>

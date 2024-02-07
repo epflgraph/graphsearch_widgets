@@ -1,5 +1,5 @@
 import { html } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { customElement } from "lit/decorators.js";
 
 import { localized, msg } from "@lit/localize";
 import { Task } from "@lit/task";
@@ -13,10 +13,10 @@ import { publication } from "@/fields";
 
 import { Publication } from "@/types/publication";
 
-import "@/components/base/publication";
 import "@/components/base/error";
 import "@/components/base/loading";
 import "@/components/base/no-results";
+import "@/components/base/publication";
 import { Root } from "@/components/base/root";
 import "@/components/base/section";
 import "@/components/base/sectionLink";
@@ -50,12 +50,12 @@ export class PublicationPublications extends Root {
         html`<graph-widget-error>${error.message}</graph-widget-error>`,
       complete: ([publication, publications]) =>
         html`<graph-widget-section>
-          ${html`<graph-widget-section-title
+          <graph-widget-section-title
             slot="header"
             description=${msg("Publications related to this publication")}
           >
             ${publication.title}
-          </graph-widget-section-title> `}
+          </graph-widget-section-title>
           ${publications.items.length
             ? publications.items.map(
                 (item: Publication) =>

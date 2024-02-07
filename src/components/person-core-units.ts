@@ -1,14 +1,13 @@
 import { html } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { customElement } from "lit/decorators.js";
 
 import { localized, msg } from "@lit/localize";
 import { Task } from "@lit/task";
 
 import { getPerson, getPersonCoreUnits } from "@/services/persons";
 
-import { unit, person } from "@/fields";
+import { person, unit } from "@/fields";
 
-import "@/components/base/unit";
 import "@/components/base/error";
 import "@/components/base/loading";
 import "@/components/base/no-results";
@@ -16,6 +15,7 @@ import { Root } from "@/components/base/root";
 import "@/components/base/section";
 import "@/components/base/sectionLink";
 import "@/components/base/sectionTitle";
+import "@/components/base/unit";
 
 import { Unit } from "@/types/unit";
 
@@ -47,14 +47,12 @@ export class PersonCoreUnits extends Root {
         html`<graph-widget-error>${error.message}</graph-widget-error>`,
       complete: ([person, units]) =>
         html`<graph-widget-section>
-          ${msg(
-            html`<graph-widget-section-title
-              slot="header"
-              description=${msg("Units for this person")}
-            >
-              ${person.name_display}
-            </graph-widget-section-title> `
-          )}
+          <graph-widget-section-title
+            slot="header"
+            description=${msg("Units for this person")}
+          >
+            ${person.name_display}
+          </graph-widget-section-title>
           ${units.items.length
             ? units.items.map(
                 (item: Unit) =>

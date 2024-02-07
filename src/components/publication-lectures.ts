@@ -1,5 +1,5 @@
 import { html } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { customElement } from "lit/decorators.js";
 
 import { localized, msg } from "@lit/localize";
 import { Task } from "@lit/task";
@@ -50,12 +50,12 @@ export class PublicationLectures extends Root {
         html`<graph-widget-error>${error.message}</graph-widget-error>`,
       complete: ([publication, lectures]) =>
         html`<graph-widget-section>
-          ${html`<graph-widget-section-title
+          <graph-widget-section-title
             slot="header"
             description=${msg("Lectures related to this publication")}
           >
             ${publication.title}
-          </graph-widget-section-title> `}
+          </graph-widget-section-title>
           ${lectures.items.length
             ? lectures.items.map(
                 (item: Lecture) =>

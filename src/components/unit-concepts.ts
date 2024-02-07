@@ -1,5 +1,5 @@
 import { html } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { customElement } from "lit/decorators.js";
 
 import { localized, msg } from "@lit/localize";
 import { Task } from "@lit/task";
@@ -49,12 +49,12 @@ export class UnitConcepts extends Root {
         html`<graph-widget-error>${error.message}</graph-widget-error>`,
       complete: ([unit, concepts]) =>
         html`<graph-widget-section>
-          ${html`<graph-widget-section-title
+          <graph-widget-section-title
             slot="header"
             description=${msg("Concepts related to this unit")}
           >
             ${get(unit, ["name", this.locale, "value"])}
-          </graph-widget-section-title> `}
+          </graph-widget-section-title>
           ${concepts.items.length
             ? concepts.items.map(
                 (item: Concept) =>
