@@ -7,6 +7,7 @@ export type Course = MetaData & {
   others: Record;
   content: Record;
   keywords: Record;
+  moodle: string;
   required_courses_ind: Record;
   required_courses_obl: Record;
   concepts_to_master: Record;
