@@ -22,15 +22,6 @@ import { Unit } from "@/types/unit";
 @localized()
 @customElement("graph-widget-lecture-units")
 export class LectureUnits extends Root {
-  @property({ type: String })
-  "lecture-id" = "";
-
-  @property({ type: String })
-  limit = "3";
-
-  @property({ type: String })
-  offset = "0";
-
   private _getLectureUnits = new Task(this, {
     task: async ([id, locale, limit, offset], { signal }) =>
       Promise.all([
@@ -45,7 +36,7 @@ export class LectureUnits extends Root {
           { signal }
         ),
       ]),
-    args: () => [this["lecture-id"], this.locale, this.limit, this.offset],
+    args: () => [this.id, this.locale, this.limit, this.offset],
   });
 
   render() {

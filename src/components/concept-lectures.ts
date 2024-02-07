@@ -24,15 +24,6 @@ import { Lecture } from "@/types/lecture";
 @localized()
 @customElement("graph-widget-concept-lectures")
 export class ConceptLectures extends Root {
-  @property({ type: String })
-  "concept-id" = "";
-
-  @property({ type: String })
-  limit = "3";
-
-  @property({ type: String })
-  offset = "0";
-
   private _getConceptLectures = new Task(this, {
     task: async ([id, locale, limit, offset], { signal }) =>
       Promise.all([
@@ -47,7 +38,7 @@ export class ConceptLectures extends Root {
           { signal }
         ),
       ]),
-    args: () => [this["concept-id"], this.locale, this.limit, this.offset],
+    args: () => [this.id, this.locale, this.limit, this.offset],
   });
 
   render() {

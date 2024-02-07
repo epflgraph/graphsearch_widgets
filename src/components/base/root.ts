@@ -8,5 +8,14 @@ export class Root extends LitElement {
   @property({ type: String })
   "locale" = "en";
 
+  @property({ type: String })
+  id = "";
+
+  @property({ type: String })
+  limit = "3";
+
+  @property({ type: String })
+  offset = "0";
+
   static styles = [unsafeCSS(tailwind), unsafeCSS(styles)];
 }

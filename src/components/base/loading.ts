@@ -8,9 +8,6 @@ import { Root } from "@/components/base/root";
 @localized()
 @customElement("graph-widget-loading")
 export class Loading extends Root {
-  @property({ type: String })
-  limit = "1";
-
   render() {
     return html` <graph-widget-section>
       <div slot="header" class="flex flex-col gap-2">

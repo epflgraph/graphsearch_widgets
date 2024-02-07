@@ -22,15 +22,6 @@ import { Person } from "@/types/person";
 @localized()
 @customElement("graph-widget-lecture-core-persons")
 export class LectureCorePersons extends Root {
-  @property({ type: String })
-  "lecture-id" = "";
-
-  @property({ type: String })
-  limit = "3";
-
-  @property({ type: String })
-  offset = "0";
-
   private _getLecturePersons = new Task(this, {
     task: async ([id, locale, limit, offset], { signal }) =>
       Promise.all([
@@ -45,7 +36,7 @@ export class LectureCorePersons extends Root {
           { signal }
         ),
       ]),
-    args: () => [this["lecture-id"], this.locale, this.limit, this.offset],
+    args: () => [this.id, this.locale, this.limit, this.offset],
   });
 
   render() {

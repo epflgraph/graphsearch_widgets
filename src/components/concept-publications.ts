@@ -24,15 +24,6 @@ import { Publication } from "@/types/publication";
 @localized()
 @customElement("graph-widget-concept-publications")
 export class ConceptPublications extends Root {
-  @property({ type: String })
-  "concept-id" = "";
-
-  @property({ type: String })
-  limit = "3";
-
-  @property({ type: String })
-  offset = "0";
-
   private _getConceptPublications = new Task(this, {
     task: async ([id, locale, limit, offset], { signal }) =>
       Promise.all([
@@ -47,7 +38,7 @@ export class ConceptPublications extends Root {
           { signal }
         ),
       ]),
-    args: () => [this["concept-id"], this.locale, this.limit, this.offset],
+    args: () => [this.id, this.locale, this.limit, this.offset],
   });
 
   render() {

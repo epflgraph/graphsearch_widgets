@@ -22,15 +22,6 @@ import "@/components/base/sectionTitle";
 @localized()
 @customElement("graph-widget-publication-courses")
 export class PublicationCourses extends Root {
-  @property({ type: String })
-  "publication-id" = "";
-
-  @property({ type: String })
-  limit = "3";
-
-  @property({ type: String })
-  offset = "0";
-
   private _getPublicationCourses = new Task(this, {
     task: async ([id, locale, limit, offset], { signal }) =>
       Promise.all([
@@ -45,7 +36,7 @@ export class PublicationCourses extends Root {
           { signal }
         ),
       ]),
-    args: () => [this["publication-id"], this.locale, this.limit, this.offset],
+    args: () => [this.id, this.locale, this.limit, this.offset],
   });
 
   render() {

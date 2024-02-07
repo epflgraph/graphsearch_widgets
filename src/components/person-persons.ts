@@ -22,15 +22,6 @@ import { Person } from "@/types/person";
 @localized()
 @customElement("graph-widget-person-persons")
 export class PersonPersons extends Root {
-  @property({ type: String })
-  "person-id" = "";
-
-  @property({ type: String })
-  limit = "3";
-
-  @property({ type: String })
-  offset = "0";
-
   private _getPersonPersons = new Task(this, {
     task: async ([id, locale, limit, offset], { signal }) =>
       Promise.all([
@@ -45,7 +36,7 @@ export class PersonPersons extends Root {
           { signal }
         ),
       ]),
-    args: () => [this["person-id"], this.locale, this.limit, this.offset],
+    args: () => [this.id, this.locale, this.limit, this.offset],
   });
 
   render() {

@@ -24,15 +24,6 @@ import "@/components/base/sectionTitle";
 @localized()
 @customElement("graph-widget-unit-publications")
 export class UnitPublications extends Root {
-  @property({ type: String })
-  "unit-id" = "";
-
-  @property({ type: String })
-  limit = "3";
-
-  @property({ type: String })
-  offset = "0";
-
   private _getUnitPublications = new Task(this, {
     task: async ([id, locale, limit, offset], { signal }) =>
       Promise.all([
@@ -47,7 +38,7 @@ export class UnitPublications extends Root {
           { signal }
         ),
       ]),
-    args: () => [this["unit-id"], this.locale, this.limit, this.offset],
+    args: () => [this.id, this.locale, this.limit, this.offset],
   });
 
   render() {
