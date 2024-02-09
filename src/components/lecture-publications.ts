@@ -8,7 +8,6 @@ import { getLecture, getLecturePublications } from "@/services/lectures";
 
 import { lecture, publication } from "@/fields";
 
-import "@/components/base/error";
 import "@/components/base/loading";
 import "@/components/base/no-results";
 import "@/components/base/publication";
@@ -43,8 +42,6 @@ export class LecturePublications extends Root {
     return this._getLecturePublications.render({
       pending: () =>
         html`<graph-widget-loading limit=${this.limit}></graph-widget-loading>`,
-      error: (error: Error) =>
-        html`<graph-widget-error>${error.message}</graph-widget-error>`,
       complete: ([lecture, publications]) =>
         html`<graph-widget-section>
           <graph-widget-section-title

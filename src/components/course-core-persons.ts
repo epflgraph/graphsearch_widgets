@@ -10,7 +10,6 @@ import { getCourse, getCourseCorePersons } from "@/services/courses";
 
 import { course, person } from "@/fields";
 
-import "@/components/base/error";
 import "@/components/base/loading";
 import "@/components/base/no-results";
 import "@/components/base/person";
@@ -45,8 +44,6 @@ export class CourseCorePersons extends Root {
     return this._getCoursePersons.render({
       pending: () =>
         html`<graph-widget-loading limit=${this.limit}></graph-widget-loading>`,
-      error: (error: Error) =>
-        html`<graph-widget-error>${error.message}</graph-widget-error>`,
       complete: ([course, persons]) =>
         html`<graph-widget-section>
           <graph-widget-section-title

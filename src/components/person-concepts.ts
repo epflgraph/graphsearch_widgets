@@ -11,7 +11,6 @@ import { concept, person } from "@/fields";
 import { Concept } from "@/types/concept";
 
 import "@/components/base/concept";
-import "@/components/base/error";
 import "@/components/base/loading";
 import "@/components/base/no-results";
 import { Root } from "@/components/base/root";
@@ -43,8 +42,6 @@ export class PersonConcepts extends Root {
     return this._getPersonConcepts.render({
       pending: () =>
         html`<graph-widget-loading limit=${this.limit}></graph-widget-loading>`,
-      error: (error: Error) =>
-        html`<graph-widget-error>${error.message}</graph-widget-error>`,
       complete: ([person, concepts]) =>
         html`<graph-widget-section>
           <graph-widget-section-title

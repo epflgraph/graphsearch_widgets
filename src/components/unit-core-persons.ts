@@ -12,7 +12,6 @@ import { person, unit } from "@/fields";
 
 import { Person } from "@/types/person";
 
-import "@/components/base/error";
 import "@/components/base/loading";
 import "@/components/base/no-results";
 import "@/components/base/person";
@@ -45,8 +44,6 @@ export class UnitCorePersons extends Root {
     return this._getUnitPersons.render({
       pending: () =>
         html`<graph-widget-loading limit=${this.limit}></graph-widget-loading>`,
-      error: (error: Error) =>
-        html`<graph-widget-error>${error.message}</graph-widget-error>`,
       complete: ([unit, persons]) =>
         html`<graph-widget-section>
           <graph-widget-section-title

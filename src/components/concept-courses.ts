@@ -11,7 +11,6 @@ import { getConcept, getConceptCourses } from "@/services/concepts";
 import { concept, course } from "@/fields";
 
 import "@/components/base/course";
-import "@/components/base/error";
 import "@/components/base/loading";
 import "@/components/base/no-results";
 import { Root } from "@/components/base/root";
@@ -45,8 +44,6 @@ export class ConceptCourses extends Root {
     return this._getConceptCourses.render({
       pending: () =>
         html`<graph-widget-loading limit=${this.limit}></graph-widget-loading>`,
-      error: (error: Error) =>
-        html`<graph-widget-error>${error.message}</graph-widget-error>`,
       complete: ([concept, courses]) =>
         html`<graph-widget-section>
           <graph-widget-section-title

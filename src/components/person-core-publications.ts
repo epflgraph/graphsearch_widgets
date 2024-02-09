@@ -8,7 +8,6 @@ import { getPerson, getPersonCorePublications } from "@/services/persons";
 
 import { person, publication } from "@/fields";
 
-import "@/components/base/error";
 import "@/components/base/loading";
 import "@/components/base/no-results";
 import "@/components/base/publication";
@@ -43,8 +42,6 @@ export class PersonCorePublications extends Root {
     return this._getPersonPublications.render({
       pending: () =>
         html`<graph-widget-loading limit=${this.limit}></graph-widget-loading>`,
-      error: (error: Error) =>
-        html`<graph-widget-error>${error.message}</graph-widget-error>`,
       complete: ([person, publications]) =>
         html`<graph-widget-section>
           <graph-widget-section-title
