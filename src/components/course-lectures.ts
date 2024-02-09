@@ -12,7 +12,6 @@ import { course, lecture } from "@/fields";
 
 import { Lecture } from "@/types/lecture";
 
-import "@/components/base/error";
 import "@/components/base/lecture";
 import "@/components/base/loading";
 import "@/components/base/no-results";
@@ -45,8 +44,6 @@ export class CourseLectures extends Root {
     return this._getCourseLectures.render({
       pending: () =>
         html`<graph-widget-loading limit=${this.limit}></graph-widget-loading>`,
-      error: (error: Error) =>
-        html`<graph-widget-error>${error.message}</graph-widget-error>`,
       complete: ([course, lectures]) =>
         html`<graph-widget-section>
           <graph-widget-section-title

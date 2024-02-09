@@ -10,7 +10,6 @@ import { getConcept, getConceptPublications } from "@/services/concepts";
 
 import { concept, publication } from "@/fields";
 
-import "@/components/base/error";
 import "@/components/base/loading";
 import "@/components/base/no-results";
 import "@/components/base/publication";
@@ -45,8 +44,6 @@ export class ConceptPublications extends Root {
     return this._getConceptPublications.render({
       pending: () =>
         html`<graph-widget-loading limit=${this.limit}></graph-widget-loading>`,
-      error: (error: Error) =>
-        html`<graph-widget-error>${error.message}</graph-widget-error>`,
       complete: ([concept, publications]) =>
         html`<graph-widget-section>
           <graph-widget-section-title

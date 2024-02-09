@@ -13,7 +13,6 @@ import { publication } from "@/fields";
 
 import { Publication } from "@/types/publication";
 
-import "@/components/base/error";
 import "@/components/base/loading";
 import "@/components/base/no-results";
 import "@/components/base/publication";
@@ -46,8 +45,6 @@ export class PublicationPublications extends Root {
     return this._getPublicationPublications.render({
       pending: () =>
         html`<graph-widget-loading limit=${this.limit}></graph-widget-loading>`,
-      error: (error: Error) =>
-        html`<graph-widget-error>${error.message}</graph-widget-error>`,
       complete: ([publication, publications]) =>
         html`<graph-widget-section>
           <graph-widget-section-title
