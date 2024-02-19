@@ -42,62 +42,106 @@ The component is full width and transparent by default. Font style is inherted s
 
 ```html
 <!-- Related to a Concept -->
-<graph-widget-concepts id="18973446"></graph-widget-concepts>
-<graph-widget-courses id="18973446"></graph-widget-courses>
-<graph-widget-lectures id="18973446"></graph-widget-lectures>
-<graph-widget-persons id="18973446"></graph-widget-persons>
-<graph-widget-publications id="18973446"></graph-widget-publications>
-<graph-widget-units id="18973446"></graph-widget-units>
+<graph-widget-concept-concepts id="18973446"></graph-widget-concept-concepts>
+<graph-widget-concept-courses id="18973446"></graph-widget-concept-courses>
+<graph-widget-concept-lectures id="18973446"></graph-widget-concept-lectures>
+<graph-widget-concept-persons id="18973446"></graph-widget-concept-persons>
+<graph-widget-concept-publications
+  id="18973446"
+></graph-widget-concept-publications>
+<graph-widget-concept-units id="18973446"></graph-widget-concept-units>
 
 <!-- Related to a Course -->
-<graph-widget-concepts id="PHYS-420"></graph-widget-concepts>
-<graph-widget-core-lectures id="PHYS-420"></graph-widget-core-lectures>
-<graph-widget-core-persons id="PHYS-420"></graph-widget-core-persons>
-<graph-widget-courses id="PHYS-420"></graph-widget-courses>
-<graph-widget-lectures id="PHYS-420"></graph-widget-lectures>
-<graph-widget-persons id="PHYS-420"></graph-widget-persons>
-<graph-widget-publications id="PHYS-420"></graph-widget-publications>
-<graph-widget-units id="PHYS-420"></graph-widget-units>
+<graph-widget-course-concepts id="PHYS-420"></graph-widget-course-concepts>
+<graph-widget-course-core-lectures
+  id="PHYS-420"
+></graph-widget-course-core-lectures>
+<graph-widget-course-core-persons
+  id="PHYS-420"
+></graph-widget-course-core-persons>
+<graph-widget-course-courses id="PHYS-420"></graph-widget-course-courses>
+<graph-widget-course-lectures id="PHYS-420"></graph-widget-course-lectures>
+<graph-widget-course-persons id="PHYS-420"></graph-widget-course-persons>
+<graph-widget-course-publications
+  id="PHYS-420"
+></graph-widget-course-publications>
+<graph-widget-course-units id="PHYS-420"></graph-widget-course-units>
 
 <!-- Related to a Lecture -->
-<graph-widget-concepts id="009c32783TFQzZG6Wt"></graph-widget-concepts>
-<graph-widget-core-courses id="009c32783TFQzZG6Wt"></graph-widget-core-courses>
-<graph-widget-core-persons id="009c32783TFQzZG6Wt"></graph-widget-core-persons>
-<graph-widget-courses id="009c32783TFQzZG6Wt"></graph-widget-courses>
-<graph-widget-lectures id="009c32783TFQzZG6Wt"></graph-widget-lectures>
-<graph-widget-persons id="009c32783TFQzZG6Wt"></graph-widget-persons>
-<graph-widget-publications id="009c32783TFQzZG6Wt"></graph-widget-publications>
-<graph-widget-units id="009c32783TFQzZG6Wt"></graph-widget-units>
+<graph-widget-lecture-concepts
+  id="009c32783TFQzZG6Wt"
+></graph-widget-lecture-concepts>
+<graph-widget-lecture-core-courses
+  id="009c32783TFQzZG6Wt"
+></graph-widget-lecture-core-courses>
+<graph-widget-lecture-core-persons
+  id="009c32783TFQzZG6Wt"
+></graph-widget-lecture-core-persons>
+<graph-widget-lecture-courses
+  id="009c32783TFQzZG6Wt"
+></graph-widget-lecture-courses>
+<graph-widget-lecture-lectures
+  id="009c32783TFQzZG6Wt"
+></graph-widget-lecture-lectures>
+<graph-widget-lecture-persons
+  id="009c32783TFQzZG6Wt"
+></graph-widget-lecture-persons>
+<graph-widget-lecture-publications
+  id="009c32783TFQzZG6Wt"
+></graph-widget-lecture-publications>
+<graph-widget-lecture-units
+  id="009c32783TFQzZG6Wt"
+></graph-widget-lecture-units>
 
 <!-- Related to a Person -->
-<graph-widget-concepts id="157873"></graph-widget-concepts>
-<graph-widget-core-courses id="157873"></graph-widget-core-courses>
-<graph-widget-core-lectures id="157873"></graph-widget-core-lectures>
-<graph-widget-core-publications id="157873"></graph-widget-core-publications>
-<graph-widget-core-units id="157873"></graph-widget-core-units>
-<graph-widget-courses id="157873"></graph-widget-courses>
-<graph-widget-lectures id="157873"></graph-widget-lectures>
-<graph-widget-persons id="157873"></graph-widget-persons>
-<graph-widget-publications id="157873"></graph-widget-publications>
-<graph-widget-units id="157873"></graph-widget-units>
+<graph-widget-person-concepts id="157873"></graph-widget-person-concepts>
+<graph-widget-person-core-courses
+  id="157873"
+></graph-widget-person-core-courses>
+<graph-widget-person-core-lectures
+  id="157873"
+></graph-widget-person-core-lectures>
+<graph-widget-person-core-publications
+  id="157873"
+></graph-widget-person-core-publications>
+<graph-widget-person-core-units id="157873"></graph-widget-person-core-units>
+<graph-widget-person-courses id="157873"></graph-widget-person-courses>
+<graph-widget-person-lectures id="157873"></graph-widget-person-lectures>
+<graph-widget-person-persons id="157873"></graph-widget-person-persons>
+<graph-widget-person-publications
+  id="157873"
+></graph-widget-person-publications>
+<graph-widget-person-units id="157873"></graph-widget-person-units>
 
 <!-- Related to a Publication -->
-<graph-widget-concepts id="290078"></graph-widget-concepts>
-<graph-widget-core-persons id="290078"></graph-widget-core-persons>
-<graph-widget-courses id="290078"></graph-widget-courses>
-<graph-widget-lectures id="290078"></graph-widget-lectures>
-<graph-widget-persons id="290078"></graph-widget-persons>
-<graph-widget-publications id="290078"></graph-widget-publications>
-<graph-widget-units id="290078"></graph-widget-units>
+<graph-widget-publication-concepts
+  id="290078"
+></graph-widget-publication-concepts>
+<graph-widget-publication-core-persons
+  id="290078"
+></graph-widget-publication-core-persons>
+<graph-widget-publication-courses
+  id="290078"
+></graph-widget-publication-courses>
+<graph-widget-publication-lectures
+  id="290078"
+></graph-widget-publication-lectures>
+<graph-widget-publication-persons
+  id="290078"
+></graph-widget-publication-persons>
+<graph-widget-publication-publications
+  id="290078"
+></graph-widget-publication-publications>
+<graph-widget-publication-units id="290078"></graph-widget-publication-units>
 
 <!-- Related to a Unit -->
-<graph-widget-concepts id="LCAV"></graph-widget-concepts>
-<graph-widget-core-persons id="LCAV"></graph-widget-core-persons>
-<graph-widget-courses id="LCAV"></graph-widget-courses>
-<graph-widget-lectures id="LCAV"></graph-widget-lectures>
-<graph-widget-persons id="LCAV"></graph-widget-persons>
-<graph-widget-publications id="LCAV"></graph-widget-publications>
-<graph-widget-units id="LCAV"></graph-widget-units>
+<graph-widget-unit-concepts id="LCAV"></graph-widget-unit-concepts>
+<graph-widget-unit-core-persons id="LCAV"></graph-widget-unit-core-persons>
+<graph-widget-unit-courses id="LCAV"></graph-widget-unit-courses>
+<graph-widget-unit-lectures id="LCAV"></graph-widget-unit-lectures>
+<graph-widget-unit-persons id="LCAV"></graph-widget-unit-persons>
+<graph-widget-unit-publications id="LCAV"></graph-widget-unit-publications>
+<graph-widget-unit-units id="LCAV"></graph-widget-unit-units>
 ```
 
 For more information visit [https://graphsearch.epfl.ch/](https://graphsearch.epfl.ch/).
