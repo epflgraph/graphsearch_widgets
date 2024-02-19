@@ -12,11 +12,11 @@ export class Lecture extends Root {
 
   render() {
     return html`<div class="flex flex-col gap-1">
-      <a href=${this.lecture._url} class="link font-medium self-start">
+      <a href=${this.lecture._url} class="link font-bold self-start">
         ${this.lecture.video.title}
       </a>
 
-      <p class="line-clamp-2 text-sm">${this.lecture.video.subtitle}</p>
+      <p class="line-clamp-2">${this.lecture.video.subtitle}</p>
     </div> `;
   }
 }

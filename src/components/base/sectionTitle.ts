@@ -9,7 +9,7 @@ export class SectionTitle extends Root {
   "description" = "";
 
   render() {
-    return html`<h1 class="text-xl font-medium">
+    return html`<h1 class="text-xl font-bold">
         <slot class="line-clamp-2"></slot>
       </h1>
       <span class="text-xs opacity-50 font-medium">

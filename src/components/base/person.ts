@@ -14,11 +14,11 @@ export class Person extends Root {
 
   render() {
     return html`<div class="flex flex-col gap-1">
-      <a href=${this.person._url} class="link font-medium self-start">
+      <a href=${this.person._url} class="link font-bold self-start">
         ${this.person.name_display}
       </a>
 
-      <p class="line-clamp-2 text-sm">
+      <p class="line-clamp-2">
         ${get(this.person, ["biography", this.locale])}
       </p>
     </div>`;

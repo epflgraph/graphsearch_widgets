@@ -4,3 +4,14 @@
 .btn-secondary.btn-outline:hover {
   color: var(--fallback-nc, oklch(var(--nc) / 1));
 }
+
+.link {
+  text-decoration-color: oklch(var(--p));
+  text-decoration-thickness: min(0.08em, 0.1rem);
+  text-underline-offset: 0.14em;
+  transition: text-decoration-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  &:hover {
+    color: oklch(var(--p));
+    text-decoration-color: oklch(var(--bc));
+  }
+}

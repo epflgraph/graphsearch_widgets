@@ -20,10 +20,8 @@ export class Course extends Root {
       .filter(Boolean)
       .join(": ");
     return html`<div class="flex flex-col gap-1">
-      <a href=${this.course._url} class="link font-medium self-start"
-        >${title}</a
-      >
-      <p class="line-clamp-2 text-sm">
+      <a href=${this.course._url} class="link font-bold self-start">${title}</a>
+      <p class="line-clamp-2">
         ${get(this.course, ["summary", this.locale, "value"])}
       </p>
     </div> `;
