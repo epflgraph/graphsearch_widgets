@@ -1,7 +1,6 @@
 import { html } from "lit";
-import { customElement } from "lit/decorators.js";
+import { customElement, property } from "lit/decorators.js";
 
-import { localized, msg } from "@lit/localize";
 import { Task } from "@lit/task";
 
 import { getLecture, getLecturePublications } from "@/services/lectures";
@@ -14,13 +13,14 @@ import "@/components/base/publication";
 import { Root } from "@/components/base/root";
 import "@/components/base/section";
 import "@/components/base/sectionLink";
-import "@/components/base/sectionTitle";
 
 import { Publication } from "@/types/publication";
 
-@localized()
 @customElement("graph-widget-lecture-publications")
 export class LecturePublications extends Root {
+  @property({ type: String, attribute: "lecture-id" })
+  id = "";
+
   private _getLecturePublications = new Task(this, {
     task: async ([id, locale, limit, offset], { signal }) =>
       Promise.all([
@@ -44,22 +44,20 @@ export class LecturePublications extends Root {
         html`<graph-widget-loading limit=${this.limit}></graph-widget-loading>`,
       complete: ([lecture, publications]) =>
         html`<graph-widget-section>
-          <graph-widget-section-title
-            slot="header"
-            description=${msg("Publications related to this lecture")}
-          >
-            ${lecture.video.title}
-          </graph-widget-section-title>
           ${publications.items.length
             ? publications.items.map(
                 (item: Publication) =>
                   html`<graph-widget-publication
+                    exportparts="link, publication, publication__title, publication__abstract, publication__publisher, publication__year"
                     .publication=${item}
                     locale=${this.locale}
                   ></graph-widget-publication>`
               )
-            : html`<graph-widget-no-results></graph-widget-no-results>`}
+            : html`<graph-widget-no-results
+                exportparts="no-results"
+              ></graph-widget-no-results>`}
           <graph-widget-section-link
+            exportparts="button"
             slot="footer"
             href=${lecture._url}
           ></graph-widget-section-link>

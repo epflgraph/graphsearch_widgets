@@ -23,9 +23,6 @@ export class Root extends LitElement {
   locale: Locale = "en";
 
   @property({ type: String })
-  id = "";
-
-  @property({ type: String })
   limit = "3";
 
   @property({ type: String })

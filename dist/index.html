@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,99 +8,414 @@
 
     <title>EPFL Graph Search Widgets</title>
     <script>
-        function handleLocaleChange(event) {
-            const elements = document.querySelectorAll('[locale]');
+      function handleLocaleChange(event) {
+        const elements = document.querySelectorAll("[locale]");
 
-            for (let i = 0; i < elements.length; i++) {
-                elements[i].setAttribute('locale', event.target.value);
-            }
+        for (let i = 0; i < elements.length; i++) {
+          elements[i].setAttribute("locale", event.target.value);
         }
+      }
     </script>
-  <script type="module" crossorigin src="/index.js"></script>
-</head>
+    <style>
+      /* View the README to see which parts are exposed for custom styling */
+      graph-widget-concept-concepts::part(link) {
+        background-image: linear-gradient(
+          to left,
+          violet,
+          indigo,
+          blue,
+          green,
+          yellow,
+          orange,
+          red
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    </style>
+    <script type="module" crossorigin src="/index.js"></script>
+  </head>
 
-<body>
+  <body>
     <div class="container mx-auto py-12 flex flex-col gap-6">
-        <div class="flex justify-between items-center">
-            <div>
-                <h1 class="font-bold text-xl">Graph Search Widgets</h1>
-            </div>
-            <div>
-                <label>Locale</label>
-                <select onchange="handleLocaleChange(event)">
-                    <option value="en" selected>English</option>
-                    <option value="fr">French</option>
-                </select>
-            </div>
+      <div class="flex justify-between items-center">
+        <div>
+          <h1 class="font-bold text-xl">Graph Search Widgets</h1>
         </div>
-        <hr>
-
-        <div class="flex flex-col gap-12 max-w-xl">
-            <div class="bg-gray-300 p-6 flex flex-col gap-4">
-                <p>Wrap the components inside a <strong>graph-widget-container</strong> element to give it a white
-                    background and some padding when using it on a non-white background.</p>
-                <graph-widget-container>
-                    <graph-widget-concept-concepts id="18973446" locale="en" limit="4"
-                        offset="2"></graph-widget-concept-concepts>
-                </graph-widget-container>
-            </div>
-            <div class="flex flex-col gap-4">
-                <p>A skeleton will be displayed when the component is loading.</p>
-                <graph-widget-loading limit="3"></graph-widget-loading>
-            </div>
-
-            <graph-widget-concept-courses id="18973446" locale="en"></graph-widget-concept-courses>
-            <graph-widget-concept-lectures id="18973446" locale="en"></graph-widget-concept-lectures>
-            <graph-widget-concept-persons id="18973446" locale="en" offset="56"></graph-widget-concept-persons>
-            <graph-widget-concept-publications id="18973446" locale="en"
-                offset="56"></graph-widget-concept-publications>
-            <graph-widget-concept-units id="18973446" locale="en" offset="56"></graph-widget-concept-units>
-
-            <graph-widget-course-concepts id="PHYS-420" locale="en"></graph-widget-course-concepts>
-            <graph-widget-course-core-lectures id="PHYS-420" locale="en"></graph-widget-course-core-lectures>
-            <graph-widget-course-core-persons id="PHYS-420" locale="en"></graph-widget-course-core-persons>
-            <graph-widget-course-courses id="PHYS-420" locale="en"></graph-widget-course-courses>
-            <graph-widget-course-lectures id="PHYS-420" locale="en"></graph-widget-course-lectures>
-            <graph-widget-course-persons id="PHYS-420" locale="en"></graph-widget-course-persons>
-            <graph-widget-course-publications id="PHYS-420" locale="en"></graph-widget-course-publications>
-            <graph-widget-course-units id="PHYS-420" locale="en"></graph-widget-course-units>
-
-            <graph-widget-lecture-concepts id="009c32783TFQzZG6Wt" locale="en"></graph-widget-lecture-concepts>
-            <graph-widget-lecture-core-courses id="009c32783TFQzZG6Wt" locale="en"></graph-widget-lecture-core-courses>
-            <graph-widget-lecture-core-persons id="009c32783TFQzZG6Wt" locale="en"></graph-widget-lecture-core-persons>
-            <graph-widget-lecture-courses id="009c32783TFQzZG6Wt" locale="en"></graph-widget-lecture-courses>
-            <graph-widget-lecture-lectures id="009c32783TFQzZG6Wt" locale="en"></graph-widget-lecture-lectures>
-            <graph-widget-lecture-persons id="009c32783TFQzZG6Wt" locale="en"></graph-widget-lecture-persons>
-            <graph-widget-lecture-publications id="009c32783TFQzZG6Wt" locale="en"></graph-widget-lecture-publications>
-            <graph-widget-lecture-units id="009c32783TFQzZG6Wt" locale="en"></graph-widget-lecture-units>
-
-            <graph-widget-person-concepts id="157873" locale="en"></graph-widget-person-concepts>
-            <graph-widget-person-core-courses id="157873" locale="en"></graph-widget-person-core-courses>
-            <graph-widget-person-core-lectures id="157873" locale="en"></graph-widget-person-core-lectures>
-            <graph-widget-person-core-publications id="157873" locale="en"></graph-widget-person-core-publications>
-            <graph-widget-person-core-units id="157873" locale="en"></graph-widget-person-core-units>
-            <graph-widget-person-courses id="157873" locale="en"></graph-widget-person-courses>
-            <graph-widget-person-lectures id="157873" locale="en"></graph-widget-person-lectures>
-            <graph-widget-person-persons id="157873" locale="en"></graph-widget-person-persons>
-            <graph-widget-person-publications id="157873" locale="en"></graph-widget-person-publications>
-            <graph-widget-person-units id="157873" locale="en"></graph-widget-person-units>
-
-            <graph-widget-publication-concepts id="290078" locale="en"></graph-widget-publication-concepts>
-            <graph-widget-publication-core-persons id="290078" locale="en"></graph-widget-publication-core-persons>
-            <graph-widget-publication-courses id="290078" locale="en"></graph-widget-publication-courses>
-            <graph-widget-publication-lectures id="290078" locale="en"></graph-widget-publication-lectures>
-            <graph-widget-publication-persons id="290078" locale="en"></graph-widget-publication-persons>
-            <graph-widget-publication-publications id="290078" locale="en"></graph-widget-publication-publications>
-            <graph-widget-publication-units id="290078" locale="en"></graph-widget-publication-units>
-
-            <graph-widget-unit-concepts id="LCAV" locale="en"></graph-widget-unit-concepts>
-            <graph-widget-unit-core-persons id="LCAV" locale="en"></graph-widget-unit-core-persons>
-            <graph-widget-unit-courses id="LCAV" locale="en"></graph-widget-unit-courses>
-            <graph-widget-unit-lectures id="LCAV" locale="en"></graph-widget-unit-lectures>
-            <graph-widget-unit-persons id="LCAV" locale="en"></graph-widget-unit-persons>
-            <graph-widget-unit-publications id="LCAV" locale="en"></graph-widget-unit-publications>
-            <graph-widget-unit-units id="LCAV" locale="en"></graph-widget-unit-units>
+        <div>
+          <label>Locale</label>
+          <select onchange="handleLocaleChange(event)">
+            <option value="en" selected>English</option>
+            <option value="fr">French</option>
+          </select>
         </div>
+      </div>
+      <hr />
+
+      <div class="flex flex-col gap-12 max-w-xl">
+        <div class="bg-gray-300 p-6 flex flex-col gap-4">
+          <p>
+            Wrap the components inside a
+            <strong>graph-widget-container</strong> element to give it a white
+            background and some padding when using it on a non-white background.
+          </p>
+          <p>
+            Apply custom styling using the exported parts. Consult the README
+            file for more information.
+          </p>
+          <graph-widget-container>
+            <graph-widget-concept-concepts
+              concept-id="18973446"
+              locale="en"
+              limit="4"
+            >
+            </graph-widget-concept-concepts>
+          </graph-widget-container>
+        </div>
+        <div class="flex flex-col gap-4">
+          <p class="font-medium text-lg">
+            A skeleton will be displayed when the component is loading.
+          </p>
+          <graph-widget-loading limit="3"></graph-widget-loading>
+        </div>
+
+        <div class="flex flex-col gap-2">
+          <p class="font-medium text-lg">graph-widget-concept-courses</p>
+          <graph-widget-concept-courses
+            concept-id="18973446"
+            locale="en"
+          ></graph-widget-concept-courses>
+        </div>
+        <div class="flex flex-col gap-2">
+          <p class="font-medium text-lg">graph-widget-concept-lectures</p>
+          <graph-widget-concept-lectures
+            concept-id="18973446"
+            locale="en"
+          ></graph-widget-concept-lectures>
+        </div>
+        <div class="flex flex-col gap-2">
+          <p class="font-medium text-lg">graph-widget-concept-lectures</p>
+          <graph-widget-concept-lectures
+            concept-id="18973446"
+            locale="en"
+          ></graph-widget-concept-lectures>
+        </div>
+        <div class="flex flex-col gap-2">
+          <p class="font-medium text-lg">graph-widget-concept-persons</p>
+          <graph-widget-concept-persons
+            concept-id="18973446"
+            locale="en"
+            offset="56"
+          ></graph-widget-concept-persons>
+        </div>
+        <div class="flex flex-col gap-2">
+          <p class="font-medium text-lg">graph-widget-concept-publications</p>
+          <graph-widget-concept-publications
+            concept-id="18973446"
+            locale="en"
+            offset="56"
+          ></graph-widget-concept-publications>
+        </div>
+        <div class="flex flex-col gap-2">
+          <p class="font-medium text-lg">graph-widget-concept-units</p>
+          <graph-widget-concept-units
+            concept-id="18973446"
+            locale="en"
+            offset="56"
+          ></graph-widget-concept-units>
+        </div>
+
+        <div class="flex flex-col gap-2">
+          <p class="font-medium text-lg">graph-widget-course-concepts</p>
+          <graph-widget-course-concepts
+            course-id="PHYS-420"
+            locale="en"
+          ></graph-widget-course-concepts>
+        </div>
+        <div class="flex flex-col gap-2">
+          <p class="font-medium text-lg">graph-widget-course-core-lectures</p>
+          <graph-widget-course-core-lectures
+            course-id="PHYS-420"
+            locale="en"
+          ></graph-widget-course-core-lectures>
+        </div>
+        <div class="flex flex-col gap-2">
+          <p class="font-medium text-lg">graph-widget-course-core-persons</p>
+          <graph-widget-course-core-persons
+            course-id="PHYS-420"
+            locale="en"
+          ></graph-widget-course-core-persons>
+        </div>
+        <div class="flex flex-col gap-2">
+          <p class="font-medium text-lg">graph-widget-course-courses</p>
+          <graph-widget-course-courses
+            course-id="PHYS-420"
+            locale="en"
+          ></graph-widget-course-courses>
+        </div>
+        <div class="flex flex-col gap-2">
+          <p class="font-medium text-lg">graph-widget-course-lectures</p>
+          <graph-widget-course-lectures
+            course-id="PHYS-420"
+            locale="en"
+          ></graph-widget-course-lectures>
+        </div>
+        <div class="flex flex-col gap-2">
+          <p class="font-medium text-lg">graph-widget-course-persons</p>
+          <graph-widget-course-persons
+            course-id="PHYS-420"
+            locale="en"
+          ></graph-widget-course-persons>
+        </div>
+        <div class="flex flex-col gap-2">
+          <p class="font-medium text-lg">graph-widget-course-publications</p>
+          <graph-widget-course-publications
+            course-id="PHYS-420"
+            locale="en"
+          ></graph-widget-course-publications>
+        </div>
+        <div class="flex flex-col gap-2">
+          <p class="font-medium text-lg">graph-widget-course-units</p>
+          <graph-widget-course-units
+            course-id="PHYS-420"
+            locale="en"
+          ></graph-widget-course-units>
+        </div>
+
+        <div class="flex flex-col gap-2">
+          <p class="font-medium text-lg">graph-widget-lecture-concepts</p>
+          <graph-widget-lecture-concepts
+            lecture-id="009c32783TFQzZG6Wt"
+            locale="en"
+          ></graph-widget-lecture-concepts>
+        </div>
+        <div class="flex flex-col gap-2">
+          <p class="font-medium text-lg">graph-widget-lecture-core-courses</p>
+          <graph-widget-lecture-core-courses
+            lecture-id="009c32783TFQzZG6Wt"
+            locale="en"
+          ></graph-widget-lecture-core-courses>
+        </div>
+        <div class="flex flex-col gap-2">
+          <p class="font-medium text-lg">graph-widget-lecture-core-persons</p>
+          <graph-widget-lecture-core-persons
+            lecture-id="009c32783TFQzZG6Wt"
+            locale="en"
+          ></graph-widget-lecture-core-persons>
+        </div>
+        <div class="flex flex-col gap-2">
+          <p class="font-medium text-lg">graph-widget-lecture-courses</p>
+          <graph-widget-lecture-courses
+            lecture-id="009c32783TFQzZG6Wt"
+            locale="en"
+          ></graph-widget-lecture-courses>
+        </div>
+        <div class="flex flex-col gap-2">
+          <p class="font-medium text-lg">graph-widget-lecture-lectures</p>
+          <graph-widget-lecture-lectures
+            lecture-id="009c32783TFQzZG6Wt"
+            locale="en"
+          ></graph-widget-lecture-lectures>
+        </div>
+        <div class="flex flex-col gap-2">
+          <p class="font-medium text-lg">graph-widget-lecture-persons</p>
+          <graph-widget-lecture-persons
+            lecture-id="009c32783TFQzZG6Wt"
+            locale="en"
+          ></graph-widget-lecture-persons>
+        </div>
+        <div class="flex flex-col gap-2">
+          <p class="font-medium text-lg">graph-widget-lecture-publications</p>
+          <graph-widget-lecture-publications
+            lecture-id="009c32783TFQzZG6Wt"
+            locale="en"
+          ></graph-widget-lecture-publications>
+        </div>
+        <div class="flex flex-col gap-2">
+          <p class="font-medium text-lg">graph-widget-lecture-units</p>
+          <graph-widget-lecture-units
+            lecture-id="009c32783TFQzZG6Wt"
+            locale="en"
+          ></graph-widget-lecture-units>
+        </div>
+
+        <div class="flex flex-col gap-2">
+          <p class="font-medium text-lg">graph-widget-person-concepts</p>
+          <graph-widget-person-concepts
+            person-id="157873"
+            locale="en"
+          ></graph-widget-person-concepts>
+        </div>
+        <div class="flex flex-col gap-2">
+          <p class="font-medium text-lg">graph-widget-person-core-courses</p>
+          <graph-widget-person-core-courses
+            person-id="157873"
+            locale="en"
+          ></graph-widget-person-core-courses>
+        </div>
+        <div class="flex flex-col gap-2">
+          <p class="font-medium text-lg">graph-widget-person-core-lectures</p>
+          <graph-widget-person-core-lectures
+            person-id="157873"
+            locale="en"
+          ></graph-widget-person-core-lectures>
+        </div>
+        <div class="flex flex-col gap-2">
+          <p class="font-medium text-lg">
+            graph-widget-person-core-publications
+          </p>
+          <graph-widget-person-core-publications
+            person-id="157873"
+            locale="en"
+          ></graph-widget-person-core-publications>
+        </div>
+        <div class="flex flex-col gap-2">
+          <p class="font-medium text-lg">graph-widget-person-core-units</p>
+          <graph-widget-person-core-units
+            person-id="157873"
+            locale="en"
+          ></graph-widget-person-core-units>
+        </div>
+        <div class="flex flex-col gap-2">
+          <p class="font-medium text-lg">graph-widget-person-courses</p>
+          <graph-widget-person-courses
+            person-id="157873"
+            locale="en"
+          ></graph-widget-person-courses>
+        </div>
+        <div class="flex flex-col gap-2">
+          <p class="font-medium text-lg">graph-widget-person-lectures</p>
+          <graph-widget-person-lectures
+            person-id="157873"
+            locale="en"
+          ></graph-widget-person-lectures>
+        </div>
+        <div class="flex flex-col gap-2">
+          <p class="font-medium text-lg">graph-widget-person-persons</p>
+          <graph-widget-person-persons
+            person-id="157873"
+            locale="en"
+          ></graph-widget-person-persons>
+        </div>
+        <div class="flex flex-col gap-2">
+          <p class="font-medium text-lg">graph-widget-person-publications</p>
+          <graph-widget-person-publications
+            person-id="157873"
+            locale="en"
+          ></graph-widget-person-publications>
+        </div>
+        <div class="flex flex-col gap-2">
+          <p class="font-medium text-lg">graph-widget-person-units</p>
+          <graph-widget-person-units
+            person-id="157873"
+            locale="en"
+          ></graph-widget-person-units>
+        </div>
+
+        <div class="flex flex-col gap-2">
+          <p class="font-medium text-lg">graph-widget-publication-concepts</p>
+          <graph-widget-publication-concepts
+            publication-id="290078"
+            locale="en"
+          ></graph-widget-publication-concepts>
+        </div>
+        <div class="flex flex-col gap-2">
+          <p class="font-medium text-lg">
+            graph-widget-publication-core-persons
+          </p>
+          <graph-widget-publication-core-persons
+            publication-id="290078"
+            locale="en"
+          ></graph-widget-publication-core-persons>
+        </div>
+        <div class="flex flex-col gap-2">
+          <p class="font-medium text-lg">graph-widget-publication-courses</p>
+          <graph-widget-publication-courses
+            publication-id="290078"
+            locale="en"
+          ></graph-widget-publication-courses>
+        </div>
+        <div class="flex flex-col gap-2">
+          <p class="font-medium text-lg">graph-widget-publication-lectures</p>
+          <graph-widget-publication-lectures
+            publication-id="290078"
+            locale="en"
+          ></graph-widget-publication-lectures>
+        </div>
+        <div class="flex flex-col gap-2">
+          <p class="font-medium text-lg">graph-widget-publication-persons</p>
+          <graph-widget-publication-persons
+            publication-id="290078"
+            locale="en"
+          ></graph-widget-publication-persons>
+        </div>
+        <div class="flex flex-col gap-2">
+          <p class="font-medium text-lg">
+            graph-widget-publication-publications
+          </p>
+          <graph-widget-publication-publications
+            publication-id="290078"
+            locale="en"
+          ></graph-widget-publication-publications>
+        </div>
+        <div class="flex flex-col gap-2">
+          <p class="font-medium text-lg">graph-widget-publication-units</p>
+          <graph-widget-publication-units
+            publication-id="290078"
+            locale="en"
+          ></graph-widget-publication-units>
+        </div>
+
+        <div class="flex flex-col gap-2">
+          <p class="font-medium text-lg">graph-widget-unit-concepts</p>
+          <graph-widget-unit-concepts
+            unit-id="LCAV"
+            locale="en"
+          ></graph-widget-unit-concepts>
+        </div>
+        <div class="flex flex-col gap-2">
+          <p class="font-medium text-lg">graph-widget-unit-core-persons</p>
+          <graph-widget-unit-core-persons
+            unit-id="LCAV"
+            locale="en"
+          ></graph-widget-unit-core-persons>
+        </div>
+        <div class="flex flex-col gap-2">
+          <p class="font-medium text-lg">graph-widget-unit-courses</p>
+          <graph-widget-unit-courses
+            unit-id="LCAV"
+            locale="en"
+          ></graph-widget-unit-courses>
+        </div>
+        <div class="flex flex-col gap-2">
+          <p class="font-medium text-lg">graph-widget-unit-lectures</p>
+          <graph-widget-unit-lectures
+            unit-id="LCAV"
+            locale="en"
+          ></graph-widget-unit-lectures>
+        </div>
+        <div class="flex flex-col gap-2">
+          <p class="font-medium text-lg">graph-widget-unit-persons</p>
+          <graph-widget-unit-persons
+            unit-id="LCAV"
+            locale="en"
+          ></graph-widget-unit-persons>
+        </div>
+        <div class="flex flex-col gap-2">
+          <p class="font-medium text-lg">graph-widget-unit-publications</p>
+          <graph-widget-unit-publications
+            unit-id="LCAV"
+            locale="en"
+          ></graph-widget-unit-publications>
+        </div>
+        <div class="flex flex-col gap-2">
+          <p class="font-medium text-lg">graph-widget-unit-units</p>
+          <graph-widget-unit-units
+            unit-id="LCAV"
+            locale="en"
+          ></graph-widget-unit-units>
+        </div>
+      </div>
     </div>
 
 
@@ -109,6 +423,5 @@
 
 
 
-</body>
-
+  </body>
 </html>

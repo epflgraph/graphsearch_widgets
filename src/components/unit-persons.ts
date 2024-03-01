@@ -1,10 +1,7 @@
 import { html } from "lit";
-import { customElement } from "lit/decorators.js";
+import { customElement, property } from "lit/decorators.js";
 
-import { localized, msg } from "@lit/localize";
 import { Task } from "@lit/task";
-
-import get from "lodash/get";
 
 import { getUnit, getUnitPersons } from "@/services/units";
 
@@ -18,11 +15,12 @@ import "@/components/base/person";
 import { Root } from "@/components/base/root";
 import "@/components/base/section";
 import "@/components/base/sectionLink";
-import "@/components/base/sectionTitle";
 
-@localized()
 @customElement("graph-widget-unit-persons")
 export class UnitPersons extends Root {
+  @property({ type: String, attribute: "unit-id" })
+  id = "";
+
   private _getUnitPersons = new Task(this, {
     task: async ([id, locale, limit, offset], { signal }) =>
       Promise.all([
@@ -46,22 +44,20 @@ export class UnitPersons extends Root {
         html`<graph-widget-loading limit=${this.limit}></graph-widget-loading>`,
       complete: ([unit, persons]) =>
         html`<graph-widget-section>
-          <graph-widget-section-title
-            slot="header"
-            description=${msg("Persons related to this unit")}
-          >
-            ${get(unit, ["name", this.locale, "value"])}
-          </graph-widget-section-title>
           ${persons.items.length
             ? persons.items.map(
                 (item: Person) =>
                   html`<graph-widget-person
+                    exportparts="link, person, person__name, person__biography"
                     .person=${item}
                     locale=${this.locale}
                   ></graph-widget-person>`
               )
-            : html`<graph-widget-no-results></graph-widget-no-results>`}
+            : html`<graph-widget-no-results
+                exportparts="no-results"
+              ></graph-widget-no-results>`}
           <graph-widget-section-link
+            exportparts="button"
             slot="footer"
             href=${unit._url}
           ></graph-widget-section-link>

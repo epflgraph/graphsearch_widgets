@@ -6,6 +6,10 @@ import { localized, msg } from "@lit/localize";
 
 import { Root } from "@/components/base/root";
 
+/**
+ * Parts:
+ * - button
+ */
 @localized()
 @customElement("graph-widget-section-link")
 export class SectionLink extends Root {
@@ -23,7 +27,7 @@ export class SectionLink extends Root {
       "btn-disabled": !this.href,
     };
 
-    return html`<a href=${this.href} class=${classMap(classes)}>
+    return html`<a part="button" href=${this.href} class=${classMap(classes)}>
       ${msg("View on Graph Search")}
     </a>`;
   }

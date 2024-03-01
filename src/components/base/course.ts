@@ -7,6 +7,13 @@ import type { Course as TCourse } from "@/types/course";
 
 import { Root } from "@/components/base/root";
 
+/**
+ * Parts:
+ * - link
+ * - course
+ * - course__title
+ * - course__summary
+ */
 @customElement("graph-widget-course")
 export class Course extends Root {
   @property({ type: Object })
@@ -19,9 +26,11 @@ export class Course extends Root {
     ]
       .filter(Boolean)
       .join(": ");
-    return html`<div class="flex flex-col gap-1">
-      <a href=${this.course._url} class="link font-bold self-start">${title}</a>
-      <p class="line-clamp-2">
+    return html`<div part="course" class="flex flex-col gap-1">
+      <a part="link course__title" class="link" href=${this.course._url}
+        >${title}</a
+      >
+      <p part="course__summary" class="line-clamp-2">
         ${get(this.course, ["summary", this.locale, "value"])}
       </p>
     </div> `;

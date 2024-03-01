@@ -1,3 +1,17 @@
+/* 
+* Override the resets to inhert page styles from host
+*/
+:host {
+  line-height: inherit;
+  -webkit-text-size-adjust: inherit;
+  -moz-tab-size: inherit;
+  tab-size: inherit;
+  font-family: inherit;
+  font-feature-settings: inherit;
+  font-variation-settings: inherit;
+  -webkit-tap-highlight-color: inherit;
+}
+
 .btn-primary,
 .btn-primary.btn-outline:hover,
 .btn-secondary,

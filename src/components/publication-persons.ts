@@ -1,7 +1,6 @@
 import { html } from "lit";
-import { customElement } from "lit/decorators.js";
+import { customElement, property } from "lit/decorators.js";
 
-import { localized, msg } from "@lit/localize";
 import { Task } from "@lit/task";
 
 import { getPublication, getPublicationPersons } from "@/services/publications";
@@ -16,11 +15,12 @@ import "@/components/base/person";
 import { Root } from "@/components/base/root";
 import "@/components/base/section";
 import "@/components/base/sectionLink";
-import "@/components/base/sectionTitle";
 
-@localized()
 @customElement("graph-widget-publication-persons")
 export class PublicationPersons extends Root {
+  @property({ type: String, attribute: "publication-id" })
+  id = "";
+
   private _getPublicationPersons = new Task(this, {
     task: async ([id, locale, limit, offset], { signal }) =>
       Promise.all([
@@ -44,22 +44,20 @@ export class PublicationPersons extends Root {
         html`<graph-widget-loading limit=${this.limit}></graph-widget-loading>`,
       complete: ([publication, persons]) =>
         html`<graph-widget-section>
-          <graph-widget-section-title
-            slot="header"
-            description=${msg("Persons related to this publication")}
-          >
-            ${publication.title}
-          </graph-widget-section-title>
           ${persons.items.length
             ? persons.items.map(
                 (item: Person) =>
                   html`<graph-widget-person
+                    exportparts="link, person, person__name, person__biography"
                     .person=${item}
                     locale=${this.locale}
                   ></graph-widget-person>`
               )
-            : html`<graph-widget-no-results></graph-widget-no-results>`}
+            : html`<graph-widget-no-results
+                exportparts="no-results"
+              ></graph-widget-no-results>`}
           <graph-widget-section-link
+            exportparts="button"
             slot="footer"
             href=${publication._url}
           ></graph-widget-section-link>

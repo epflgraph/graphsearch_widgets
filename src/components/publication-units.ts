@@ -1,7 +1,6 @@
 import { html } from "lit";
-import { customElement } from "lit/decorators.js";
+import { customElement, property } from "lit/decorators.js";
 
-import { localized, msg } from "@lit/localize";
 import { Task } from "@lit/task";
 
 import { getPublication, getPublicationUnits } from "@/services/publications";
@@ -15,12 +14,14 @@ import "@/components/base/no-results";
 import { Root } from "@/components/base/root";
 import "@/components/base/section";
 import "@/components/base/sectionLink";
-import "@/components/base/sectionTitle";
+
 import "@/components/base/unit";
 
-@localized()
 @customElement("graph-widget-publication-units")
 export class PublicationUnits extends Root {
+  @property({ type: String, attribute: "publication-id" })
+  id = "";
+
   private _getPublicationUnits = new Task(this, {
     task: async ([id, locale, limit, offset], { signal }) =>
       Promise.all([
@@ -44,22 +45,20 @@ export class PublicationUnits extends Root {
         html`<graph-widget-loading limit=${this.limit}></graph-widget-loading>`,
       complete: ([publication, units]) =>
         html`<graph-widget-section>
-          <graph-widget-section-title
-            slot="header"
-            description=${msg("Units related to this publication")}
-          >
-            ${publication.title}
-          </graph-widget-section-title>
           ${units.items.length
             ? units.items.map(
                 (item: Unit) =>
                   html`<graph-widget-unit
+                    exportparts="link, unit, unit__name, breadcrumbs, breadcrumb"
                     .unit=${item}
                     locale=${this.locale}
                   ></graph-widget-unit>`
               )
-            : html`<graph-widget-no-results></graph-widget-no-results>`}
+            : html`<graph-widget-no-results
+                exportparts="no-results"
+              ></graph-widget-no-results>`}
           <graph-widget-section-link
+            exportparts="button"
             slot="footer"
             href=${publication._url}
           ></graph-widget-section-link>

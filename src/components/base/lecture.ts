@@ -5,18 +5,26 @@ import type { Lecture as TLecture } from "@/types/lecture";
 
 import { Root } from "@/components/base/root";
 
+/**
+ * Parts:
+ * - link
+ * - lecture
+ * - lecture__title
+ * - lecture__subtitle
+ */
 @customElement("graph-widget-lecture")
 export class Lecture extends Root {
   @property({ type: Object })
   "lecture" = {} as TLecture;
 
   render() {
-    return html`<div class="flex flex-col gap-1">
-      <a href=${this.lecture._url} class="link font-bold self-start">
-        ${this.lecture.video.title}
-      </a>
-
-      <p class="line-clamp-2">${this.lecture.video.subtitle}</p>
+    return html`<div part="lecture" class="flex flex-col gap-1">
+      <a part="link lecture__title" class="link" href=${this.lecture._url}
+        >${this.lecture.video.title}</a
+      >
+      <p part="lecture__subtitle" class="line-clamp-2">
+        ${this.lecture.video.subtitle}
+      </p>
     </div> `;
   }
 }

@@ -1,7 +1,6 @@
 import { html } from "lit";
-import { customElement } from "lit/decorators.js";
+import { customElement, property } from "lit/decorators.js";
 
-import { localized, msg } from "@lit/localize";
 import { Task } from "@lit/task";
 
 import { getLecture, getLectureCorePersons } from "@/services/lectures";
@@ -14,13 +13,14 @@ import "@/components/base/person";
 import { Root } from "@/components/base/root";
 import "@/components/base/section";
 import "@/components/base/sectionLink";
-import "@/components/base/sectionTitle";
 
 import { Person } from "@/types/person";
 
-@localized()
 @customElement("graph-widget-lecture-core-persons")
 export class LectureCorePersons extends Root {
+  @property({ type: String, attribute: "lecture-id" })
+  id = "";
+
   private _getLecturePersons = new Task(this, {
     task: async ([id, locale, limit, offset], { signal }) =>
       Promise.all([
@@ -44,22 +44,20 @@ export class LectureCorePersons extends Root {
         html`<graph-widget-loading limit=${this.limit}></graph-widget-loading>`,
       complete: ([lecture, persons]) =>
         html`<graph-widget-section>
-          <graph-widget-section-title
-            slot="header"
-            description=${msg("People teaching this lecture")}
-          >
-            ${lecture.video.title}
-          </graph-widget-section-title>
           ${persons.items.length
             ? persons.items.map(
                 (item: Person) =>
                   html`<graph-widget-person
+                    exportparts="link, person, person__name, person__biography"
                     .person=${item}
                     locale=${this.locale}
                   ></graph-widget-person>`
               )
-            : html`<graph-widget-no-results></graph-widget-no-results>`}
+            : html`<graph-widget-no-results
+                exportparts="no-results"
+              ></graph-widget-no-results>`}
           <graph-widget-section-link
+            exportparts="button"
             slot="footer"
             href=${lecture._url}
           ></graph-widget-section-link>

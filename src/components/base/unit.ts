@@ -7,23 +7,33 @@ import type { Unit as TUnit } from "@/types/unit";
 
 import { Root } from "@/components/base/root";
 
+/**
+ * Parts:
+ * - link
+ * - unit
+ * - unit__name
+ * - breadcrumbs
+ * - breadcrumb
+ */
 @customElement("graph-widget-unit")
 export class Unit extends Root {
   @property({ type: Object })
   "unit" = {} as TUnit;
 
   render() {
-    return html`<div class="flex flex-col gap-1">
-      <a href=${this.unit._url} class="link font-bold self-start">
+    return html`<div part="unit" class="flex flex-col gap-1">
+      <a part="link unit__name" class="link" href=${this.unit._url}>
         ${get(this.unit, ["name", this.locale, "value"])}
       </a>
 
-      <nav class="breadcrumbs py-0 text-xs">
+      <nav part="breadcrumbs" class="breadcrumbs py-0 text-sm">
         <ul>
           ${this.unit.path.map(
-            (unit, i, units) => html`<li key=${unit._id}>
+            (unit, i, units) => html`<li part="breadcrumb" key=${unit._id}>
               ${units.length > i + 1
-                ? html`<a href=${unit._url} class="link">${unit.initials}</a>`
+                ? html`<a href=${unit._url} part="link" class="link">
+                    ${unit.initials}
+                  </a>`
                 : unit.initials}
             </li>`
           )}
