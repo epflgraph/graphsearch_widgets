@@ -3,9 +3,8 @@ import { customElement, property } from "lit/decorators.js";
 
 import { Task } from "@lit/task";
 
+import { personFields, relatedCoursesFields } from "@/services/fields";
 import { getPerson, getPersonCoreCourses } from "@/services/persons";
-
-import { course, person } from "@/fields";
 
 import "@/components/base/course";
 import "@/components/base/loading";
@@ -14,28 +13,26 @@ import { Root } from "@/components/base/root";
 import "@/components/base/section";
 import "@/components/base/sectionLink";
 
-import { Course } from "@/types/course";
-
 @customElement("graph-widget-person-core-courses")
 export class PersonCoreCourses extends Root {
   @property({ type: String, attribute: "person-id" })
   id = "";
 
   private _getPersonCourses = new Task(this, {
-    task: async ([id, locale, limit, offset], { signal }) =>
+    task: async ([id, limit, offset], { signal }) =>
       Promise.all([
-        getPerson({ id, fields: person({ locale }) }, { signal }),
+        getPerson({ id, fields: personFields }, { signal }),
         getPersonCoreCourses(
           {
             id,
-            fields: course({ locale }),
+            fields: relatedCoursesFields,
             limit: Number(limit),
             offset: Number(offset),
           },
           { signal }
         ),
       ]),
-    args: () => [this.id, this.locale, this.limit, this.offset],
+    args: () => [this.id, this.limit, this.offset],
   });
 
   render() {
@@ -46,10 +43,10 @@ export class PersonCoreCourses extends Root {
         html`<graph-widget-section>
           ${courses.items.length
             ? courses.items.map(
-                (item: Course) =>
+                (item) =>
                   html`<graph-widget-course
                     exportparts="link, course, course__title, course__summary"
-                    .course=${item}
+                    .course=${item.node}
                     locale=${this.locale}
                   ></graph-widget-course>`
               )
@@ -59,7 +56,7 @@ export class PersonCoreCourses extends Root {
           <graph-widget-section-link
             exportparts="button"
             slot="footer"
-            href=${person._url}
+            href=${person.url}
           ></graph-widget-section-link>
         </graph-widget-section>`,
     });

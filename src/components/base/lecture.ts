@@ -5,6 +5,8 @@ import type { Lecture as TLecture } from "@/types/lecture";
 
 import { Root } from "@/components/base/root";
 
+import { localeRecord } from "@/util/locale";
+
 /**
  * Parts:
  * - link
@@ -18,13 +20,21 @@ export class Lecture extends Root {
   "lecture" = {} as TLecture;
 
   render() {
+    const title = localeRecord({
+      record: this.lecture.name,
+      locale: this.locale,
+    }).value;
+
+    const description = localeRecord({
+      record: this.lecture.description_medium,
+      locale: this.locale,
+    }).value;
+
     return html`<div part="lecture" class="flex flex-col gap-1">
-      <a part="link lecture__title" class="link" href=${this.lecture._url}
-        >${this.lecture.video.title}</a
+      <a part="link lecture__title" class="link" href=${this.lecture.url}
+        >${title}</a
       >
-      <p part="lecture__subtitle" class="line-clamp-2">
-        ${this.lecture.video.subtitle}
-      </p>
+      <p part="lecture__subtitle" class="line-clamp-2">${description}</p>
     </div> `;
   }
 }

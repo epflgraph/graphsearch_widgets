@@ -4,10 +4,7 @@ import { customElement, property } from "lit/decorators.js";
 import { Task } from "@lit/task";
 
 import { getConcept, getConceptConcepts } from "@/services/concepts";
-
-import { concept } from "@/fields";
-
-import { Concept } from "@/types/concept";
+import { conceptFields, relatedConceptsFields } from "@/services/fields";
 
 import "@/components/base/concept";
 import "@/components/base/loading";
@@ -22,20 +19,20 @@ export class ConceptConcepts extends Root {
   id = "";
 
   private _getConceptConcepts = new Task(this, {
-    task: async ([id, locale, limit, offset], { signal }) =>
+    task: async ([id, limit, offset], { signal }) =>
       Promise.all([
-        getConcept({ id, fields: concept({ locale }) }, { signal }),
+        getConcept({ id, fields: conceptFields }, { signal }),
         getConceptConcepts(
           {
             id,
-            fields: concept({ locale }),
+            fields: relatedConceptsFields,
             limit: Number(limit),
             offset: Number(offset),
           },
           { signal }
         ),
       ]),
-    args: () => [this.id, this.locale, this.limit, this.offset],
+    args: () => [this.id, this.limit, this.offset],
   });
 
   render() {
@@ -46,10 +43,10 @@ export class ConceptConcepts extends Root {
         html`<graph-widget-section>
           ${concepts.items.length
             ? concepts.items.map(
-                (item: Concept) =>
+                (item) =>
                   html`<graph-widget-concept
                     exportparts="link, concept, concept__name, concept__description"
-                    .concept=${item}
+                    .concept=${item.node}
                     locale=${this.locale}
                   ></graph-widget-concept>`
               )
@@ -59,7 +56,7 @@ export class ConceptConcepts extends Root {
           <graph-widget-section-link
             exportparts="button"
             slot="footer"
-            href=${concept._url}
+            href=${concept.url}
           ></graph-widget-section-link>
         </graph-widget-section>`,
     });

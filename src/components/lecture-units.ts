@@ -3,9 +3,8 @@ import { customElement, property } from "lit/decorators.js";
 
 import { Task } from "@lit/task";
 
+import { lectureFields, relatedUnitsFields } from "@/services/fields";
 import { getLecture, getLectureUnits } from "@/services/lectures";
-
-import { lecture, unit } from "@/fields";
 
 import "@/components/base/loading";
 import "@/components/base/no-results";
@@ -15,28 +14,26 @@ import "@/components/base/sectionLink";
 
 import "@/components/base/unit";
 
-import { Unit } from "@/types/unit";
-
 @customElement("graph-widget-lecture-units")
 export class LectureUnits extends Root {
   @property({ type: String, attribute: "lecture-id" })
   id = "";
 
   private _getLectureUnits = new Task(this, {
-    task: async ([id, locale, limit, offset], { signal }) =>
+    task: async ([id, limit, offset], { signal }) =>
       Promise.all([
-        getLecture({ id, fields: lecture({ locale }) }, { signal }),
+        getLecture({ id, fields: lectureFields }, { signal }),
         getLectureUnits(
           {
             id,
-            fields: unit({ locale }),
+            fields: relatedUnitsFields,
             limit: Number(limit),
             offset: Number(offset),
           },
           { signal }
         ),
       ]),
-    args: () => [this.id, this.locale, this.limit, this.offset],
+    args: () => [this.id, this.limit, this.offset],
   });
 
   render() {
@@ -47,10 +44,10 @@ export class LectureUnits extends Root {
         html`<graph-widget-section>
           ${units.items.length
             ? units.items.map(
-                (item: Unit) =>
+                (item) =>
                   html`<graph-widget-unit
                     exportparts="link, unit, unit__name, breadcrumbs, breadcrumb"
-                    .unit=${item}
+                    .unit=${item.node}
                     locale=${this.locale}
                   ></graph-widget-unit>`
               )
@@ -60,7 +57,7 @@ export class LectureUnits extends Root {
           <graph-widget-section-link
             exportparts="button"
             slot="footer"
-            href=${lecture._url}
+            href=${lecture.url}
           ></graph-widget-section-link>
         </graph-widget-section>`,
     });

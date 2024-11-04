@@ -1,11 +1,11 @@
 import { html } from "lit";
 import { customElement, property } from "lit/decorators.js";
 
-import get from "lodash/get";
-
 import type { Course as TCourse } from "@/types/course";
 
 import { Root } from "@/components/base/root";
+
+import { localeRecord } from "@/util/locale";
 
 /**
  * Parts:
@@ -21,18 +21,22 @@ export class Course extends Root {
 
   render() {
     const title = [
-      this.course.course_code,
-      get(this.course, ["name", this.locale, "value"]),
+      this.course.short_code,
+      localeRecord({ record: this.course.name, locale: this.locale }).value,
     ]
       .filter(Boolean)
       .join(": ");
+
+    const description = localeRecord({
+      record: this.course.description_medium,
+      locale: this.locale,
+    }).value;
+
     return html`<div part="course" class="flex flex-col gap-1">
-      <a part="link course__title" class="link" href=${this.course._url}
+      <a part="link course__title" class="link" href=${this.course.url}
         >${title}</a
       >
-      <p part="course__summary" class="line-clamp-2">
-        ${get(this.course, ["summary", this.locale, "value"])}
-      </p>
+      <p part="course__summary" class="line-clamp-2">${description}</p>
     </div> `;
   }
 }

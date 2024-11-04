@@ -1,11 +1,11 @@
 import { html } from "lit";
 import { customElement, property } from "lit/decorators.js";
 
-import get from "lodash/get";
-
 import type { Concept as TConcept } from "@/types/concept";
 
 import { Root } from "@/components/base/root";
+
+import { localeRecord } from "@/util/locale";
 
 /**
  * Parts:
@@ -21,14 +21,22 @@ export class Concept extends Root {
   "concept" = {} as TConcept;
 
   render() {
+    const title = localeRecord({
+      record: this.concept.name,
+      locale: this.locale,
+    }).value;
+
+    const description = localeRecord({
+      record: this.concept.description_medium,
+      locale: this.locale,
+    }).value;
+
     return html`<div part="concept" class="flex flex-col gap-1">
-      <a part="link concept__name" class="link" href=${this.concept._url}>
-        ${get(this.concept, ["name", this.locale, "value"])}
+      <a part="link concept__name" class="link" href=${this.concept.url}>
+        ${title}
       </a>
 
-      <p part="concept__description" class="line-clamp-2">
-        ${get(this.concept, ["_description_large", this.locale, "value"])}
-      </p>
+      <p part="concept__description" class="line-clamp-2">${description}</p>
     </div> `;
   }
 }

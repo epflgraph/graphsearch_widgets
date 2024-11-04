@@ -4,8 +4,7 @@ import { customElement, property } from "lit/decorators.js";
 import { Task } from "@lit/task";
 
 import { getConcept, getConceptLectures } from "@/services/concepts";
-
-import { concept, lecture } from "@/fields";
+import { conceptFields, relatedLecturesFields } from "@/services/fields";
 
 import "@/components/base/lecture";
 import "@/components/base/loading";
@@ -14,28 +13,26 @@ import { Root } from "@/components/base/root";
 import "@/components/base/section";
 import "@/components/base/sectionLink";
 
-import { Lecture } from "@/types/lecture";
-
 @customElement("graph-widget-concept-lectures")
 export class ConceptLectures extends Root {
   @property({ type: String, attribute: "concept-id" })
   id = "";
 
   private _getConceptLectures = new Task(this, {
-    task: async ([id, locale, limit, offset], { signal }) =>
+    task: async ([id, limit, offset], { signal }) =>
       Promise.all([
-        getConcept({ id, fields: concept({ locale }) }, { signal }),
+        getConcept({ id, fields: conceptFields }, { signal }),
         getConceptLectures(
           {
             id,
-            fields: lecture({ locale }),
+            fields: relatedLecturesFields,
             limit: Number(limit),
             offset: Number(offset),
           },
           { signal }
         ),
       ]),
-    args: () => [this.id, this.locale, this.limit, this.offset],
+    args: () => [this.id, this.limit, this.offset],
   });
 
   render() {
@@ -46,10 +43,10 @@ export class ConceptLectures extends Root {
         html`<graph-widget-section>
           ${lectures.items.length
             ? lectures.items.map(
-                (item: Lecture) =>
+                (item) =>
                   html`<graph-widget-lecture
                     exportparts="link, lecture, lecture__title, lecture__subtitle"
-                    .lecture=${item}
+                    .lecture=${item.node}
                     locale=${this.locale}
                   ></graph-widget-lecture>`
               )
@@ -59,7 +56,7 @@ export class ConceptLectures extends Root {
           <graph-widget-section-link
             exportparts="button"
             slot="footer"
-            href=${concept._url}
+            href=${concept.url}
           ></graph-widget-section-link>
         </graph-widget-section>`,
     });

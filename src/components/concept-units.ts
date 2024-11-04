@@ -4,8 +4,7 @@ import { customElement, property } from "lit/decorators.js";
 import { Task } from "@lit/task";
 
 import { getConcept, getConceptUnits } from "@/services/concepts";
-
-import { concept, unit } from "@/fields";
+import { conceptFields, relatedUnitsFields } from "@/services/fields";
 
 import "@/components/base/loading";
 import "@/components/base/no-results";
@@ -14,28 +13,26 @@ import "@/components/base/section";
 import "@/components/base/sectionLink";
 import "@/components/base/unit";
 
-import { Unit } from "@/types/unit";
-
 @customElement("graph-widget-concept-units")
 export class ConceptUnits extends Root {
   @property({ type: String, attribute: "concept-id" })
   id = "";
 
   private _getConceptUnits = new Task(this, {
-    task: async ([id, locale, limit, offset], { signal }) =>
+    task: async ([id, limit, offset], { signal }) =>
       Promise.all([
-        getConcept({ id, fields: concept({ locale }) }, { signal }),
+        getConcept({ id, fields: conceptFields }, { signal }),
         getConceptUnits(
           {
             id,
-            fields: unit({ locale }),
+            fields: relatedUnitsFields,
             limit: Number(limit),
             offset: Number(offset),
           },
           { signal }
         ),
       ]),
-    args: () => [this.id, this.locale, this.limit, this.offset],
+    args: () => [this.id, this.limit, this.offset],
   });
 
   render() {
@@ -46,10 +43,10 @@ export class ConceptUnits extends Root {
         html`<graph-widget-section>
           ${units.items.length
             ? units.items.map(
-                (item: Unit) =>
+                (item) =>
                   html`<graph-widget-unit
                     exportparts="link, unit, unit__name, breadcrumbs, breadcrumb"
-                    .unit=${item}
+                    .unit=${item.node}
                     locale=${this.locale}
                   ></graph-widget-unit>`
               )
@@ -59,7 +56,7 @@ export class ConceptUnits extends Root {
           <graph-widget-section-link
             exportparts="button"
             slot="footer"
-            href=${concept._url}
+            href=${concept.url}
           ></graph-widget-section-link>
         </graph-widget-section>`,
     });

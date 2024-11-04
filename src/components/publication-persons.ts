@@ -4,10 +4,7 @@ import { customElement, property } from "lit/decorators.js";
 import { Task } from "@lit/task";
 
 import { getPublication, getPublicationPersons } from "@/services/publications";
-
-import { person, publication } from "@/fields";
-
-import { Person } from "@/types/person";
+import { publicationFields, relatedPersonsFields } from "@/services/fields";
 
 import "@/components/base/loading";
 import "@/components/base/no-results";
@@ -22,20 +19,20 @@ export class PublicationPersons extends Root {
   id = "";
 
   private _getPublicationPersons = new Task(this, {
-    task: async ([id, locale, limit, offset], { signal }) =>
+    task: async ([id, limit, offset], { signal }) =>
       Promise.all([
-        getPublication({ id, fields: publication({ locale }) }, { signal }),
+        getPublication({ id, fields: publicationFields }, { signal }),
         getPublicationPersons(
           {
             id,
-            fields: person({ locale }),
+            fields: relatedPersonsFields,
             limit: Number(limit),
             offset: Number(offset),
           },
           { signal }
         ),
       ]),
-    args: () => [this.id, this.locale, this.limit, this.offset],
+    args: () => [this.id, this.limit, this.offset],
   });
 
   render() {
@@ -46,10 +43,10 @@ export class PublicationPersons extends Root {
         html`<graph-widget-section>
           ${persons.items.length
             ? persons.items.map(
-                (item: Person) =>
+                (item) =>
                   html`<graph-widget-person
                     exportparts="link, person, person__name, person__biography"
-                    .person=${item}
+                    .person=${item.node}
                     locale=${this.locale}
                   ></graph-widget-person>`
               )
@@ -59,7 +56,7 @@ export class PublicationPersons extends Root {
           <graph-widget-section-link
             exportparts="button"
             slot="footer"
-            href=${publication._url}
+            href=${publication.url}
           ></graph-widget-section-link>
         </graph-widget-section>`,
     });

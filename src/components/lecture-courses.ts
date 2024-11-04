@@ -3,9 +3,8 @@ import { customElement, property } from "lit/decorators.js";
 
 import { Task } from "@lit/task";
 
+import { lectureFields, relatedCoursesFields } from "@/services/fields";
 import { getLecture, getLectureCourses } from "@/services/lectures";
-
-import { course, lecture } from "@/fields";
 
 import "@/components/base/course";
 import "@/components/base/loading";
@@ -14,28 +13,26 @@ import { Root } from "@/components/base/root";
 import "@/components/base/section";
 import "@/components/base/sectionLink";
 
-import { Course } from "@/types/course";
-
 @customElement("graph-widget-lecture-courses")
 export class LectureCourses extends Root {
   @property({ type: String, attribute: "lecture-id" })
   id = "";
 
   private _getLectureCourses = new Task(this, {
-    task: async ([id, locale, limit, offset], { signal }) =>
+    task: async ([id, limit, offset], { signal }) =>
       Promise.all([
-        getLecture({ id, fields: lecture({ locale }) }, { signal }),
+        getLecture({ id, fields: lectureFields }, { signal }),
         getLectureCourses(
           {
             id,
-            fields: course({ locale }),
+            fields: relatedCoursesFields,
             limit: Number(limit),
             offset: Number(offset),
           },
           { signal }
         ),
       ]),
-    args: () => [this.id, this.locale, this.limit, this.offset],
+    args: () => [this.id, this.limit, this.offset],
   });
 
   render() {
@@ -46,10 +43,10 @@ export class LectureCourses extends Root {
         html`<graph-widget-section>
           ${courses.items.length
             ? courses.items.map(
-                (item: Course) =>
+                (item) =>
                   html`<graph-widget-course
                     exportparts="link, course, course__title, course__summary"
-                    .course=${item}
+                    .course=${item.node}
                     locale=${this.locale}
                   ></graph-widget-course>`
               )
@@ -59,7 +56,7 @@ export class LectureCourses extends Root {
           <graph-widget-section-link
             exportparts="button"
             slot="footer"
-            href=${lecture._url}
+            href=${lecture.url}
           ></graph-widget-section-link>
         </graph-widget-section>`,
     });

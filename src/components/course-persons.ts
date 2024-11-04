@@ -4,10 +4,7 @@ import { customElement, property } from "lit/decorators.js";
 import { Task } from "@lit/task";
 
 import { getCourse, getCoursePersons } from "@/services/courses";
-
-import { course, person } from "@/fields";
-
-import { Person } from "@/types/person";
+import { courseFields, relatedPersonsFields } from "@/services/fields";
 
 import "@/components/base/loading";
 import "@/components/base/no-results";
@@ -22,20 +19,20 @@ export class CoursePersons extends Root {
   id = "";
 
   private _getCoursePersons = new Task(this, {
-    task: async ([id, locale, limit, offset], { signal }) =>
+    task: async ([id, limit, offset], { signal }) =>
       Promise.all([
-        getCourse({ id, fields: course({ locale }) }, { signal }),
+        getCourse({ id, fields: courseFields }, { signal }),
         getCoursePersons(
           {
             id,
-            fields: person({ locale }),
+            fields: relatedPersonsFields,
             limit: Number(limit),
             offset: Number(offset),
           },
           { signal }
         ),
       ]),
-    args: () => [this.id, this.locale, this.limit, this.offset],
+    args: () => [this.id, this.limit, this.offset],
   });
 
   render() {
@@ -46,10 +43,10 @@ export class CoursePersons extends Root {
         html`<graph-widget-section>
           ${persons.items.length
             ? persons.items.map(
-                (item: Person) =>
+                (item) =>
                   html`<graph-widget-person
                     exportparts="link, person, person__name, person__biography"
-                    .person=${item}
+                    .person=${item.node}
                     locale=${this.locale}
                   ></graph-widget-person>`
               )
@@ -59,7 +56,7 @@ export class CoursePersons extends Root {
           <graph-widget-section-link
             exportparts="button"
             slot="footer"
-            href=${course._url}
+            href=${course.url}
           ></graph-widget-section-link>
         </graph-widget-section>`,
     });

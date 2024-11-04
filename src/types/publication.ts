@@ -1,11 +1,7 @@
-import { Locale, MetaData } from "./base";
+import { MetaData, Types } from "./base";
 
-export type Publication = MetaData & {
-  _type: "publication";
-  title: string | null;
-  type: Locale<string | null>;
-  publisher: string | null;
+export type Publication = MetaData<Types.Publication> & {
+  year: number;
   published_in: string | null;
-  year: number | null;
-  abstract: string | null;
+  publisher: string | null;
 };

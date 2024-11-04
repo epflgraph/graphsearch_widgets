@@ -3,11 +3,8 @@ import { customElement, property } from "lit/decorators.js";
 
 import { Task } from "@lit/task";
 
+import { relatedPersonsFields, unitFields } from "@/services/fields";
 import { getUnit, getUnitCorePersons } from "@/services/units";
-
-import { person, unit } from "@/fields";
-
-import { Person } from "@/types/person";
 
 import "@/components/base/loading";
 import "@/components/base/no-results";
@@ -22,20 +19,20 @@ export class UnitCorePersons extends Root {
   id = "";
 
   private _getUnitPersons = new Task(this, {
-    task: async ([id, locale, limit, offset], { signal }) =>
+    task: async ([id, limit, offset], { signal }) =>
       Promise.all([
-        getUnit({ id, fields: unit({ locale }) }, { signal }),
+        getUnit({ id, fields: unitFields }, { signal }),
         getUnitCorePersons(
           {
             id,
-            fields: person({ locale }),
+            fields: relatedPersonsFields,
             limit: Number(limit),
             offset: Number(offset),
           },
           { signal }
         ),
       ]),
-    args: () => [this.id, this.locale, this.limit, this.offset],
+    args: () => [this.id, this.limit, this.offset],
   });
 
   render() {
@@ -46,10 +43,10 @@ export class UnitCorePersons extends Root {
         html`<graph-widget-section>
           ${persons.items.length
             ? persons.items.map(
-                (item: Person) =>
+                (item) =>
                   html`<graph-widget-person
                     exportparts="link, person, person__name, person__biography"
-                    .person=${item}
+                    .person=${item.node}
                     locale=${this.locale}
                   ></graph-widget-person>`
               )
@@ -59,7 +56,7 @@ export class UnitCorePersons extends Root {
           <graph-widget-section-link
             exportparts="button"
             slot="footer"
-            href=${unit._url}
+            href=${unit.url}
           ></graph-widget-section-link>
         </graph-widget-section>`,
     });

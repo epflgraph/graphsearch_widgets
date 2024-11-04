@@ -178,9 +178,6 @@ npm run localize:build
 <graph-widget-person-core-courses
   person-id="157873"
 ></graph-widget-person-core-courses>
-<graph-widget-person-core-lectures
-  id="157873"
-></graph-widget-person-core-lectures>
 <graph-widget-person-core-publications
   id="157873"
 ></graph-widget-person-core-publications>

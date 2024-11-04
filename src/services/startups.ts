@@ -13,12 +13,12 @@ import { DocumentResponse, PagableResponse } from "@/types/response";
 import { Startup } from "@/types/startup";
 import { Unit } from "@/types/unit";
 
-export const getPublication = (
-  { id, fields }: DocumentQueryParams<Publication>,
+export const getStartup = (
+  { id, fields }: DocumentQueryParams<Startup>,
   { signal }: QueryConfig
 ) =>
   api
-    .get<DocumentResponse<Publication>>(`/publications/${id}`, {
+    .get<DocumentResponse<Startup>>(`/startups/${id}`, {
       params: {
         fields,
       },
@@ -26,51 +26,30 @@ export const getPublication = (
     })
     .then((result) => result.data.item);
 
-export const getPublicationCategories = (
+export const getStartupCategories = (
   { id, limit, offset, fields }: PagableQueryParamsWithId<Category>,
   { signal }: QueryConfig
 ) =>
   api
-    .get<
-      PagableResponse<{
-        node: Category;
-        edge: Pick<Category, "depth">;
-      }>
-    >(`/publications/${id}/categories`, {
-      params: {
-        fields,
-        limit,
-        offset,
-      },
-      signal,
-    })
+    .get<PagableResponse<{ node: Category; edge: Pick<Category, "depth"> }>>(
+      `/startups/${id}/categories`,
+      {
+        params: {
+          fields,
+          limit,
+          offset,
+        },
+        signal,
+      }
+    )
     .then((result) => result.data);
 
-export const getPublicationConcepts = (
+export const getStartupConcepts = (
   { id, limit, offset, fields }: PagableQueryParamsWithId<Concept>,
   { signal }: QueryConfig
 ) =>
   api
-    .get<PagableResponse<{ node: Concept }>>(`/publications/${id}/concepts`, {
-      params: {
-        fields,
-        limit,
-        offset,
-      },
-    })
-    .then((result) => result.data);
-
-export const getPublicationCorePersons = (
-  { id, limit, offset, fields }: PagableQueryParamsWithId<Person>,
-  { signal }: QueryConfig
-) =>
-  api
-    .get<
-      PagableResponse<{
-        node: Person;
-        edge: Pick<Person, "is_at_epfl">;
-      }>
-    >(`/publications/${id}/core-persons`, {
+    .get<PagableResponse<{ node: Concept }>>(`/startups/${id}/concepts`, {
       params: {
         fields,
         limit,
@@ -80,7 +59,7 @@ export const getPublicationCorePersons = (
     })
     .then((result) => result.data);
 
-export const getPublicationCourses = (
+export const getStartupCourses = (
   { id, limit, offset, fields }: PagableQueryParamsWithId<Course>,
   { signal }: QueryConfig
 ) =>
@@ -90,7 +69,7 @@ export const getPublicationCourses = (
         node: Course;
         edge: Pick<Course, "latest_academic_year">;
       }>
-    >(`/publications/${id}/courses`, {
+    >(`/startups/${id}/courses`, {
       params: {
         fields,
         limit,
@@ -100,7 +79,7 @@ export const getPublicationCourses = (
     })
     .then((result) => result.data);
 
-export const getPublicationLectures = (
+export const getStartupLectures = (
   { id, limit, offset, fields }: PagableQueryParamsWithId<Lecture>,
   { signal }: QueryConfig
 ) =>
@@ -113,7 +92,7 @@ export const getPublicationLectures = (
           video_stream_url: string | null;
         };
       }>
-    >(`/publications/${id}/lectures`, {
+    >(`/startups/${id}/lectures`, {
       params: {
         fields,
         limit,
@@ -123,7 +102,7 @@ export const getPublicationLectures = (
     })
     .then((result) => result.data);
 
-export const getPublicationMoocs = (
+export const getStartupMoocs = (
   { id, limit, offset, fields }: PagableQueryParamsWithId<Mooc>,
   { signal }: QueryConfig
 ) =>
@@ -136,7 +115,7 @@ export const getPublicationMoocs = (
           "domain" | "language" | "level" | "platform" | "thumbnail_image_url"
         >;
       }>
-    >(`/publications/${id}/moocs`, {
+    >(`/startups/${id}/moocs`, {
       params: {
         fields,
         limit,
@@ -146,7 +125,7 @@ export const getPublicationMoocs = (
     })
     .then((result) => result.data);
 
-export const getPublicationPersons = (
+export const getStartupPersons = (
   { id, limit, offset, fields }: PagableQueryParamsWithId<Person>,
   { signal }: QueryConfig
 ) =>
@@ -156,7 +135,7 @@ export const getPublicationPersons = (
         node: Person;
         edge: Pick<Person, "is_at_epfl">;
       }>
-    >(`/publications/${id}/persons`, {
+    >(`/startups/${id}/persons`, {
       params: {
         fields,
         limit,
@@ -166,7 +145,7 @@ export const getPublicationPersons = (
     })
     .then((result) => result.data);
 
-export const getPublicationPublications = (
+export const getStartupPublications = (
   { id, limit, offset, fields }: PagableQueryParamsWithId<Publication>,
   { signal }: QueryConfig
 ) =>
@@ -176,7 +155,7 @@ export const getPublicationPublications = (
         node: Publication;
         edge: Pick<Publication, "year" | "published_in" | "publisher">;
       }>
-    >(`/publications/${id}/publications`, {
+    >(`/startups/${id}/publications`, {
       params: {
         fields,
         limit,
@@ -186,12 +165,12 @@ export const getPublicationPublications = (
     })
     .then((result) => result.data);
 
-export const getPublicationStartups = (
+export const getStartupStartups = (
   { id, limit, offset, fields }: PagableQueryParamsWithId<Startup>,
   { signal }: QueryConfig
 ) =>
   api
-    .get<PagableResponse<{ node: Startup }>>(`/publications/${id}/startups`, {
+    .get<PagableResponse<{ node: Startup }>>(`/startups/${id}/startups`, {
       params: {
         fields,
         limit,
@@ -201,7 +180,7 @@ export const getPublicationStartups = (
     })
     .then((result) => result.data);
 
-export const getPublicationUnits = (
+export const getStartupUnits = (
   { id, limit, offset, fields }: PagableQueryParamsWithId<Unit>,
   { signal }: QueryConfig
 ) =>
@@ -214,7 +193,7 @@ export const getPublicationUnits = (
           "is_active_unit" | "is_research_unit" | "subtype_rank"
         >;
       }>
-    >(`/publications/${id}/units`, {
+    >(`/startups/${id}/units`, {
       params: {
         fields,
         limit,

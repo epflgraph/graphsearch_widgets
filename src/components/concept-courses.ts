@@ -4,8 +4,7 @@ import { customElement, property } from "lit/decorators.js";
 import { Task } from "@lit/task";
 
 import { getConcept, getConceptCourses } from "@/services/concepts";
-
-import { concept, course } from "@/fields";
+import { conceptFields, relatedCoursesFields } from "@/services/fields";
 
 import "@/components/base/course";
 import "@/components/base/loading";
@@ -14,28 +13,26 @@ import { Root } from "@/components/base/root";
 import "@/components/base/section";
 import "@/components/base/sectionLink";
 
-import { Course } from "@/types/course";
-
 @customElement("graph-widget-concept-courses")
 export class ConceptCourses extends Root {
   @property({ type: String, attribute: "concept-id" })
   id = "";
 
   private _getConceptCourses = new Task(this, {
-    task: async ([id, locale, limit, offset], { signal }) =>
+    task: async ([id, limit, offset], { signal }) =>
       Promise.all([
-        getConcept({ id, fields: concept({ locale }) }, { signal }),
+        getConcept({ id, fields: conceptFields }, { signal }),
         getConceptCourses(
           {
             id,
-            fields: course({ locale }),
+            fields: relatedCoursesFields,
             limit: Number(limit),
             offset: Number(offset),
           },
           { signal }
         ),
       ]),
-    args: () => [this.id, this.locale, this.limit, this.offset],
+    args: () => [this.id, this.limit, this.offset],
   });
 
   render() {
@@ -46,10 +43,10 @@ export class ConceptCourses extends Root {
         html`<graph-widget-section>
           ${courses.items.length
             ? courses.items.map(
-                (item: Course) =>
+                (item) =>
                   html`<graph-widget-course
                     exportparts="link, course, course__title, course__summary"
-                    .course=${item}
+                    .course=${item.node}
                     locale=${this.locale}
                   ></graph-widget-course>`
               )
@@ -59,7 +56,7 @@ export class ConceptCourses extends Root {
           <graph-widget-section-link
             exportparts="button"
             slot="footer"
-            href=${concept._url}
+            href=${concept.url}
           ></graph-widget-section-link>
         </graph-widget-section>`,
     });

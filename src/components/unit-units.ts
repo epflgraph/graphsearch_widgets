@@ -3,9 +3,8 @@ import { customElement, property } from "lit/decorators.js";
 
 import { Task } from "@lit/task";
 
+import { relatedUnitsFields, unitFields } from "@/services/fields";
 import { getUnit, getUnitUnits } from "@/services/units";
-
-import { unit } from "@/fields";
 
 import "@/components/base/loading";
 import "@/components/base/no-results";
@@ -14,7 +13,6 @@ import "@/components/base/section";
 import "@/components/base/sectionLink";
 
 import "@/components/base/unit";
-import { Unit } from "@/types/unit";
 
 @customElement("graph-widget-unit-units")
 export class UnitUnits extends Root {
@@ -22,20 +20,20 @@ export class UnitUnits extends Root {
   id = "";
 
   private _getUnitUnits = new Task(this, {
-    task: async ([id, locale, limit, offset], { signal }) =>
+    task: async ([id, limit, offset], { signal }) =>
       Promise.all([
-        getUnit({ id, fields: unit({ locale }) }, { signal }),
+        getUnit({ id, fields: unitFields }, { signal }),
         getUnitUnits(
           {
             id,
-            fields: unit({ locale }),
+            fields: relatedUnitsFields,
             limit: Number(limit),
             offset: Number(offset),
           },
           { signal }
         ),
       ]),
-    args: () => [this.id, this.locale, this.limit, this.offset],
+    args: () => [this.id, this.limit, this.offset],
   });
 
   render() {
@@ -46,10 +44,10 @@ export class UnitUnits extends Root {
         html`<graph-widget-section>
           ${units.items.length
             ? units.items.map(
-                (item: Unit) =>
+                (item) =>
                   html`<graph-widget-unit
                     exportparts="link, unit, unit__name, breadcrumbs, breadcrumb"
-                    .unit=${item}
+                    .unit=${item.node}
                     locale=${this.locale}
                   ></graph-widget-unit>`
               )
@@ -59,7 +57,7 @@ export class UnitUnits extends Root {
           <graph-widget-section-link
             exportparts="button"
             slot="footer"
-            href=${unit._url}
+            href=${unit.url}
           ></graph-widget-section-link>
         </graph-widget-section>`,
     });

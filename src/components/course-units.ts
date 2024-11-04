@@ -4,10 +4,7 @@ import { customElement, property } from "lit/decorators.js";
 import { Task } from "@lit/task";
 
 import { getCourse, getCourseUnits } from "@/services/courses";
-
-import { course, unit } from "@/fields";
-
-import { Unit } from "@/types/unit";
+import { courseFields, relatedUnitsFields } from "@/services/fields";
 
 import "@/components/base/loading";
 import "@/components/base/no-results";
@@ -22,20 +19,20 @@ export class CourseUnits extends Root {
   id = "";
 
   private _getCourseUnits = new Task(this, {
-    task: async ([id, locale, limit, offset], { signal }) =>
+    task: async ([id, limit, offset], { signal }) =>
       Promise.all([
-        getCourse({ id, fields: course({ locale }) }, { signal }),
+        getCourse({ id, fields: courseFields }, { signal }),
         getCourseUnits(
           {
             id,
-            fields: unit({ locale }),
+            fields: relatedUnitsFields,
             limit: Number(limit),
             offset: Number(offset),
           },
           { signal }
         ),
       ]),
-    args: () => [this.id, this.locale, this.limit, this.offset],
+    args: () => [this.id, this.limit, this.offset],
   });
 
   render() {
@@ -46,10 +43,10 @@ export class CourseUnits extends Root {
         html`<graph-widget-section>
           ${units.items.length
             ? units.items.map(
-                (item: Unit) =>
+                (item) =>
                   html`<graph-widget-unit
                     exportparts="link, unit, unit__name, breadcrumbs, breadcrumb"
-                    .unit=${item}
+                    .unit=${item.node}
                     locale=${this.locale}
                   ></graph-widget-unit>`
               )
@@ -59,7 +56,7 @@ export class CourseUnits extends Root {
           <graph-widget-section-link
             exportparts="button"
             slot="footer"
-            href=${course._url}
+            href=${course.url}
           ></graph-widget-section-link>
         </graph-widget-section>`,
     });

@@ -4,10 +4,7 @@ import { customElement, property } from "lit/decorators.js";
 import { Task } from "@lit/task";
 
 import { getCourse, getCourseCourses } from "@/services/courses";
-
-import { course } from "@/fields";
-
-import { Course } from "@/types/course";
+import { courseFields, relatedCoursesFields } from "@/services/fields";
 
 import "@/components/base/course";
 import "@/components/base/loading";
@@ -22,20 +19,20 @@ export class CourseCourses extends Root {
   id = "";
 
   private _getCourseCourses = new Task(this, {
-    task: async ([id, locale, limit, offset], { signal }) =>
+    task: async ([id, limit, offset], { signal }) =>
       Promise.all([
-        getCourse({ id, fields: course({ locale }) }, { signal }),
+        getCourse({ id, fields: courseFields }, { signal }),
         getCourseCourses(
           {
             id,
-            fields: course({ locale }),
+            fields: relatedCoursesFields,
             limit: Number(limit),
             offset: Number(offset),
           },
           { signal }
         ),
       ]),
-    args: () => [this.id, this.locale, this.limit, this.offset],
+    args: () => [this.id, this.limit, this.offset],
   });
 
   render() {
@@ -46,10 +43,10 @@ export class CourseCourses extends Root {
         html`<graph-widget-section>
           ${courses.items.length
             ? courses.items.map(
-                (item: Course) =>
+                (item) =>
                   html`<graph-widget-course
                     exportparts="link, course, course__title, course__summary"
-                    .course=${item}
+                    .course=${item.node}
                     locale=${this.locale}
                   ></graph-widget-course>`
               )
@@ -59,7 +56,7 @@ export class CourseCourses extends Root {
           <graph-widget-section-link
             exportparts="button"
             slot="footer"
-            href=${course._url}
+            href=${course.url}
           ></graph-widget-section-link>
         </graph-widget-section>`,
     });

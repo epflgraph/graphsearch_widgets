@@ -4,10 +4,7 @@ import { customElement, property } from "lit/decorators.js";
 import { Task } from "@lit/task";
 
 import { getCourse, getCourseConcepts } from "@/services/courses";
-
-import { concept, course } from "@/fields";
-
-import { Concept } from "@/types/concept";
+import { courseFields, relatedConceptsFields } from "@/services/fields";
 
 import "@/components/base/concept";
 import "@/components/base/loading";
@@ -22,20 +19,20 @@ export class CourseConcepts extends Root {
   id = "";
 
   private _getCourseConcepts = new Task(this, {
-    task: async ([id, locale, limit, offset], { signal }) =>
+    task: async ([id, limit, offset], { signal }) =>
       Promise.all([
-        getCourse({ id, fields: course({ locale }) }, { signal }),
+        getCourse({ id, fields: courseFields }, { signal }),
         getCourseConcepts(
           {
             id,
-            fields: concept({ locale }),
+            fields: relatedConceptsFields,
             limit: Number(limit),
             offset: Number(offset),
           },
           { signal }
         ),
       ]),
-    args: () => [this.id, this.locale, this.limit, this.offset],
+    args: () => [this.id, this.limit, this.offset],
   });
 
   render() {
@@ -46,10 +43,10 @@ export class CourseConcepts extends Root {
         html`<graph-widget-section>
           ${concepts.items.length
             ? concepts.items.map(
-                (item: Concept) =>
+                (item) =>
                   html`<graph-widget-concept
                     exportparts="link, concept, concept__name, concept__description"
-                    .concept=${item}
+                    .concept=${item.node}
                     locale=${this.locale}
                   ></graph-widget-concept>`
               )
@@ -59,7 +56,7 @@ export class CourseConcepts extends Root {
           <graph-widget-section-link
             exportparts="button"
             slot="footer"
-            href=${course._url}
+            href=${course.url}
           ></graph-widget-section-link>
         </graph-widget-section>`,
     });

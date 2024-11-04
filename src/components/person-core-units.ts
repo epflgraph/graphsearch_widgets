@@ -3,9 +3,8 @@ import { customElement, property } from "lit/decorators.js";
 
 import { Task } from "@lit/task";
 
+import { personFields, relatedUnitsFields } from "@/services/fields";
 import { getPerson, getPersonCoreUnits } from "@/services/persons";
-
-import { person, unit } from "@/fields";
 
 import "@/components/base/loading";
 import "@/components/base/no-results";
@@ -15,28 +14,26 @@ import "@/components/base/sectionLink";
 
 import "@/components/base/unit";
 
-import { Unit } from "@/types/unit";
-
 @customElement("graph-widget-person-core-units")
 export class PersonCoreUnits extends Root {
   @property({ type: String, attribute: "person-id" })
   id = "";
 
   private _getPersonUnits = new Task(this, {
-    task: async ([id, locale, limit, offset], { signal }) =>
+    task: async ([id, limit, offset], { signal }) =>
       Promise.all([
-        getPerson({ id, fields: person({ locale }) }, { signal }),
+        getPerson({ id, fields: personFields }, { signal }),
         getPersonCoreUnits(
           {
             id,
-            fields: unit({ locale }),
+            fields: relatedUnitsFields,
             limit: Number(limit),
             offset: Number(offset),
           },
           { signal }
         ),
       ]),
-    args: () => [this.id, this.locale, this.limit, this.offset],
+    args: () => [this.id, this.limit, this.offset],
   });
 
   render() {
@@ -47,10 +44,10 @@ export class PersonCoreUnits extends Root {
         html`<graph-widget-section>
           ${units.items.length
             ? units.items.map(
-                (item: Unit) =>
+                (item) =>
                   html`<graph-widget-unit
                     exportparts="link, unit, unit__name, breadcrumbs, breadcrumb"
-                    .unit=${item}
+                    .unit=${item.node}
                     locale=${this.locale}
                   ></graph-widget-unit>`
               )
@@ -60,7 +57,7 @@ export class PersonCoreUnits extends Root {
           <graph-widget-section-link
             exportparts="button"
             slot="footer"
-            href=${person._url}
+            href=${person.url}
           ></graph-widget-section-link>
         </graph-widget-section>`,
     });

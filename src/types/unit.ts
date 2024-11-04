@@ -1,17 +1,21 @@
-import { Locale, MetaData, Record } from "./base";
+import { MetaData, Types } from "./base";
 
-export type Unit = MetaData & {
-  _type: "unit";
-  name: Record;
-  numeric_id: number | null;
-  initials: string | null;
-  type: Locale<string | null>;
-  date_established: Date | null;
-  date_terminated: Date | null;
-  path: {
-    _id: string;
-    _type: string;
-    _url: string;
-    initials: string;
-  }[];
+type _Unit = MetaData<Types.Unit> & {
+  is_active_unit: boolean;
+  is_research_unit: boolean;
+  subtype_rank: number;
+};
+
+export type Unit = _Unit & {
+  path: Array<
+    Pick<
+      _Unit,
+      | "id"
+      | "type"
+      | "url"
+      | "is_active_unit"
+      | "is_research_unit"
+      | "subtype_rank"
+    >
+  >;
 };

@@ -4,8 +4,7 @@ import { customElement, property } from "lit/decorators.js";
 import { Task } from "@lit/task";
 
 import { getConcept, getConceptPublications } from "@/services/concepts";
-
-import { concept, publication } from "@/fields";
+import { conceptFields, relatedPublicationsFields } from "@/services/fields";
 
 import "@/components/base/loading";
 import "@/components/base/no-results";
@@ -14,28 +13,26 @@ import { Root } from "@/components/base/root";
 import "@/components/base/section";
 import "@/components/base/sectionLink";
 
-import { Publication } from "@/types/publication";
-
 @customElement("graph-widget-concept-publications")
 export class ConceptPublications extends Root {
   @property({ type: String, attribute: "concept-id" })
   id = "";
 
   private _getConceptPublications = new Task(this, {
-    task: async ([id, locale, limit, offset], { signal }) =>
+    task: async ([id, limit, offset], { signal }) =>
       Promise.all([
-        getConcept({ id, fields: concept({ locale }) }, { signal }),
+        getConcept({ id, fields: conceptFields }, { signal }),
         getConceptPublications(
           {
             id,
-            fields: publication({ locale }),
+            fields: relatedPublicationsFields,
             limit: Number(limit),
             offset: Number(offset),
           },
           { signal }
         ),
       ]),
-    args: () => [this.id, this.locale, this.limit, this.offset],
+    args: () => [this.id, this.limit, this.offset],
   });
 
   render() {
@@ -46,10 +43,10 @@ export class ConceptPublications extends Root {
         html`<graph-widget-section>
           ${publications.items.length
             ? publications.items.map(
-                (item: Publication) =>
+                (item) =>
                   html`<graph-widget-publication
                     exportparts="link, publication, publication__title, publication__abstract, publication__publisher, publication__year"
-                    .publication=${item}
+                    .publication=${item.node}
                     locale=${this.locale}
                   ></graph-widget-publication>`
               )
@@ -59,7 +56,7 @@ export class ConceptPublications extends Root {
           <graph-widget-section-link
             exportparts="button"
             slot="footer"
-            href=${concept._url}
+            href=${concept.url}
           ></graph-widget-section-link>
         </graph-widget-section>`,
     });

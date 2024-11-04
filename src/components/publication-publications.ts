@@ -4,13 +4,13 @@ import { customElement, property } from "lit/decorators.js";
 import { Task } from "@lit/task";
 
 import {
+  publicationFields,
+  relatedPublicationsFields,
+} from "@/services/fields";
+import {
   getPublication,
   getPublicationPublications,
 } from "@/services/publications";
-
-import { publication } from "@/fields";
-
-import { Publication } from "@/types/publication";
 
 import "@/components/base/loading";
 import "@/components/base/no-results";
@@ -25,20 +25,20 @@ export class PublicationPublications extends Root {
   id = "";
 
   private _getPublicationPublications = new Task(this, {
-    task: async ([id, locale, limit, offset], { signal }) =>
+    task: async ([id, limit, offset], { signal }) =>
       Promise.all([
-        getPublication({ id, fields: publication({ locale }) }, { signal }),
+        getPublication({ id, fields: publicationFields }, { signal }),
         getPublicationPublications(
           {
             id,
-            fields: publication({ locale }),
+            fields: relatedPublicationsFields,
             limit: Number(limit),
             offset: Number(offset),
           },
           { signal }
         ),
       ]),
-    args: () => [this.id, this.locale, this.limit, this.offset],
+    args: () => [this.id, this.limit, this.offset],
   });
 
   render() {
@@ -49,10 +49,10 @@ export class PublicationPublications extends Root {
         html`<graph-widget-section>
           ${publications.items.length
             ? publications.items.map(
-                (item: Publication) =>
+                (item) =>
                   html`<graph-widget-publication
                     exportparts="link, publication, publication__title, publication__abstract, publication__publisher, publication__year"
-                    .publication=${item}
+                    .publication=${item.node}
                     locale=${this.locale}
                   ></graph-widget-publication>`
               )
@@ -62,7 +62,7 @@ export class PublicationPublications extends Root {
           <graph-widget-section-link
             exportparts="button"
             slot="footer"
-            href=${publication._url}
+            href=${publication.url}
           ></graph-widget-section-link>
         </graph-widget-section>`,
     });

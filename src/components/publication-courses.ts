@@ -3,11 +3,8 @@ import { customElement, property } from "lit/decorators.js";
 
 import { Task } from "@lit/task";
 
+import { publicationFields, relatedCoursesFields } from "@/services/fields";
 import { getPublication, getPublicationCourses } from "@/services/publications";
-
-import { course, publication } from "@/fields";
-
-import { Course } from "@/types/course";
 
 import "@/components/base/course";
 import "@/components/base/loading";
@@ -22,20 +19,20 @@ export class PublicationCourses extends Root {
   id = "";
 
   private _getPublicationCourses = new Task(this, {
-    task: async ([id, locale, limit, offset], { signal }) =>
+    task: async ([id, limit, offset], { signal }) =>
       Promise.all([
-        getPublication({ id, fields: publication({ locale }) }, { signal }),
+        getPublication({ id, fields: publicationFields }, { signal }),
         getPublicationCourses(
           {
             id,
-            fields: course({ locale }),
+            fields: relatedCoursesFields,
             limit: Number(limit),
             offset: Number(offset),
           },
           { signal }
         ),
       ]),
-    args: () => [this.id, this.locale, this.limit, this.offset],
+    args: () => [this.id, this.limit, this.offset],
   });
 
   render() {
@@ -46,10 +43,10 @@ export class PublicationCourses extends Root {
         html`<graph-widget-section>
           ${courses.items.length
             ? courses.items.map(
-                (item: Course) =>
+                (item) =>
                   html`<graph-widget-course
                     exportparts="link, course, course__title, course__summary"
-                    .course=${item}
+                    .course=${item.node}
                     locale=${this.locale}
                   ></graph-widget-course>`
               )
@@ -59,7 +56,7 @@ export class PublicationCourses extends Root {
           <graph-widget-section-link
             exportparts="button"
             slot="footer"
-            href=${publication._url}
+            href=${publication.url}
           ></graph-widget-section-link>
         </graph-widget-section>`,
     });

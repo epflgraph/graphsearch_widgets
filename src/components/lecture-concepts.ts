@@ -3,11 +3,8 @@ import { customElement, property } from "lit/decorators.js";
 
 import { Task } from "@lit/task";
 
+import { lectureFields, relatedConceptsFields } from "@/services/fields";
 import { getLecture, getLectureConcepts } from "@/services/lectures";
-
-import { concept, lecture } from "@/fields";
-
-import { Concept } from "@/types/concept";
 
 import "@/components/base/concept";
 import "@/components/base/loading";
@@ -22,20 +19,20 @@ export class LectureConcepts extends Root {
   id = "";
 
   private _getLectureConcepts = new Task(this, {
-    task: async ([id, locale, limit, offset], { signal }) =>
+    task: async ([id, limit, offset], { signal }) =>
       Promise.all([
-        getLecture({ id, fields: lecture({ locale }) }, { signal }),
+        getLecture({ id, fields: lectureFields }, { signal }),
         getLectureConcepts(
           {
             id,
-            fields: concept({ locale }),
+            fields: relatedConceptsFields,
             limit: Number(limit),
             offset: Number(offset),
           },
           { signal }
         ),
       ]),
-    args: () => [this.id, this.locale, this.limit, this.offset],
+    args: () => [this.id, this.limit, this.offset],
   });
 
   render() {
@@ -46,10 +43,10 @@ export class LectureConcepts extends Root {
         html`<graph-widget-section>
           ${concepts.items.length
             ? concepts.items.map(
-                (item: Concept) =>
+                (item) =>
                   html`<graph-widget-concept
                     exportparts="link, unit, unit__name, breadcrumbs, breadcrumb"
-                    .concept=${item}
+                    .concept=${item.node}
                     locale=${this.locale}
                   ></graph-widget-concept>`
               )
@@ -59,7 +56,7 @@ export class LectureConcepts extends Root {
           <graph-widget-section-link
             exportparts="button"
             slot="footer"
-            href=${lecture._url}
+            href=${lecture.url}
           ></graph-widget-section-link>
         </graph-widget-section>`,
     });

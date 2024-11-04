@@ -3,9 +3,8 @@ import { customElement, property } from "lit/decorators.js";
 
 import { Task } from "@lit/task";
 
+import { personFields, relatedPublicationsFields } from "@/services/fields";
 import { getPerson, getPersonPublications } from "@/services/persons";
-
-import { person, publication } from "@/fields";
 
 import "@/components/base/loading";
 import "@/components/base/no-results";
@@ -14,28 +13,26 @@ import { Root } from "@/components/base/root";
 import "@/components/base/section";
 import "@/components/base/sectionLink";
 
-import { Publication } from "@/types/publication";
-
 @customElement("graph-widget-person-publications")
 export class PersonPublications extends Root {
   @property({ type: String, attribute: "person-id" })
   id = "";
 
   private _getPersonPublications = new Task(this, {
-    task: async ([id, locale, limit, offset], { signal }) =>
+    task: async ([id, limit, offset], { signal }) =>
       Promise.all([
-        getPerson({ id, fields: person({ locale }) }, { signal }),
+        getPerson({ id, fields: personFields }, { signal }),
         getPersonPublications(
           {
             id,
-            fields: publication({ locale }),
+            fields: relatedPublicationsFields,
             limit: Number(limit),
             offset: Number(offset),
           },
           { signal }
         ),
       ]),
-    args: () => [this.id, this.locale, this.limit, this.offset],
+    args: () => [this.id, this.limit, this.offset],
   });
 
   render() {
@@ -46,10 +43,10 @@ export class PersonPublications extends Root {
         html`<graph-widget-section>
           ${publications.items.length
             ? publications.items.map(
-                (item: Publication) =>
+                (item) =>
                   html`<graph-widget-publication
                     exportparts="link, publication, publication__title, publication__abstract, publication__publisher, publication__year"
-                    .publication=${item}
+                    .publication=${item.node}
                     locale=${this.locale}
                   ></graph-widget-publication>`
               )
@@ -59,7 +56,7 @@ export class PersonPublications extends Root {
           <graph-widget-section-link
             exportparts="button"
             slot="footer"
-            href=${person._url}
+            href=${person.url}
           ></graph-widget-section-link>
         </graph-widget-section>`,
     });
