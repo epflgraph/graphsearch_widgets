@@ -132,10 +132,10 @@
             href=${e.url}
           ></graph-widget-section-link>
         </graph-widget-section>`})}};_i([m({type:String,attribute:"concept-id"})],ce.prototype,"id",2);ce=_i([f("graph-widget-concept-concepts")],ce);var ra=Object.defineProperty,ia=Object.getOwnPropertyDescriptor,vi=(e,t,r,i)=>{for(var s=i>1?void 0:i?ia(t,r):t,o=e.length-1,n;o>=0;o--)(n=e[o])&&(s=(i?n(t,r,s):n(s))||s);return i&&s&&ra(t,r,s),s};let pe=class extends g{constructor(){super(...arguments),this.course={}}render(){const e=[this.course.short_code,E({record:this.course.name,locale:this.locale}).value].filter(Boolean).join(": "),t=E({record:this.course.description_medium,locale:this.locale}).value;return a`<div part="course" class="flex flex-col gap-1">
-      <a part="link course__title" class="link" href=${this.course.url}
+      <a part="link course__name" class="link" href=${this.course.url}
         >${e}</a
       >
-      <p part="course__summary" class="line-clamp-2">${t}</p>
+      <p part="course__description" class="line-clamp-2">${t}</p>
     </div> `}};vi([m({type:Object})],pe.prototype,"course",2);pe=vi([f("graph-widget-course")],pe);var sa=Object.defineProperty,oa=Object.getOwnPropertyDescriptor,yi=(e,t,r,i)=>{for(var s=i>1?void 0:i?oa(t,r):t,o=e.length-1,n;o>=0;o--)(n=e[o])&&(s=(i?n(t,r,s):n(s))||s);return i&&s&&sa(t,r,s),s};let ue=class extends g{constructor(){super(...arguments),this.id="",this._getConceptCourses=new v(this,{task:async([e,t,r],{signal:i})=>Promise.all([nt({id:e,fields:at},{signal:i}),Nn({id:e,fields:X,limit:Number(t),offset:Number(r)},{signal:i})]),args:()=>[this.id,this.limit,this.offset]})}render(){return this._getConceptCourses.render({pending:()=>a`<graph-widget-loading limit=${this.limit}></graph-widget-loading>`,complete:([e,t])=>a`<graph-widget-section>
           ${t.items.length?t.items.map(r=>a`<graph-widget-course
                     exportparts="link, course, course__title, course__summary"
@@ -150,10 +150,10 @@
             href=${e.url}
           ></graph-widget-section-link>
         </graph-widget-section>`})}};yi([m({type:String,attribute:"concept-id"})],ue.prototype,"id",2);ue=yi([f("graph-widget-concept-courses")],ue);var na=Object.defineProperty,aa=Object.getOwnPropertyDescriptor,$i=(e,t,r,i)=>{for(var s=i>1?void 0:i?aa(t,r):t,o=e.length-1,n;o>=0;o--)(n=e[o])&&(s=(i?n(t,r,s):n(s))||s);return i&&s&&na(t,r,s),s};let de=class extends g{constructor(){super(...arguments),this.lecture={}}render(){const e=E({record:this.lecture.name,locale:this.locale}).value,t=E({record:this.lecture.description_medium,locale:this.locale}).value;return a`<div part="lecture" class="flex flex-col gap-1">
-      <a part="link lecture__title" class="link" href=${this.lecture.url}
+      <a part="link lecture__name" class="link" href=${this.lecture.url}
         >${e}</a
       >
-      <p part="lecture__subtitle" class="line-clamp-2">${t}</p>
+      <p part="lecture__description" class="line-clamp-2">${t}</p>
     </div> `}};$i([m({type:Object})],de.prototype,"lecture",2);de=$i([f("graph-widget-lecture")],de);var la=Object.defineProperty,ca=Object.getOwnPropertyDescriptor,xi=(e,t,r,i)=>{for(var s=i>1?void 0:i?ca(t,r):t,o=e.length-1,n;o>=0;o--)(n=e[o])&&(s=(i?n(t,r,s):n(s))||s);return i&&s&&la(t,r,s),s};let he=class extends g{constructor(){super(...arguments),this.id="",this._getConceptLectures=new v(this,{task:async([e,t,r],{signal:i})=>Promise.all([nt({id:e,fields:at},{signal:i}),Rn({id:e,fields:pt,limit:Number(t),offset:Number(r)},{signal:i})]),args:()=>[this.id,this.limit,this.offset]})}render(){return this._getConceptLectures.render({pending:()=>a`<graph-widget-loading limit=${this.limit}></graph-widget-loading>`,complete:([e,t])=>a`<graph-widget-section>
           ${t.items.length?t.items.map(r=>a`<graph-widget-lecture
                     exportparts="link, lecture, lecture__title, lecture__subtitle"
@@ -171,7 +171,7 @@
       <a part="link person__name" class="link" href=${this.person.url}
         >${e}</a
       >
-      <p part="person__biography" class="line-clamp-2">${t}</p>
+      <p part="person__description" class="line-clamp-2">${t}</p>
     </div>`}};Pi([m({type:Object})],ge.prototype,"person",2);ge=Pi([f("graph-widget-person")],ge);var da=Object.defineProperty,ha=Object.getOwnPropertyDescriptor,ki=(e,t,r,i)=>{for(var s=i>1?void 0:i?ha(t,r):t,o=e.length-1,n;o>=0;o--)(n=e[o])&&(s=(i?n(t,r,s):n(s))||s);return i&&s&&da(t,r,s),s};let fe=class extends g{constructor(){super(...arguments),this.id="",this._getConceptPersons=new v(this,{task:async([e,t,r],{signal:i})=>Promise.all([nt({id:e,fields:at},{signal:i}),Dn({id:e,fields:U,limit:Number(t),offset:Number(r)},{signal:i})]),args:()=>[this.id,this.limit,this.offset]})}render(){return this._getConceptPersons.render({pending:()=>a`<graph-widget-loading limit=${this.limit}></graph-widget-loading>`,complete:([e,t])=>a`<graph-widget-section>
           ${t.items.length?t.items.map(r=>a`<graph-widget-person
                     exportparts="link, person, person__name, person__biography"
@@ -187,14 +187,14 @@
           ></graph-widget-section-link>
         </graph-widget-section>`})}};ki([m({type:String,attribute:"concept-id"})],fe.prototype,"id",2);fe=ki([f("graph-widget-concept-persons")],fe);var ga=Object.defineProperty,fa=Object.getOwnPropertyDescriptor,Oi=(e,t,r,i)=>{for(var s=i>1?void 0:i?fa(t,r):t,o=e.length-1,n;o>=0;o--)(n=e[o])&&(s=(i?n(t,r,s):n(s))||s);return i&&s&&ga(t,r,s),s};let be=class extends g{constructor(){super(...arguments),this.publication={}}render(){const e=E({record:this.publication.name,locale:this.locale}).value,t=E({record:this.publication.description_medium,locale:this.locale}).value;return a`<div part="publication" class="flex flex-col gap-1">
       <a
-        part="link publication__title"
+        part="link publication__name"
         class="link"
         href=${this.publication.url}
       >
         ${e}
       </a>
       <div class="text-gray-600 text-sm">
-        ${t&&a`<p part="publication__abstract" class="line-clamp-2">
+        ${t&&a`<p part="publication__description" class="line-clamp-2">
           ${t}
         </p>`}
         ${this.publication.publisher&&a`
@@ -217,10 +217,8 @@
             slot="footer"
             href=${e.url}
           ></graph-widget-section-link>
-        </graph-widget-section>`})}};Ci([m({type:String,attribute:"concept-id"})],me.prototype,"id",2);me=Ci([f("graph-widget-concept-publications")],me);var wa=Object.defineProperty,_a=Object.getOwnPropertyDescriptor,Si=(e,t,r,i)=>{for(var s=i>1?void 0:i?_a(t,r):t,o=e.length-1,n;o>=0;o--)(n=e[o])&&(s=(i?n(t,r,s):n(s))||s);return i&&s&&wa(t,r,s),s};let we=class extends g{constructor(){super(...arguments),this.unit={}}render(){const e=E({record:this.unit.name,locale:this.locale}).value;return E({record:this.unit.description_medium,locale:this.locale}).value,a`<div part="unit" class="flex flex-col gap-1">
-      <a part="link unit__name" class="link" href=${this.unit.url}>
-        ${e}
-      </a>
+        </graph-widget-section>`})}};Ci([m({type:String,attribute:"concept-id"})],me.prototype,"id",2);me=Ci([f("graph-widget-concept-publications")],me);var wa=Object.defineProperty,_a=Object.getOwnPropertyDescriptor,Si=(e,t,r,i)=>{for(var s=i>1?void 0:i?_a(t,r):t,o=e.length-1,n;o>=0;o--)(n=e[o])&&(s=(i?n(t,r,s):n(s))||s);return i&&s&&wa(t,r,s),s};let we=class extends g{constructor(){super(...arguments),this.unit={}}render(){const e=E({record:this.unit.name,locale:this.locale}).value;return a`<div part="unit" class="flex flex-col gap-1">
+      <a part="link unit__name" class="link" href=${this.unit.url}> ${e} </a>
 
       <nav part="breadcrumbs" class="breadcrumbs py-0 text-sm">
         <ul>

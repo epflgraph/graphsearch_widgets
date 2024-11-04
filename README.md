@@ -42,17 +42,17 @@ To style the components the widgets [export](https://developer.mozilla.org/en-US
 - `concept__name`: Name of a concept, alias for `link`
 - `concept__description` Description of a _concept_
 - `course`: Wrapper for a _course_ element
-- `course__title`: Title of a _course_, alias for `link`
-- `course__summary`: Summary of a _course_
+- `course__name`: Title of a _course_, alias for `link`
+- `course__description`: Description of a _course_
 - `lecture`: Wrapper for a _lecture_ element
-- `lecture__title`: Title of a _lecture_, alias for `link`
-- `lecture__subtitle`: Subtitle of a _lecture_
+- `lecture__name`: Title of a _lecture_, alias for `link`
+- `lecture__description`: Description of a _lecture_
 - `person`: Wrapper for a _person_ element
 - `person__name`: Name of a _person_, alias for `link`
-- `person__biography`: Biography of a _person_
+- `person__description`: Description of a _person_
 - `publication`: Wrapper for a _publication_ element
-- `publication__title`: Title of a _publication_, alias for `link`
-- `publication__abstract`: Abstract of a _publication_
+- `publication__name`: Title of a _publication_, alias for `link`
+- `publication__description`: Description of a _publication_
 - `publication__publisher`: Publisher of a _publication_
 - `publication__year`: Year of a _publication_
 - `unit`: Wrapper for a _unit_ element

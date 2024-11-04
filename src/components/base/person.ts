@@ -20,7 +20,7 @@ export class Person extends Root {
   "person" = {} as TPerson;
 
   render() {
-    const title = localeRecord({
+    const name = localeRecord({
       record: this.person.name,
       locale: this.locale,
     }).value;
@@ -32,9 +32,9 @@ export class Person extends Root {
 
     return html`<div part="person" class="flex flex-col gap-1">
       <a part="link person__name" class="link" href=${this.person.url}
-        >${title}</a
+        >${name}</a
       >
-      <p part="person__biography" class="line-clamp-2">${description}</p>
+      <p part="person__description" class="line-clamp-2">${description}</p>
     </div>`;
   }
 }

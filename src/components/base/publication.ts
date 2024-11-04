@@ -22,7 +22,7 @@ export class Publication extends Root {
   "publication" = {} as TPublication;
 
   render() {
-    const title = localeRecord({
+    const name = localeRecord({
       record: this.publication.name,
       locale: this.locale,
     }).value;
@@ -34,15 +34,15 @@ export class Publication extends Root {
 
     return html`<div part="publication" class="flex flex-col gap-1">
       <a
-        part="link publication__title"
+        part="link publication__name"
         class="link"
         href=${this.publication.url}
       >
-        ${title}
+        ${name}
       </a>
       <div class="text-gray-600 text-sm">
         ${description &&
-        html`<p part="publication__abstract" class="line-clamp-2">
+        html`<p part="publication__description" class="line-clamp-2">
           ${description}
         </p>`}
         ${this.publication.publisher &&

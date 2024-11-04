@@ -21,7 +21,7 @@ export class Concept extends Root {
   "concept" = {} as TConcept;
 
   render() {
-    const title = localeRecord({
+    const name = localeRecord({
       record: this.concept.name,
       locale: this.locale,
     }).value;
@@ -33,7 +33,7 @@ export class Concept extends Root {
 
     return html`<div part="concept" class="flex flex-col gap-1">
       <a part="link concept__name" class="link" href=${this.concept.url}>
-        ${title}
+        ${name}
       </a>
 
       <p part="concept__description" class="line-clamp-2">${description}</p>

@@ -20,7 +20,7 @@ export class Course extends Root {
   "course" = {} as TCourse;
 
   render() {
-    const title = [
+    const name = [
       this.course.short_code,
       localeRecord({ record: this.course.name, locale: this.locale }).value,
     ]
@@ -33,10 +33,10 @@ export class Course extends Root {
     }).value;
 
     return html`<div part="course" class="flex flex-col gap-1">
-      <a part="link course__title" class="link" href=${this.course.url}
-        >${title}</a
+      <a part="link course__name" class="link" href=${this.course.url}
+        >${name}</a
       >
-      <p part="course__summary" class="line-clamp-2">${description}</p>
+      <p part="course__description" class="line-clamp-2">${description}</p>
     </div> `;
   }
 }

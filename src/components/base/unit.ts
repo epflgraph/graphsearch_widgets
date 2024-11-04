@@ -23,20 +23,13 @@ export class Unit extends Root {
   "unit" = {} as TUnit;
 
   render() {
-    const title = localeRecord({
+    const name = localeRecord({
       record: this.unit.name,
       locale: this.locale,
     }).value;
 
-    const description = localeRecord({
-      record: this.unit.description_medium,
-      locale: this.locale,
-    }).value;
-
     return html`<div part="unit" class="flex flex-col gap-1">
-      <a part="link unit__name" class="link" href=${this.unit.url}>
-        ${title}
-      </a>
+      <a part="link unit__name" class="link" href=${this.unit.url}> ${name} </a>
 
       <nav part="breadcrumbs" class="breadcrumbs py-0 text-sm">
         <ul>
