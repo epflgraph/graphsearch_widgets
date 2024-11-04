@@ -216,13 +216,17 @@ npm run localize:build
 ></graph-widget-publication-units>
 
 <!-- Related to a Unit -->
-<graph-widget-unit-concepts unit-id="LCAV"></graph-widget-unit-concepts>
-<graph-widget-unit-core-persons unit-id="LCAV"></graph-widget-unit-core-persons>
-<graph-widget-unit-courses unit-id="LCAV"></graph-widget-unit-courses>
-<graph-widget-unit-lectures unit-id="LCAV"></graph-widget-unit-lectures>
-<graph-widget-unit-persons unit-id="LCAV"></graph-widget-unit-persons>
-<graph-widget-unit-publications unit-id="LCAV"></graph-widget-unit-publications>
-<graph-widget-unit-units unit-id="LCAV"></graph-widget-unit-units>
+<graph-widget-unit-concepts unit-id="AVP-E-CEDE"></graph-widget-unit-concepts>
+<graph-widget-unit-core-persons
+  unit-id="AVP-E-CEDE"
+></graph-widget-unit-core-persons>
+<graph-widget-unit-courses unit-id="AVP-E-CEDE"></graph-widget-unit-courses>
+<graph-widget-unit-lectures unit-id="AVP-E-CEDE"></graph-widget-unit-lectures>
+<graph-widget-unit-persons unit-id="AVP-E-CEDE"></graph-widget-unit-persons>
+<graph-widget-unit-publications
+  unit-id="AVP-E-CEDE"
+></graph-widget-unit-publications>
+<graph-widget-unit-units unit-id="AVP-E-CEDE"></graph-widget-unit-units>
 ```
 
 For more information visit [https://graphsearch.epfl.ch/](https://graphsearch.epfl.ch/).
