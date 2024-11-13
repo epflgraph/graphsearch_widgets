@@ -12,7 +12,7 @@ import { localeRecord } from "@/util/locale";
  * - link
  * - person
  * - person__name
- * - person__biography
+ * - person__description
  */
 @customElement("graph-widget-person")
 export class Person extends Root {

@@ -134,7 +134,7 @@
       <p part="course__description" class="line-clamp-2">${t}</p>
     </div> `}};Ui([w({type:Object})],ve.prototype,"course",2);ve=Ui([m("graph-widget-course")],ve);var Aa=Object.defineProperty,ja=Object.getOwnPropertyDescriptor,Li=(e,t,r,i)=>{for(var s=i>1?void 0:i?ja(t,r):t,o=e.length-1,n;o>=0;o--)(n=e[o])&&(s=(i?n(t,r,s):n(s))||s);return i&&s&&Aa(t,r,s),s};let ye=class extends g{constructor(){super(...arguments),this.id="",this._getConceptCourses=new y(this,{task:async([e,t,r],{signal:i})=>Promise.all([ht({id:e,fields:gt},{signal:i}),sa({id:e,fields:it,limit:Number(t),offset:Number(r)},{signal:i})]),args:()=>[this.id,this.limit,this.offset]})}render(){return this._getConceptCourses.render({pending:()=>a`<graph-widget-loading limit=${this.limit}></graph-widget-loading>`,complete:([e,t])=>a`<graph-widget-section>
           ${t.items.length?t.items.map(r=>a`<graph-widget-course
-                    exportparts="link, course, course__title, course__summary"
+                    exportparts="link, course, course__name, course__description"
                     .course=${r.node}
                     locale=${this.locale}
                   ></graph-widget-course>`):a`<graph-widget-no-results
@@ -152,7 +152,7 @@
       <p part="lecture__description" class="line-clamp-2">${t}</p>
     </div> `}};Fi([w({type:Object})],$e.prototype,"lecture",2);$e=Fi([m("graph-widget-lecture")],$e);var Ta=Object.defineProperty,Da=Object.getOwnPropertyDescriptor,Bi=(e,t,r,i)=>{for(var s=i>1?void 0:i?Da(t,r):t,o=e.length-1,n;o>=0;o--)(n=e[o])&&(s=(i?n(t,r,s):n(s))||s);return i&&s&&Ta(t,r,s),s};let xe=class extends g{constructor(){super(...arguments),this.id="",this._getConceptLectures=new y(this,{task:async([e,t,r],{signal:i})=>Promise.all([ht({id:e,fields:gt},{signal:i}),oa({id:e,fields:mt,limit:Number(t),offset:Number(r)},{signal:i})]),args:()=>[this.id,this.limit,this.offset]})}render(){return this._getConceptLectures.render({pending:()=>a`<graph-widget-loading limit=${this.limit}></graph-widget-loading>`,complete:([e,t])=>a`<graph-widget-section>
           ${t.items.length?t.items.map(r=>a`<graph-widget-lecture
-                    exportparts="link, lecture, lecture__title, lecture__subtitle"
+                    exportparts="link, lecture, lecture__name, lecture__description"
                     .lecture=${r.node}
                     locale=${this.locale}
                   ></graph-widget-lecture>`):a`<graph-widget-no-results
@@ -170,7 +170,7 @@
       <p part="person__description" class="line-clamp-2">${t}</p>
     </div>`}};zi([w({type:Object})],Pe.prototype,"person",2);Pe=zi([m("graph-widget-person")],Pe);var Fa=Object.defineProperty,Ba=Object.getOwnPropertyDescriptor,Mi=(e,t,r,i)=>{for(var s=i>1?void 0:i?Ba(t,r):t,o=e.length-1,n;o>=0;o--)(n=e[o])&&(s=(i?n(t,r,s):n(s))||s);return i&&s&&Fa(t,r,s),s};let ke=class extends g{constructor(){super(...arguments),this.id="",this._getConceptPersons=new y(this,{task:async([e,t,r],{signal:i})=>Promise.all([ht({id:e,fields:gt},{signal:i}),na({id:e,fields:B,limit:Number(t),offset:Number(r)},{signal:i})]),args:()=>[this.id,this.limit,this.offset]})}render(){return this._getConceptPersons.render({pending:()=>a`<graph-widget-loading limit=${this.limit}></graph-widget-loading>`,complete:([e,t])=>a`<graph-widget-section>
           ${t.items.length?t.items.map(r=>a`<graph-widget-person
-                    exportparts="link, person, person__name, person__biography"
+                    exportparts="link, person, person__name, person__description"
                     .person=${r.node}
                     locale=${this.locale}
                   ></graph-widget-person>`):a`<graph-widget-no-results
@@ -202,7 +202,7 @@
       </div>
     </div> `}};Hi([w({type:Object})],Oe.prototype,"publication",2);Oe=Hi([m("graph-widget-publication")],Oe);var Ha=Object.defineProperty,Ia=Object.getOwnPropertyDescriptor,Ii=(e,t,r,i)=>{for(var s=i>1?void 0:i?Ia(t,r):t,o=e.length-1,n;o>=0;o--)(n=e[o])&&(s=(i?n(t,r,s):n(s))||s);return i&&s&&Ha(t,r,s),s};let Ce=class extends g{constructor(){super(...arguments),this.id="",this._getConceptPublications=new y(this,{task:async([e,t,r],{signal:i})=>Promise.all([ht({id:e,fields:gt},{signal:i}),aa({id:e,fields:st,limit:Number(t),offset:Number(r)},{signal:i})]),args:()=>[this.id,this.limit,this.offset]})}render(){return this._getConceptPublications.render({pending:()=>a`<graph-widget-loading limit=${this.limit}></graph-widget-loading>`,complete:([e,t])=>a`<graph-widget-section>
           ${t.items.length?t.items.map(r=>a`<graph-widget-publication
-                    exportparts="link, publication, publication__title, publication__abstract, publication__publisher, publication__year"
+                    exportparts="link, publication, publication__name, publication__description, publication__publisher, publication__year"
                     .publication=${r.node}
                     locale=${this.locale}
                   ></graph-widget-publication>`):a`<graph-widget-no-results
@@ -253,7 +253,7 @@
           ></graph-widget-section-link>
         </graph-widget-section>`})}};Ji([w({type:String,attribute:"course-id"})],Ae.prototype,"id",2);Ae=Ji([m("graph-widget-course-concepts")],Ae);var il=Object.defineProperty,sl=Object.getOwnPropertyDescriptor,Wi=(e,t,r,i)=>{for(var s=i>1?void 0:i?sl(t,r):t,o=e.length-1,n;o>=0;o--)(n=e[o])&&(s=(i?n(t,r,s):n(s))||s);return i&&s&&il(t,r,s),s};let je=class extends g{constructor(){super(...arguments),this.id="",this._getCoursePersons=new y(this,{task:async([e,t,r],{signal:i})=>Promise.all([nt({id:e,fields:tt},{signal:i}),Ga({id:e,fields:B,limit:Number(t),offset:Number(r)},{signal:i})]),args:()=>[this.id,this.limit,this.offset]})}render(){return this._getCoursePersons.render({pending:()=>a`<graph-widget-loading limit=${this.limit}></graph-widget-loading>`,complete:([e,t])=>a`<graph-widget-section>
           ${t.items.length?t.items.map(r=>a`<graph-widget-person
-                    exportparts="link, person, person__name, person__biography"
+                    exportparts="link, person, person__name, person__description"
                     .person=${r.node}
                     locale=${this.locale}
                   ></graph-widget-person>`):a`<graph-widget-no-results
@@ -266,7 +266,7 @@
           ></graph-widget-section-link>
         </graph-widget-section>`})}};Wi([w({type:String,attribute:"course-id"})],je.prototype,"id",2);je=Wi([m("graph-widget-course-core-persons")],je);var ol=Object.defineProperty,nl=Object.getOwnPropertyDescriptor,Ki=(e,t,r,i)=>{for(var s=i>1?void 0:i?nl(t,r):t,o=e.length-1,n;o>=0;o--)(n=e[o])&&(s=(i?n(t,r,s):n(s))||s);return i&&s&&ol(t,r,s),s};let Re=class extends g{constructor(){super(...arguments),this.id="",this._getCourseCourses=new y(this,{task:async([e,t,r],{signal:i})=>Promise.all([nt({id:e,fields:tt},{signal:i}),Xa({id:e,fields:it,limit:Number(t),offset:Number(r)},{signal:i})]),args:()=>[this.id,this.limit,this.offset]})}render(){return this._getCourseCourses.render({pending:()=>a`<graph-widget-loading limit=${this.limit}></graph-widget-loading>`,complete:([e,t])=>a`<graph-widget-section>
           ${t.items.length?t.items.map(r=>a`<graph-widget-course
-                    exportparts="link, course, course__title, course__summary"
+                    exportparts="link, course, course__name, course__description"
                     .course=${r.node}
                     locale=${this.locale}
                   ></graph-widget-course>`):a`<graph-widget-no-results
@@ -279,7 +279,7 @@
           ></graph-widget-section-link>
         </graph-widget-section>`})}};Ki([w({type:String,attribute:"course-id"})],Re.prototype,"id",2);Re=Ki([m("graph-widget-course-courses")],Re);var al=Object.defineProperty,ll=Object.getOwnPropertyDescriptor,Gi=(e,t,r,i)=>{for(var s=i>1?void 0:i?ll(t,r):t,o=e.length-1,n;o>=0;o--)(n=e[o])&&(s=(i?n(t,r,s):n(s))||s);return i&&s&&al(t,r,s),s};let Ne=class extends g{constructor(){super(...arguments),this.id="",this._getCourseLectures=new y(this,{task:async([e,t,r],{signal:i})=>Promise.all([nt({id:e,fields:tt},{signal:i}),Ya({id:e,fields:mt,limit:Number(t),offset:Number(r)},{signal:i})]),args:()=>[this.id,this.limit,this.offset]})}render(){return this._getCourseLectures.render({pending:()=>a`<graph-widget-loading limit=${this.limit}></graph-widget-loading>`,complete:([e,t])=>a`<graph-widget-section>
           ${t.items.length?t.items.map(r=>a`<graph-widget-lecture
-                    exportparts="link, lecture, lecture__title, lecture__subtitle"
+                    exportparts="link, lecture, lecture__name, lecture__description"
                     .lecture=${r.node}
                     locale=${this.locale}
                   ></graph-widget-lecture>`):a`<graph-widget-no-results
@@ -292,7 +292,7 @@
           ></graph-widget-section-link>
         </graph-widget-section>`})}};Gi([w({type:String,attribute:"course-id"})],Ne.prototype,"id",2);Ne=Gi([m("graph-widget-course-lectures")],Ne);var cl=Object.defineProperty,pl=Object.getOwnPropertyDescriptor,Xi=(e,t,r,i)=>{for(var s=i>1?void 0:i?pl(t,r):t,o=e.length-1,n;o>=0;o--)(n=e[o])&&(s=(i?n(t,r,s):n(s))||s);return i&&s&&cl(t,r,s),s};let Te=class extends g{constructor(){super(...arguments),this.id="",this._getCoursePersons=new y(this,{task:async([e,t,r],{signal:i})=>Promise.all([nt({id:e,fields:tt},{signal:i}),Qa({id:e,fields:B,limit:Number(t),offset:Number(r)},{signal:i})]),args:()=>[this.id,this.limit,this.offset]})}render(){return this._getCoursePersons.render({pending:()=>a`<graph-widget-loading limit=${this.limit}></graph-widget-loading>`,complete:([e,t])=>a`<graph-widget-section>
           ${t.items.length?t.items.map(r=>a`<graph-widget-person
-                    exportparts="link, person, person__name, person__biography"
+                    exportparts="link, person, person__name, person__description"
                     .person=${r.node}
                     locale=${this.locale}
                   ></graph-widget-person>`):a`<graph-widget-no-results
@@ -305,7 +305,7 @@
           ></graph-widget-section-link>
         </graph-widget-section>`})}};Xi([w({type:String,attribute:"course-id"})],Te.prototype,"id",2);Te=Xi([m("graph-widget-course-persons")],Te);var ul=Object.defineProperty,dl=Object.getOwnPropertyDescriptor,Yi=(e,t,r,i)=>{for(var s=i>1?void 0:i?dl(t,r):t,o=e.length-1,n;o>=0;o--)(n=e[o])&&(s=(i?n(t,r,s):n(s))||s);return i&&s&&ul(t,r,s),s};let De=class extends g{constructor(){super(...arguments),this.id="",this._getCoursePublications=new y(this,{task:async([e,t,r],{signal:i})=>Promise.all([nt({id:e,fields:tt},{signal:i}),Za({id:e,fields:st,limit:Number(t),offset:Number(r)},{signal:i})]),args:()=>[this.id,this.limit,this.offset]})}render(){return this._getCoursePublications.render({pending:()=>a`<graph-widget-loading limit=${this.limit}></graph-widget-loading>`,complete:([e,t])=>a`<graph-widget-section>
           ${t.items.length?t.items.map(r=>a`<graph-widget-publication
-                    exportparts="link, publication, publication__title, publication__abstract, publication__publisher, publication__year"
+                    exportparts="link, publication, publication__name, publication__description, publication__publisher, publication__year"
                     .publication=${r.node}
                     locale=${this.locale}
                   ></graph-widget-publication>`):a`<graph-widget-no-results
@@ -344,7 +344,7 @@
           ></graph-widget-section-link>
         </graph-widget-section>`})}};Zi([w({type:String,attribute:"lecture-id"})],Le.prototype,"id",2);Le=Zi([m("graph-widget-lecture-concepts")],Le);var xl=Object.defineProperty,Pl=Object.getOwnPropertyDescriptor,ts=(e,t,r,i)=>{for(var s=i>1?void 0:i?Pl(t,r):t,o=e.length-1,n;o>=0;o--)(n=e[o])&&(s=(i?n(t,r,s):n(s))||s);return i&&s&&xl(t,r,s),s};let Fe=class extends g{constructor(){super(...arguments),this.id="",this._getLectureCourses=new y(this,{task:async([e,t,r],{signal:i})=>Promise.all([wt({id:e,fields:ft},{signal:i}),bl({id:e,fields:it,limit:Number(t),offset:Number(r)},{signal:i})]),args:()=>[this.id,this.limit,this.offset]})}render(){return this._getLectureCourses.render({pending:()=>a`<graph-widget-loading limit=${this.limit}></graph-widget-loading>`,complete:([e,t])=>a`<graph-widget-section>
           ${t.items.length?t.items.map(r=>a`<graph-widget-course
-                    exportparts="link, course, course__title, course__summary"
+                    exportparts="link, course, course__name, course__description"
                     .course=${r.node}
                     locale=${this.locale}
                   ></graph-widget-course>`):a`<graph-widget-no-results
@@ -357,7 +357,7 @@
           ></graph-widget-section-link>
         </graph-widget-section>`})}};ts([w({type:String,attribute:"lecture-id"})],Fe.prototype,"id",2);Fe=ts([m("graph-widget-lecture-courses")],Fe);var kl=Object.defineProperty,Ol=Object.getOwnPropertyDescriptor,es=(e,t,r,i)=>{for(var s=i>1?void 0:i?Ol(t,r):t,o=e.length-1,n;o>=0;o--)(n=e[o])&&(s=(i?n(t,r,s):n(s))||s);return i&&s&&kl(t,r,s),s};let Be=class extends g{constructor(){super(...arguments),this.id="",this._getLectureLectures=new y(this,{task:async([e,t,r],{signal:i})=>Promise.all([wt({id:e,fields:ft},{signal:i}),ml({id:e,fields:mt,limit:Number(t),offset:Number(r)},{signal:i})]),args:()=>[this.id,this.limit,this.offset]})}render(){return this._getLectureLectures.render({pending:()=>a`<graph-widget-loading limit=${this.limit}></graph-widget-loading>`,complete:([e,t])=>a`<graph-widget-section>
           ${t.items.length?t.items.map(r=>a`<graph-widget-lecture
-                    exportparts="link, lecture, lecture__title, lecture__subtitle"
+                    exportparts="link, lecture, lecture__name, lecture__description"
                     .lecture=${r.node}
                     locale=${this.locale}
                   ></graph-widget-lecture>`):a`<graph-widget-no-results
@@ -370,7 +370,7 @@
           ></graph-widget-section-link>
         </graph-widget-section>`})}};es([w({type:String,attribute:"lecture-id"})],Be.prototype,"id",2);Be=es([m("graph-widget-lecture-lectures")],Be);var Cl=Object.defineProperty,Sl=Object.getOwnPropertyDescriptor,rs=(e,t,r,i)=>{for(var s=i>1?void 0:i?Sl(t,r):t,o=e.length-1,n;o>=0;o--)(n=e[o])&&(s=(i?n(t,r,s):n(s))||s);return i&&s&&Cl(t,r,s),s};let ze=class extends g{constructor(){super(...arguments),this.id="",this._getLecturePersons=new y(this,{task:async([e,t,r],{signal:i})=>Promise.all([wt({id:e,fields:ft},{signal:i}),wl({id:e,fields:B,limit:Number(t),offset:Number(r)},{signal:i})]),args:()=>[this.id,this.limit,this.offset]})}render(){return this._getLecturePersons.render({pending:()=>a`<graph-widget-loading limit=${this.limit}></graph-widget-loading>`,complete:([e,t])=>a`<graph-widget-section>
           ${t.items.length?t.items.map(r=>a`<graph-widget-person
-                    exportparts="link, person, person__name, person__biography"
+                    exportparts="link, person, person__name, person__description"
                     .person=${r.node}
                     locale=${this.locale}
                   ></graph-widget-person>`):a`<graph-widget-no-results
@@ -383,7 +383,7 @@
           ></graph-widget-section-link>
         </graph-widget-section>`})}};rs([w({type:String,attribute:"lecture-id"})],ze.prototype,"id",2);ze=rs([m("graph-widget-lecture-persons")],ze);var El=Object.defineProperty,Al=Object.getOwnPropertyDescriptor,is=(e,t,r,i)=>{for(var s=i>1?void 0:i?Al(t,r):t,o=e.length-1,n;o>=0;o--)(n=e[o])&&(s=(i?n(t,r,s):n(s))||s);return i&&s&&El(t,r,s),s};let Me=class extends g{constructor(){super(...arguments),this.id="",this._getLecturePublications=new y(this,{task:async([e,t,r],{signal:i})=>Promise.all([wt({id:e,fields:ft},{signal:i}),_l({id:e,fields:st,limit:Number(t),offset:Number(r)},{signal:i})]),args:()=>[this.id,this.limit,this.offset]})}render(){return this._getLecturePublications.render({pending:()=>a`<graph-widget-loading limit=${this.limit}></graph-widget-loading>`,complete:([e,t])=>a`<graph-widget-section>
           ${t.items.length?t.items.map(r=>a`<graph-widget-publication
-                    exportparts="link, publication, publication__title, publication__abstract, publication__publisher, publication__year"
+                    exportparts="link, publication, publication__name, publication__description, publication__publisher, publication__year"
                     .publication=${r.node}
                     locale=${this.locale}
                   ></graph-widget-publication>`):a`<graph-widget-no-results
@@ -422,7 +422,7 @@
           ></graph-widget-section-link>
         </graph-widget-section>`})}};os([w({type:String,attribute:"person-id"})],Ie.prototype,"id",2);Ie=os([m("graph-widget-person-concepts")],Ie);var ql=Object.defineProperty,Vl=Object.getOwnPropertyDescriptor,ns=(e,t,r,i)=>{for(var s=i>1?void 0:i?Vl(t,r):t,o=e.length-1,n;o>=0;o--)(n=e[o])&&(s=(i?n(t,r,s):n(s))||s);return i&&s&&ql(t,r,s),s};let qe=class extends g{constructor(){super(...arguments),this.id="",this._getPersonCourses=new y(this,{task:async([e,t,r],{signal:i})=>Promise.all([z({id:e,fields:F},{signal:i}),Tl({id:e,fields:it,limit:Number(t),offset:Number(r)},{signal:i})]),args:()=>[this.id,this.limit,this.offset]})}render(){return this._getPersonCourses.render({pending:()=>a`<graph-widget-loading limit=${this.limit}></graph-widget-loading>`,complete:([e,t])=>a`<graph-widget-section>
           ${t.items.length?t.items.map(r=>a`<graph-widget-course
-                    exportparts="link, course, course__title, course__summary"
+                    exportparts="link, course, course__name, course__description"
                     .course=${r.node}
                     locale=${this.locale}
                   ></graph-widget-course>`):a`<graph-widget-no-results
@@ -435,7 +435,7 @@
           ></graph-widget-section-link>
         </graph-widget-section>`})}};ns([w({type:String,attribute:"person-id"})],qe.prototype,"id",2);qe=ns([m("graph-widget-person-core-courses")],qe);var Jl=Object.defineProperty,Wl=Object.getOwnPropertyDescriptor,as=(e,t,r,i)=>{for(var s=i>1?void 0:i?Wl(t,r):t,o=e.length-1,n;o>=0;o--)(n=e[o])&&(s=(i?n(t,r,s):n(s))||s);return i&&s&&Jl(t,r,s),s};let Ve=class extends g{constructor(){super(...arguments),this.id="",this._getPersonPublications=new y(this,{task:async([e,t,r],{signal:i})=>Promise.all([z({id:e,fields:F},{signal:i}),Dl({id:e,fields:st,limit:Number(t),offset:Number(r)},{signal:i})]),args:()=>[this.id,this.limit,this.offset]})}render(){return this._getPersonPublications.render({pending:()=>a`<graph-widget-loading limit=${this.limit}></graph-widget-loading>`,complete:([e,t])=>a`<graph-widget-section>
           ${t.items.length?t.items.map(r=>a`<graph-widget-publication
-                    exportparts="link, publication, publication__title, publication__abstract, publication__publisher, publication__year"
+                    exportparts="link, publication, publication__name, publication__description, publication__publisher, publication__year"
                     .publication=${r.node}
                     locale=${this.locale}
                   ></graph-widget-publication>`):a`<graph-widget-no-results
@@ -461,7 +461,7 @@
           ></graph-widget-section-link>
         </graph-widget-section>`})}};ls([w({type:String,attribute:"person-id"})],Je.prototype,"id",2);Je=ls([m("graph-widget-person-core-units")],Je);var Xl=Object.defineProperty,Yl=Object.getOwnPropertyDescriptor,cs=(e,t,r,i)=>{for(var s=i>1?void 0:i?Yl(t,r):t,o=e.length-1,n;o>=0;o--)(n=e[o])&&(s=(i?n(t,r,s):n(s))||s);return i&&s&&Xl(t,r,s),s};let We=class extends g{constructor(){super(...arguments),this.id="",this._getPersonCourses=new y(this,{task:async([e,t,r],{signal:i})=>Promise.all([z({id:e,fields:F},{signal:i}),Ll({id:e,fields:it,limit:Number(t),offset:Number(r)},{signal:i})]),args:()=>[this.id,this.limit,this.offset]})}render(){return this._getPersonCourses.render({pending:()=>a`<graph-widget-loading limit=${this.limit}></graph-widget-loading>`,complete:([e,t])=>a`<graph-widget-section>
           ${t.items.length?t.items.map(r=>a`<graph-widget-course
-                    exportparts="link, course, course__title, course__summary"
+                    exportparts="link, course, course__name, course__description"
                     .course=${r.node}
                     locale=${this.locale}
                   ></graph-widget-course>`):a`<graph-widget-no-results
@@ -474,7 +474,7 @@
           ></graph-widget-section-link>
         </graph-widget-section>`})}};cs([w({type:String,attribute:"person-id"})],We.prototype,"id",2);We=cs([m("graph-widget-person-courses")],We);var Ql=Object.defineProperty,Zl=Object.getOwnPropertyDescriptor,ps=(e,t,r,i)=>{for(var s=i>1?void 0:i?Zl(t,r):t,o=e.length-1,n;o>=0;o--)(n=e[o])&&(s=(i?n(t,r,s):n(s))||s);return i&&s&&Ql(t,r,s),s};let Ke=class extends g{constructor(){super(...arguments),this.id="",this._getPersonLectures=new y(this,{task:async([e,t,r],{signal:i})=>Promise.all([z({id:e,fields:F},{signal:i}),Fl({id:e,fields:mt,limit:Number(t),offset:Number(r)},{signal:i})]),args:()=>[this.id,this.limit,this.offset]})}render(){return this._getPersonLectures.render({pending:()=>a`<graph-widget-loading limit=${this.limit}></graph-widget-loading>`,complete:([e,t])=>a`<graph-widget-section>
           ${t.items.length?t.items.map(r=>a`<graph-widget-lecture
-                    exportparts="link, lecture, lecture__title, lecture__subtitle"
+                    exportparts="link, lecture, lecture__name, lecture__description"
                     .lecture=${r.node}
                     locale=${this.locale}
                   ></graph-widget-lecture>`):a`<graph-widget-no-results
@@ -487,7 +487,7 @@
           ></graph-widget-section-link>
         </graph-widget-section>`})}};ps([w({type:String,attribute:"person-id"})],Ke.prototype,"id",2);Ke=ps([m("graph-widget-person-lectures")],Ke);var tc=Object.defineProperty,ec=Object.getOwnPropertyDescriptor,us=(e,t,r,i)=>{for(var s=i>1?void 0:i?ec(t,r):t,o=e.length-1,n;o>=0;o--)(n=e[o])&&(s=(i?n(t,r,s):n(s))||s);return i&&s&&tc(t,r,s),s};let Ge=class extends g{constructor(){super(...arguments),this.id="",this._getPersonPersons=new y(this,{task:async([e,t,r],{signal:i})=>Promise.all([z({id:e,fields:F},{signal:i}),Bl({id:e,fields:B,limit:Number(t),offset:Number(r)},{signal:i})]),args:()=>[this.id,this.limit,this.offset]})}render(){return this._getPersonPersons.render({pending:()=>a`<graph-widget-loading limit=${this.limit}></graph-widget-loading>`,complete:([e,t])=>a`<graph-widget-section>
           ${t.items.length?t.items.map(r=>a`<graph-widget-person
-                    exportparts="link, person, person__name, person__biography"
+                    exportparts="link, person, person__name, person__description"
                     .person=${r.node}
                     locale=${this.locale}
                   ></graph-widget-person>`):a`<graph-widget-no-results
@@ -500,7 +500,7 @@
           ></graph-widget-section-link>
         </graph-widget-section>`})}};us([w({type:String,attribute:"person-id"})],Ge.prototype,"id",2);Ge=us([m("graph-widget-person-persons")],Ge);var rc=Object.defineProperty,ic=Object.getOwnPropertyDescriptor,ds=(e,t,r,i)=>{for(var s=i>1?void 0:i?ic(t,r):t,o=e.length-1,n;o>=0;o--)(n=e[o])&&(s=(i?n(t,r,s):n(s))||s);return i&&s&&rc(t,r,s),s};let Xe=class extends g{constructor(){super(...arguments),this.id="",this._getPersonPublications=new y(this,{task:async([e,t,r],{signal:i})=>Promise.all([z({id:e,fields:F},{signal:i}),zl({id:e,fields:st,limit:Number(t),offset:Number(r)},{signal:i})]),args:()=>[this.id,this.limit,this.offset]})}render(){return this._getPersonPublications.render({pending:()=>a`<graph-widget-loading limit=${this.limit}></graph-widget-loading>`,complete:([e,t])=>a`<graph-widget-section>
           ${t.items.length?t.items.map(r=>a`<graph-widget-publication
-                    exportparts="link, publication, publication__title, publication__abstract, publication__publisher, publication__year"
+                    exportparts="link, publication, publication__name, publication__description, publication__publisher, publication__year"
                     .publication=${r.node}
                     locale=${this.locale}
                   ></graph-widget-publication>`):a`<graph-widget-no-results
@@ -539,7 +539,7 @@
           ></graph-widget-section-link>
         </graph-widget-section>`})}};gs([w({type:String,attribute:"publication-id"})],Qe.prototype,"id",2);Qe=gs([m("graph-widget-publication-concepts")],Qe);var fc=Object.defineProperty,bc=Object.getOwnPropertyDescriptor,fs=(e,t,r,i)=>{for(var s=i>1?void 0:i?bc(t,r):t,o=e.length-1,n;o>=0;o--)(n=e[o])&&(s=(i?n(t,r,s):n(s))||s);return i&&s&&fc(t,r,s),s};let Ze=class extends g{constructor(){super(...arguments),this.id="",this._getPublicationPersons=new y(this,{task:async([e,t,r],{signal:i})=>Promise.all([at({id:e,fields:et},{signal:i}),ac({id:e,fields:B,limit:Number(t),offset:Number(r)},{signal:i})]),args:()=>[this.id,this.limit,this.offset]})}render(){return this._getPublicationPersons.render({pending:()=>a`<graph-widget-loading limit=${this.limit}></graph-widget-loading>`,complete:([e,t])=>a`<graph-widget-section>
           ${t.items.length?t.items.map(r=>a`<graph-widget-person
-                    exportparts="link, person, person__name, person__biography"
+                    exportparts="link, person, person__name, person__description"
                     .person=${r.node}
                     locale=${this.locale}
                   ></graph-widget-person>`):a`<graph-widget-no-results
@@ -552,7 +552,7 @@
           ></graph-widget-section-link>
         </graph-widget-section>`})}};fs([w({type:String,attribute:"publication-id"})],Ze.prototype,"id",2);Ze=fs([m("graph-widget-publication-core-persons")],Ze);var mc=Object.defineProperty,wc=Object.getOwnPropertyDescriptor,bs=(e,t,r,i)=>{for(var s=i>1?void 0:i?wc(t,r):t,o=e.length-1,n;o>=0;o--)(n=e[o])&&(s=(i?n(t,r,s):n(s))||s);return i&&s&&mc(t,r,s),s};let tr=class extends g{constructor(){super(...arguments),this.id="",this._getPublicationCourses=new y(this,{task:async([e,t,r],{signal:i})=>Promise.all([at({id:e,fields:et},{signal:i}),lc({id:e,fields:it,limit:Number(t),offset:Number(r)},{signal:i})]),args:()=>[this.id,this.limit,this.offset]})}render(){return this._getPublicationCourses.render({pending:()=>a`<graph-widget-loading limit=${this.limit}></graph-widget-loading>`,complete:([e,t])=>a`<graph-widget-section>
           ${t.items.length?t.items.map(r=>a`<graph-widget-course
-                    exportparts="link, course, course__title, course__summary"
+                    exportparts="link, course, course__name, course__description"
                     .course=${r.node}
                     locale=${this.locale}
                   ></graph-widget-course>`):a`<graph-widget-no-results
@@ -565,7 +565,7 @@
           ></graph-widget-section-link>
         </graph-widget-section>`})}};bs([w({type:String,attribute:"publication-id"})],tr.prototype,"id",2);tr=bs([m("graph-widget-publication-courses")],tr);var _c=Object.defineProperty,vc=Object.getOwnPropertyDescriptor,ms=(e,t,r,i)=>{for(var s=i>1?void 0:i?vc(t,r):t,o=e.length-1,n;o>=0;o--)(n=e[o])&&(s=(i?n(t,r,s):n(s))||s);return i&&s&&_c(t,r,s),s};let er=class extends g{constructor(){super(...arguments),this.id="",this._getPublicationLectures=new y(this,{task:async([e,t,r],{signal:i})=>Promise.all([at({id:e,fields:et},{signal:i}),cc({id:e,fields:mt,limit:Number(t),offset:Number(r)},{signal:i})]),args:()=>[this.id,this.limit,this.offset]})}render(){return this._getPublicationLectures.render({pending:()=>a`<graph-widget-loading limit=${this.limit}></graph-widget-loading>`,complete:([e,t])=>a`<graph-widget-section>
           ${t.items.length?t.items.map(r=>a`<graph-widget-lecture
-                    exportparts="link, lecture, lecture__title, lecture__subtitle"
+                    exportparts="link, lecture, lecture__name, lecture__description"
                     .lecture=${r.node}
                     locale=${this.locale}
                   ></graph-widget-lecture>`):a`<graph-widget-no-results
@@ -578,7 +578,7 @@
           ></graph-widget-section-link>
         </graph-widget-section>`})}};ms([w({type:String,attribute:"publication-id"})],er.prototype,"id",2);er=ms([m("graph-widget-publication-lectures")],er);var yc=Object.defineProperty,$c=Object.getOwnPropertyDescriptor,ws=(e,t,r,i)=>{for(var s=i>1?void 0:i?$c(t,r):t,o=e.length-1,n;o>=0;o--)(n=e[o])&&(s=(i?n(t,r,s):n(s))||s);return i&&s&&yc(t,r,s),s};let rr=class extends g{constructor(){super(...arguments),this.id="",this._getPublicationPersons=new y(this,{task:async([e,t,r],{signal:i})=>Promise.all([at({id:e,fields:et},{signal:i}),pc({id:e,fields:B,limit:Number(t),offset:Number(r)},{signal:i})]),args:()=>[this.id,this.limit,this.offset]})}render(){return this._getPublicationPersons.render({pending:()=>a`<graph-widget-loading limit=${this.limit}></graph-widget-loading>`,complete:([e,t])=>a`<graph-widget-section>
           ${t.items.length?t.items.map(r=>a`<graph-widget-person
-                    exportparts="link, person, person__name, person__biography"
+                    exportparts="link, person, person__name, person__description"
                     .person=${r.node}
                     locale=${this.locale}
                   ></graph-widget-person>`):a`<graph-widget-no-results
@@ -591,7 +591,7 @@
           ></graph-widget-section-link>
         </graph-widget-section>`})}};ws([w({type:String,attribute:"publication-id"})],rr.prototype,"id",2);rr=ws([m("graph-widget-publication-persons")],rr);var xc=Object.defineProperty,Pc=Object.getOwnPropertyDescriptor,_s=(e,t,r,i)=>{for(var s=i>1?void 0:i?Pc(t,r):t,o=e.length-1,n;o>=0;o--)(n=e[o])&&(s=(i?n(t,r,s):n(s))||s);return i&&s&&xc(t,r,s),s};let ir=class extends g{constructor(){super(...arguments),this.id="",this._getPublicationPublications=new y(this,{task:async([e,t,r],{signal:i})=>Promise.all([at({id:e,fields:et},{signal:i}),uc({id:e,fields:st,limit:Number(t),offset:Number(r)},{signal:i})]),args:()=>[this.id,this.limit,this.offset]})}render(){return this._getPublicationPublications.render({pending:()=>a`<graph-widget-loading limit=${this.limit}></graph-widget-loading>`,complete:([e,t])=>a`<graph-widget-section>
           ${t.items.length?t.items.map(r=>a`<graph-widget-publication
-                    exportparts="link, publication, publication__title, publication__abstract, publication__publisher, publication__year"
+                    exportparts="link, publication, publication__name, publication__description, publication__publisher, publication__year"
                     .publication=${r.node}
                     locale=${this.locale}
                   ></graph-widget-publication>`):a`<graph-widget-no-results
@@ -630,7 +630,7 @@
           ></graph-widget-section-link>
         </graph-widget-section>`})}};ys([w({type:String,attribute:"unit-id"})],or.prototype,"id",2);or=ys([m("graph-widget-unit-concepts")],or);var Uc=Object.defineProperty,Lc=Object.getOwnPropertyDescriptor,$s=(e,t,r,i)=>{for(var s=i>1?void 0:i?Lc(t,r):t,o=e.length-1,n;o>=0;o--)(n=e[o])&&(s=(i?n(t,r,s):n(s))||s);return i&&s&&Uc(t,r,s),s};let nr=class extends g{constructor(){super(...arguments),this.id="",this._getUnitPersons=new y(this,{task:async([e,t,r],{signal:i})=>Promise.all([lt({id:e,fields:rt},{signal:i}),Sc({id:e,fields:B,limit:Number(t),offset:Number(r)},{signal:i})]),args:()=>[this.id,this.limit,this.offset]})}render(){return this._getUnitPersons.render({pending:()=>a`<graph-widget-loading limit=${this.limit}></graph-widget-loading>`,complete:([e,t])=>a`<graph-widget-section>
           ${t.items.length?t.items.map(r=>a`<graph-widget-person
-                    exportparts="link, person, person__name, person__biography"
+                    exportparts="link, person, person__name, person__description"
                     .person=${r.node}
                     locale=${this.locale}
                   ></graph-widget-person>`):a`<graph-widget-no-results
@@ -643,7 +643,7 @@
           ></graph-widget-section-link>
         </graph-widget-section>`})}};$s([w({type:String,attribute:"unit-id"})],nr.prototype,"id",2);nr=$s([m("graph-widget-unit-core-persons")],nr);var Fc=Object.defineProperty,Bc=Object.getOwnPropertyDescriptor,xs=(e,t,r,i)=>{for(var s=i>1?void 0:i?Bc(t,r):t,o=e.length-1,n;o>=0;o--)(n=e[o])&&(s=(i?n(t,r,s):n(s))||s);return i&&s&&Fc(t,r,s),s};let ar=class extends g{constructor(){super(...arguments),this.id="",this._getUnitCourses=new y(this,{task:async([e,t,r],{signal:i})=>Promise.all([lt({id:e,fields:rt},{signal:i}),Ec({id:e,fields:it,limit:Number(t),offset:Number(r)},{signal:i})]),args:()=>[this.id,this.limit,this.offset]})}render(){return this._getUnitCourses.render({pending:()=>a`<graph-widget-loading limit=${this.limit}></graph-widget-loading>`,complete:([e,t])=>a`<graph-widget-section>
           ${t.items.length?t.items.map(r=>a`<graph-widget-course
-                    exportparts="link, course, course__title, course__summary"
+                    exportparts="link, course, course__name, course__description"
                     .course=${r.node}
                     locale=${this.locale}
                   ></graph-widget-course>`):a`<graph-widget-no-results
@@ -656,7 +656,7 @@
           ></graph-widget-section-link>
         </graph-widget-section>`})}};xs([w({type:String,attribute:"unit-id"})],ar.prototype,"id",2);ar=xs([m("graph-widget-unit-courses")],ar);var zc=Object.defineProperty,Mc=Object.getOwnPropertyDescriptor,Ps=(e,t,r,i)=>{for(var s=i>1?void 0:i?Mc(t,r):t,o=e.length-1,n;o>=0;o--)(n=e[o])&&(s=(i?n(t,r,s):n(s))||s);return i&&s&&zc(t,r,s),s};let lr=class extends g{constructor(){super(...arguments),this.id="",this._getUnitLectures=new y(this,{task:async([e,t,r],{signal:i})=>Promise.all([lt({id:e,fields:rt},{signal:i}),Ac({id:e,fields:mt,limit:Number(t),offset:Number(r)},{signal:i})]),args:()=>[this.id,this.limit,this.offset]})}render(){return this._getUnitLectures.render({pending:()=>a`<graph-widget-loading limit=${this.limit}></graph-widget-loading>`,complete:([e,t])=>a`<graph-widget-section>
           ${t.items.length?t.items.map(r=>a`<graph-widget-lecture
-                    exportparts="link, lecture, lecture__title, lecture__subtitle"
+                    exportparts="link, lecture, lecture__name, lecture__description"
                     .lecture=${r.node}
                     locale=${this.locale}
                   ></graph-widget-lecture>`):a`<graph-widget-no-results
@@ -669,7 +669,7 @@
           ></graph-widget-section-link>
         </graph-widget-section>`})}};Ps([w({type:String,attribute:"unit-id"})],lr.prototype,"id",2);lr=Ps([m("graph-widget-unit-lectures")],lr);var Hc=Object.defineProperty,Ic=Object.getOwnPropertyDescriptor,ks=(e,t,r,i)=>{for(var s=i>1?void 0:i?Ic(t,r):t,o=e.length-1,n;o>=0;o--)(n=e[o])&&(s=(i?n(t,r,s):n(s))||s);return i&&s&&Hc(t,r,s),s};let cr=class extends g{constructor(){super(...arguments),this.id="",this._getUnitPersons=new y(this,{task:async([e,t,r],{signal:i})=>Promise.all([lt({id:e,fields:rt},{signal:i}),jc({id:e,fields:B,limit:Number(t),offset:Number(r)},{signal:i})]),args:()=>[this.id,this.limit,this.offset]})}render(){return this._getUnitPersons.render({pending:()=>a`<graph-widget-loading limit=${this.limit}></graph-widget-loading>`,complete:([e,t])=>a`<graph-widget-section>
           ${t.items.length?t.items.map(r=>a`<graph-widget-person
-                    exportparts="link, person, person__name, person__biography"
+                    exportparts="link, person, person__name, person__description"
                     .person=${r.node}
                     locale=${this.locale}
                   ></graph-widget-person>`):a`<graph-widget-no-results
@@ -682,7 +682,7 @@
           ></graph-widget-section-link>
         </graph-widget-section>`})}};ks([w({type:String,attribute:"unit-id"})],cr.prototype,"id",2);cr=ks([m("graph-widget-unit-persons")],cr);var qc=Object.defineProperty,Vc=Object.getOwnPropertyDescriptor,Os=(e,t,r,i)=>{for(var s=i>1?void 0:i?Vc(t,r):t,o=e.length-1,n;o>=0;o--)(n=e[o])&&(s=(i?n(t,r,s):n(s))||s);return i&&s&&qc(t,r,s),s};let pr=class extends g{constructor(){super(...arguments),this.id="",this._getUnitPublications=new y(this,{task:async([e,t,r],{signal:i})=>Promise.all([lt({id:e,fields:rt},{signal:i}),Rc({id:e,fields:st,limit:Number(t),offset:Number(r)},{signal:i})]),args:()=>[this.id,this.limit,this.offset]})}render(){return this._getUnitPublications.render({pending:()=>a`<graph-widget-loading limit=${this.limit}></graph-widget-loading>`,complete:([e,t])=>a`<graph-widget-section>
           ${t.items.length?t.items.map(r=>a`<graph-widget-publication
-                    exportparts="link, publication, publication__title, publication__abstract, publication__publisher, publication__year"
+                    exportparts="link, publication, publication__name, publication__description, publication__publisher, publication__year"
                     .publication=${r.node}
                     locale=${this.locale}
                   ></graph-widget-publication>`):a`<graph-widget-no-results

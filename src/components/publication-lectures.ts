@@ -48,7 +48,7 @@ export class PublicationLectures extends Root {
             ? lectures.items.map(
                 (item) =>
                   html`<graph-widget-lecture
-                    exportparts="link, lecture, lecture__title, lecture__subtitle"
+                    exportparts="link, lecture, lecture__name, lecture__description"
                     .lecture=${item.node}
                     locale=${this.locale}
                   ></graph-widget-lecture>`

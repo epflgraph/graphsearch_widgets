@@ -48,7 +48,7 @@ export class PublicationCorePersons extends Root {
             ? persons.items.map(
                 (item) =>
                   html`<graph-widget-person
-                    exportparts="link, person, person__name, person__biography"
+                    exportparts="link, person, person__name, person__description"
                     .person=${item.node}
                     locale=${this.locale}
                   ></graph-widget-person>`

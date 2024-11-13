@@ -11,8 +11,8 @@ import { localeRecord } from "@/util/locale";
  * Parts:
  * - link
  * - publication
- * - publication__title
- * - publication__abstract
+ * - publication__name
+ * - publication__description
  * - publication__publisher
  * - publication__year
  */

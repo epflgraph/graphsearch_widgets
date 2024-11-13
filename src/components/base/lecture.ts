@@ -11,8 +11,8 @@ import { localeRecord } from "@/util/locale";
  * Parts:
  * - link
  * - lecture
- * - lecture__title
- * - lecture__subtitle
+ * - lecture__name
+ * - lecture__description
  */
 @customElement("graph-widget-lecture")
 export class Lecture extends Root {
