@@ -11,19 +11,19 @@
     "localize:build": "npx lit-localize build"
   },
   "devDependencies": {
-    "@lit/localize": "^0.12.1",
-    "@lit/localize-tools": "^0.7.2",
-    "@lit/task": "^1.0.0",
-    "@types/lodash": "^4.14.202",
-    "autoprefixer": "^10.4.17",
-    "axios": "^1.6.7",
-    "daisyui": "^4.7.2",
-    "lit": "^3.1.0",
+    "@lit/localize": "^0.12.2",
+    "@lit/localize-tools": "^0.8.0",
+    "@lit/task": "^1.0.1",
+    "@types/lodash": "^4.17.13",
+    "autoprefixer": "^10.4.20",
+    "axios": "^1.7.7",
+    "daisyui": "^4.12.14",
+    "lit": "^3.2.1",
     "lodash": "^4.17.21",
-    "postcss": "^8.4.34",
-    "tailwindcss": "^3.4.1",
-    "typescript": "^5.3.2",
-    "vite": "^5.0.12",
-    "vite-tsconfig-paths": "^4.3.1"
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.14",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.11",
+    "vite-tsconfig-paths": "^4.3.2"
   }
 }
