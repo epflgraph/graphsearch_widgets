@@ -1,8 +1,6 @@
 import { html } from "lit";
 import { customElement, property } from "lit/decorators.js";
 
-import get from "lodash/get";
-
 import type { Unit as TUnit } from "@/types/unit";
 
 import { Root } from "@/components/base/root";
