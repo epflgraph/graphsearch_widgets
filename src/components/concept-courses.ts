@@ -45,7 +45,7 @@ export class ConceptCourses extends Root {
             ? courses.items.map(
                 (item) =>
                   html`<graph-widget-course
-                    exportparts="link, course, course__title, course__summary"
+                    exportparts="link, course, course__name, course__description"
                     .course=${item.node}
                     locale=${this.locale}
                   ></graph-widget-course>`
