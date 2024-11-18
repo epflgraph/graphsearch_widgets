@@ -136,6 +136,7 @@ export const relatedConceptsFields: Fields<Concept> = [
 
 export const relatedCoursesFields: Fields<Course> = [
   "id",
+  "url",
   "external_url",
   "name",
   "description_medium",
